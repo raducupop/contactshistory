@@ -1,0 +1,29 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle</item>
+        <item name="colorPrimary">@color/ColorPrimary</item>
+        <item name="colorPrimaryDark">@color/ColorPrimaryDark</item>
+        <item name="android:textColor">@color/pref_text</item>
+        <item name="android:textColorSecondary">@color/pref_text_description</item>
+    </style>
+
+    <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/ColorPrimaryDark</item>
+        <item name="android:textColorPrimary">#000000</item>
+        <item name="android:background">#ffffff</item>
+    </style>
+
+    <style
+        name="PrefTheme" parent="AppTheme">
+
+        <item name="android:background">@color/background</item>
+    </style>
+
+    <style name="customToolbar" parent="AppTheme">
+        <item name="android:textColorPrimary">@color/toolbar_title_text</item>
+        <item name="android:textColorSecondary">@color/toolbar_owerflow_icon</item>
+    </style>
+
+
+</resources>

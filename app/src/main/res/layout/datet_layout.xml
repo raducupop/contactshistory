@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+    android:background="@color/background">
+
+  <LinearLayout
+        android:id="@+id/search_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_search_box" >
+
+        <EditText
+            android:id="@+id/search_string"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Cautati nume, data sau locatie" >
+
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/search_close_button"
+            android:layout_margin="4dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/button_close_search" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="10dp"
+     android:orientation="vertical" >
+
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:weightSum="1">
+
+         <Button
+             android:id="@+id/pick1"
+             android:layout_width="wrap_content"
+             android:layout_height="35dp"
+             android:layout_marginLeft="25dp"
+             android:text="@string/button_pick_first_date"
+             android:textSize="12sp" />
+
+         <TextView
+             android:id="@+id/text1"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="25dp"
+             android:text="TextView"
+             android:textColor="@color/text_other"
+             android:textSize="12sp" />
+
+     </LinearLayout>
+
+ </LinearLayout>
+
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content" >
+
+     <LinearLayout
+         android:layout_width="wrap_content"
+         android:layout_height="match_parent"
+         android:weightSum="1">
+
+         <Button
+             android:id="@+id/pick2"
+             android:layout_width="wrap_content"
+             android:layout_height="35dp"
+             android:layout_marginLeft="25dp"
+             android:text="@string/button_pick_second_date"
+             android:textSize="12sp" />
+
+         <TextView
+             android:id="@+id/text2"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="25dp"
+             android:text="TextView"
+             android:textColor="@color/text_other"
+             android:textSize="12sp" />
+
+     </LinearLayout>
+
+ </LinearLayout>
+
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:orientation="vertical" >
+
+     <Button
+         android:id="@+id/show"
+         android:layout_width="wrap_content"
+         android:layout_height="36dp"
+         android:layout_gravity="center_horizontal"
+         android:layout_marginTop="5dp"
+         android:paddingLeft="100dp"
+         android:paddingRight="100dp"
+         android:text="@string/button_done"
+         android:textSize="12sp" />
+
+ </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/statusImage"
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="65dp"
+        android:paddingRight="65dp" />
+
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:divider="@color/list_divider"
+        android:dividerHeight="2px"
+        android:layout_weight="1"
+        android:choiceMode="singleChoice"
+        android:clickable="false"
+        android:drawSelectorOnTop="false"
+        android:longClickable="false"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+    </ListView>
+ 
+</LinearLayout>

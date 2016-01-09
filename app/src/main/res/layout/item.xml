@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:orientation="vertical"
+    android:padding="7dp">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="60sp"
+            android:layout_height="60sp"
+            android:id="@+id/photo"
+            android:minHeight="60sp"
+            android:minWidth="60sp"
+            android:maxHeight="60sp"
+            android:maxWidth="60sp"
+            android:layout_gravity="center" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/text_name"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:minLines="1"
+                android:text="Name"
+                android:textColor="@color/list_text_main"
+                android:textSize="19sp"
+                android:paddingLeft="7dp" />
+
+            <TextView
+                android:id="@+id/text_date"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:minLines="1"
+                android:text="Date"
+                android:textColor="@color/list_text"
+                android:textSize="12dp"
+                android:paddingLeft="7dp" />
+
+            <TextView
+                android:id="@+id/text_location"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:minLines="1"
+                android:text="Location"
+                android:textColor="@color/list_text"
+                android:textSize="12dp"
+                android:paddingLeft="7dp" />
+
+            <TextView
+                android:id="@+id/text_time"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:minLines="1"
+                android:text="Time"
+                android:textColor="@color/list_text_time"
+                android:textSize="12sp"
+                android:paddingLeft="7dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

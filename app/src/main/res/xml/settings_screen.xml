@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+
+    <PreferenceCategory android:title="@string/setting_category_contacts" >
+
+        <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+                          android:title="@string/setting_source"
+                          android:key="prefSource"
+                          android:summary="@string/setting_source_summary">
+            
+            <PreferenceCategory android:title="@string/setting_source"
+                                android:summary="@string/setting_source_summary"/>
+                 
+            <CheckBoxPreference
+                    android:key="prefSourceDevice"
+                    android:summary="@string/setting_source_internal_summary"
+                    android:title="@string/setting_source_internal"
+                    android:defaultValue="true"/>
+            <CheckBoxPreference
+                    android:key="prefSourceSim"
+                    android:summary="@string/setting_source_sim_summary"
+                    android:title="@string/setting_source_sim"
+                    android:defaultValue="true"/>
+            <CheckBoxPreference
+                    android:key="prefSourceAccounts"
+                    android:summary="@string/setting_source_other_summary"
+                    android:title="@string/setting_source_other"
+                    android:defaultValue="true"/>
+
+        </PreferenceScreen>
+
+        <CheckBoxPreference
+                android:key="prefWriteData"
+                android:summary="@string/setting_write_info_summary"
+                android:title="@string/setting_write_info"
+                android:defaultValue="false"/>
+
+        <CheckBoxPreference
+            android:key="prefReadData"
+            android:summary="@string/setting_read_info_summary"
+            android:title="@string/setting_read_info"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
+
+
+    <PreferenceCategory android:title="@string/setting_category_display" >
+
+        <ListPreference
+            android:key="prefDateFormat"
+            android:defaultValue="dd MMMM yyyy"
+            android:summary="@string/setting_displaydate_summary"
+            android:entries="@array/dateFormat"
+            android:entryValues="@array/dateFormatValues"
+            android:title="@string/setting_displaydate" />
+
+        <ListPreference
+            android:key="prefTimeFormat"
+            android:defaultValue="HH:mm"
+            android:summary="@string/setting_displaytime_summary"
+            android:entries="@array/timeFormat"
+            android:entryValues="@array/timeFormatValues"
+            android:title="@string/setting_displaytime" />
+
+        <ListPreference
+            android:key="prefRecentNumber"
+            android:defaultValue="30"
+            android:summary="@string/setting_recentnumber_summary"
+            android:entries="@array/recentNumber"
+            android:entryValues="@array/recentNumberValues"
+            android:title="@string/setting_recentnumber" />
+
+        <ListPreference
+            android:key="prefDefaultSort"
+            android:defaultValue="0"
+            android:entries="@array/defaultSort"
+            android:entryValues="@array/defaultSortValues"
+            android:summary="@string/setting_defaultsort_summary"
+            android:title="@string/setting_defaultsort" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/setting_category_notifications" >
+
+        <CheckBoxPreference
+            android:key="prefDisplayCallInfo"
+            android:summary="@string/setting_callinfo_summary"
+            android:title="@string/setting_callinfo"
+            android:defaultValue="true" />
+
+        <CheckBoxPreference
+            android:key="prefDisplayIconContact"
+            android:summary="@string/setting_icon_contact_summary"
+            android:title="@string/setting_icon_contact"
+            android:defaultValue="true" />
+
+        <CheckBoxPreference
+            android:key="prefDisplayIcon"
+            android:summary="@string/setting_icon_summary"
+            android:title="@string/setting_icon"
+            android:defaultValue="true" />
+
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

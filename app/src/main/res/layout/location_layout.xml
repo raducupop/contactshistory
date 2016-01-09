@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:id="@+id/search_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_search_box" >
+
+        <EditText
+            android:id="@+id/search_string"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="@string/search_hint" >
+
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/search_close_button"
+            android:layout_margin="4dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/button_close_search" />
+
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/search_term"
+        android:maxLines="1"
+        android:hint="@string/location_hint"
+        android:layout_margin="13dp"
+        android:foreground="@color/ColorPrimary" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/statusImage"
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="65dp"
+        android:paddingRight="65dp" />
+
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:clickable="true"
+        android:divider="@color/list_divider"
+        android:dividerHeight="2px"
+        android:drawSelectorOnTop="false"
+        android:longClickable="false"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:smoothScrollbar="true">
+
+    </ListView>
+
+</LinearLayout>
