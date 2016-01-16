@@ -310,7 +310,7 @@ public class HistoryService extends Service{
 
                 }
 
-/*                DBAdapter db_tmp = new DBAdapter(getBaseContext());
+                DBAdapter db_tmp = new DBAdapter(getBaseContext());
                 db_tmp.open();
                 Cursor db_ids =  db_tmp.getAllContacts();
                 int found_id = 0;
@@ -333,7 +333,11 @@ public class HistoryService extends Service{
                             String id_db = db_ids.getString(0);
 
                             String id_db_ok = id_db.substring(1, id_db.length()-1);
-                            a=Long.valueOf(id_db_ok);
+                            try {
+                                a=Long.valueOf(id_db_ok);
+                            } catch (NumberFormatException e) {
+                                e.printStackTrace();
+                            }
 
                             if(all_ids.getCount()>0)
                             {
@@ -342,7 +346,11 @@ public class HistoryService extends Service{
                                     do {
 
                                         String id_provider_row = all_ids.getString(all_ids.getColumnIndex(ContactsContract.RawContacts._ID));
-                                        b = Long.valueOf(id_provider_row);
+                                        try {
+                                            b = Long.valueOf(id_provider_row);
+                                        } catch (NumberFormatException e) {
+                                            e.printStackTrace();
+                                        }
 
                                         if (a.equals(b)) found_id = 1;
                                     }while (all_ids.moveToNext());
@@ -368,7 +376,7 @@ public class HistoryService extends Service{
                     }
                 }
 
-                db_tmp.close();*/
+                db_tmp.close();
 
 
             }
