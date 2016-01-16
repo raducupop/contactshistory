@@ -149,7 +149,7 @@ public class HistoryService extends Service{
                         id_contact = ca.getString(ca.getColumnIndex(ContactsContract.RawContacts._ID));
                         contacte_a.add(id_contact);
                     } while (ca.moveToNext());
-                    //ca.close();
+
                 }
 
                 if ( (na > n) && (contacts_count != contacts_count_after) ) {
@@ -227,12 +227,12 @@ public class HistoryService extends Service{
                                         db.close();
 
                                     }
-                                    //noteCur.close();
+                                    noteCur.close();
                                 }
                             } while (read.moveToNext());
 
                         }
-                        //read.close();
+                        read.close();
 
 
                     }
@@ -288,7 +288,7 @@ public class HistoryService extends Service{
                 contacte.clear();
                 contacte.addAll(contacte_a);
                 n = ca.getCount();
-                //ca.close();
+                ca.close();
 
                 if ((ok_to_notify == true) && (sharedPrefs.getBoolean("prefDisplayIconContact", true))) {
 
@@ -657,6 +657,8 @@ public class HistoryService extends Service{
         exit = 1;
         toggleIcon();
         exit =0;
+
+        observer.close();
 
     }
 

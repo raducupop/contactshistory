@@ -175,6 +175,9 @@ public class GetListHelper {
     	    		
     	    } while (cursor.moveToNext());
     	    db.close();
+            c.close();
+            raw.close();
+            cursor.close();
 
             /// default sort - preference
 
@@ -317,6 +320,9 @@ public class GetListHelper {
     	    		
     	    } while (cursor.moveToNext());
     	    db.close();
+            c.close();
+            raw.close();
+            cursor.close();
    
         }
         
@@ -475,6 +481,10 @@ public class GetListHelper {
 
             } while (cursor.moveToNext());
             db.close();
+
+            c.close();
+            raw.close();
+            cursor.close();
 
             /// default sort - preference
 

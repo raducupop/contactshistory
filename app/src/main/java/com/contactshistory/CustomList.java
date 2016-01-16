@@ -82,6 +82,7 @@ public class CustomList extends ArrayAdapter<String> {
 
 		} else id = "0";
 
+		mapContact.close();
 		return Long.parseLong(id);
 	}
 

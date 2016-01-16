@@ -156,6 +156,7 @@ public class CustomListMultiple extends ArrayAdapter<String>{
 
         } else id = "0";
 
+        mapContact.close();
         return Long.parseLong(id);
     }
 
