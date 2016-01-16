@@ -1,6 +1,5 @@
 package com.contactshistory;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -23,7 +22,6 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -43,13 +41,13 @@ import android.widget.Toast;
 
 public class HistoryService extends Service{
 
-    Cursor c;
+    Cursor c, observer;
     public ContentObserver obs;
-	int n=0,na=0;
+    int n=0,na=0;
     int contacts_count = 0;
-	ArrayList<String> contacte = new ArrayList<String>();
-	ArrayList<String> contacte_a = new ArrayList<String>();
-	ArrayList<String> temp = new ArrayList<String>();
+    ArrayList<String> contacte = new ArrayList<String>();
+    ArrayList<String> contacte_a = new ArrayList<String>();
+    ArrayList<String> temp = new ArrayList<String>();
 
     String info =null;
 
@@ -59,40 +57,40 @@ public class HistoryService extends Service{
     int edit = 1;
 
     @Override
-	public void onCreate() {
-		
-		super.onCreate();
-	
-		// Toast.makeText(getApplicationContext(),"serv creat! ", Toast.LENGTH_LONG).show();
+    public void onCreate() {
+
+        super.onCreate();
+
+        // Toast.makeText(getApplicationContext(),"serv creat! ", Toast.LENGTH_LONG).show();
 
         Intent startServiceIntent = new Intent(this.getBaseContext(), HistoryService.class);
         this.getBaseContext().startService(startServiceIntent);
 
-	    c = getContentResolver().query(ContactsContract.RawContacts.CONTENT_URI, null, null, null, null);
+        c = getContentResolver().query(ContactsContract.RawContacts.CONTENT_URI, null, null, null, null);
         Cursor full_contacts = getContentResolver().query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null);
-        contacts_count = full_contacts.getCount();
+        int contacts_count = full_contacts.getCount();
 
-	    n = c.getCount();
-	    contacte.clear();
-	    String id=null;
+        n = c.getCount();
+        contacte.clear();
+        String id=null;
 
-	    if (c.getCount() > 0)
-	    {
-	    
-	    	c.moveToFirst();
-	    	do {
-	    		id = c.getString(c.getColumnIndex(ContactsContract.RawContacts._ID));
-	    		contacte.add(id);
-	    		} while (c.moveToNext());
-	    	c.close();
-	    }
+        if (c.getCount() > 0)
+        {
 
-	}
-	
-	@Override
-	public int onStartCommand(Intent intent, int flags, int startId) {
+            c.moveToFirst();
+            do {
+                id = c.getString(c.getColumnIndex(ContactsContract.RawContacts._ID));
+                contacte.add(id);
+            } while (c.moveToNext());
+            c.close();
+        }
 
-		super.onStart(intent, startId);
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+
+        super.onStart(intent, startId);
 
         // Toast.makeText(getApplicationContext(),"serv pornit! ", Toast.LENGTH_LONG).show();
 
@@ -104,18 +102,15 @@ public class HistoryService extends Service{
         telephonyManager.listen(phoneListener, PhoneStateListener.LISTEN_CALL_STATE);
 
 
-		final DBAdapter db = new DBAdapter(this);
+        final DBAdapter db = new DBAdapter(this);
+
+        observer = getContentResolver().query(ContactsContract.RawContacts.CONTENT_URI, null, null, null, null);
+
 
         obs = new ContentObserver(new Handler()) {
 
-
             @Override
-            public void onChange(boolean selfChange, Uri uri) {
-
-
-                //Toast.makeText(getBaseContext(), String.valueOf(uri), Toast.LENGTH_LONG).show();
-
-
+            public void onChange(boolean selfChange) {
 
 
                 SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -148,7 +143,6 @@ public class HistoryService extends Service{
                 String id_contact = null;
                 contacte_a.clear();
 
-
                 if (ca.getCount() > 0) {
                     ca.moveToFirst();
                     do {
@@ -158,8 +152,6 @@ public class HistoryService extends Service{
                     //ca.close();
                 }
 
-                Toast.makeText(getBaseContext(), String.valueOf(contacts_count) + " " + String.valueOf(contacts_count_after) , Toast.LENGTH_LONG).show();
-
                 if ( (na > n) && (contacts_count != contacts_count_after) ) {
 
                     edit = 1;
@@ -168,30 +160,11 @@ public class HistoryService extends Service{
 
                     temp = contacte_a;
                     temp.removeAll(contacte);
-
-                    Toast.makeText(getBaseContext(),"nou "+String.valueOf(temp) , Toast.LENGTH_LONG).show();
-
-                    /*final DBAdapter db_temp = new DBAdapter(getBaseContext());
-                    db_temp.open();
-                    Cursor exisiting_ids = db_temp.getAllContacts();
-
-                    if (exisiting_ids.getCount()>0) {
-                        if (exisiting_ids.moveToFirst()) {
-
-                            do {
-
-                                Toast.makeText(getBaseContext(), "existent " + exisiting_ids.getString(0), Toast.LENGTH_LONG).show();
-
-                            } while (exisiting_ids.moveToNext());
-
-                        }
-                    }*/
-
-
                     db.open();
                     db.insertContact(temp.toString(), data_azi, getLocation().get(0), getLocation().get(1));
                     db.close();
                     //Toast.makeText(getApplicationContext(), temp.toString() + " Adaugat in Contacts History \n\n" + data_azi + "\n" + getLocation(), Toast.LENGTH_SHORT).show();
+
 
 
                     String cid = temp.toString();
@@ -282,7 +255,7 @@ public class HistoryService extends Service{
                     db.close();
 
                     info = "Contact sters.";
-                    Toast.makeText(getApplicationContext(),"Sters din Contacts History", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(),"Sters din Contacts History", Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -337,8 +310,66 @@ public class HistoryService extends Service{
 
                 }
 
+/*                DBAdapter db_tmp = new DBAdapter(getBaseContext());
+                db_tmp.open();
+                Cursor db_ids =  db_tmp.getAllContacts();
+                int found_id = 0;
 
-                contacts_count = contacts_count_after;
+                Long a=Long.valueOf(0);
+                Long b=Long.valueOf(0);
+
+                ArrayList<String> list_purge = new ArrayList<>();
+
+                //Toast.makeText(getApplicationContext(),"In DB: "+String.valueOf(db_ids.getCount()), Toast.LENGTH_SHORT).show();
+                Cursor all_ids = getBaseContext().getContentResolver().query(ContactsContract.RawContacts.CONTENT_URI, null, null, null, null);
+
+                if (db_ids.getCount()>0)
+                {
+                    if(db_ids.moveToFirst())
+                    {
+                        do{
+
+                            found_id = 0;
+                            String id_db = db_ids.getString(0);
+
+                            String id_db_ok = id_db.substring(1, id_db.length()-1);
+                            a=Long.valueOf(id_db_ok);
+
+                            if(all_ids.getCount()>0)
+                            {
+                                if (all_ids.moveToFirst()){
+
+                                    do {
+
+                                        String id_provider_row = all_ids.getString(all_ids.getColumnIndex(ContactsContract.RawContacts._ID));
+                                        b = Long.valueOf(id_provider_row);
+
+                                        if (a.equals(b)) found_id = 1;
+                                    }while (all_ids.moveToNext());
+                                }
+                            }
+
+
+                            if (found_id == 0){
+                                list_purge.add(id_db);
+                            }
+
+                        }while (db_ids.moveToNext());
+
+                    }
+
+                }
+
+                if (list_purge.size()>0){
+
+                    for (int i=0;i<list_purge.size();i++){
+                        //Toast.makeText(getApplicationContext(),"In purge: "+String.valueOf(list_purge.size()), Toast.LENGTH_SHORT).show();
+                        db_tmp.deleteContact(list_purge.get(i));
+                    }
+                }
+
+                db_tmp.close();*/
+
 
             }
             @Override
@@ -347,11 +378,10 @@ public class HistoryService extends Service{
             }
         };
 
-
-        getContentResolver().registerContentObserver(ContactsContract.Contacts.CONTENT_LOOKUP_URI, false, obs);
+        observer.registerContentObserver(obs);
 
         return(START_STICKY);
-	}
+    }
 
 /*
     public String idToRawId(String LookupKey)
@@ -407,19 +437,19 @@ public class HistoryService extends Service{
         }
     }
 
-	public ArrayList<String> getLocation(){
+    public ArrayList<String> getLocation(){
 
         locationFound = false;
 
-		ArrayList<String> result = new ArrayList<String>();
+        ArrayList<String> result = new ArrayList<String>();
         Location location = null;
 
-		ConnectivityManager connManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
-		NetworkInfo wifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-		NetworkInfo dcon = connManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
-		
-		if (wifi.isConnected() || dcon.isConnected())
-		{
+        ConnectivityManager connManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+        NetworkInfo wifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        NetworkInfo dcon = connManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+
+        if (wifi.isConnected() || dcon.isConnected())
+        {
 
             final LocationManager locationManager;
             String svcName = Context.LOCATION_SERVICE;
@@ -462,91 +492,91 @@ public class HistoryService extends Service{
 
             locationManager.removeUpdates(myLocationListener);
 
-		    Geocoder geocoder;
+            Geocoder geocoder;
 
-	     List<Address> user = null;
-	     double lat;
-	     double lng;
-         
-
-	     result.add("null");
-	     result.add("null");
-	     
-	     if (location == null){
-
-	         //Toast.makeText(getApplicationContext(),"Locatia nu a putut sa fie determinata",Toast.LENGTH_SHORT).show();
-             info = getResources().getString(R.string.service_no_location);
-
-             String locationProviders = Settings.Secure.getString(getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
-             if (locationProviders == null || locationProviders.equals("")) {
-
-                 //Toast.makeText(getApplicationContext(),"Fara acces la locatie.", Toast.LENGTH_SHORT).show();
-                 info = getResources().getString(R.string.warning_location_title);
-
-             }
+            List<Address> user = null;
+            double lat;
+            double lng;
 
 
-         }
-	     else
-	     {
+            result.add("null");
+            result.add("null");
+
+            if (location == null){
+
+                //Toast.makeText(getApplicationContext(),"Locatia nu a putut sa fie determinata",Toast.LENGTH_SHORT).show();
+                info = getResources().getString(R.string.service_no_location);
+
+                String locationProviders = Settings.Secure.getString(getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
+                if (locationProviders == null || locationProviders.equals("")) {
+
+                    //Toast.makeText(getApplicationContext(),"Fara acces la locatie.", Toast.LENGTH_SHORT).show();
+                    info = getResources().getString(R.string.warning_location_title);
+
+                }
 
 
-	        geocoder = new Geocoder(getApplicationContext());
-	        result.clear();
-
-            info = getResources().getString(R.string.service_no_location);
-
-	        try {
-	            user = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
-	            lat=(double)user.get(0).getLatitude();
-	            lng=(double)user.get(0).getLongitude();
-	            
-	            result.add(lat+"#"+lng);
+            }
+            else
+            {
 
 
-	            if (user != null && user.size() > 0) {
-	                Address address = user.get(0);
-	                     
-	                String addressText = String.format("%s, %s, %s",
-	                        address.getMaxAddressLineIndex() > 0 ? address.getAddressLine(0) : "",
-	                        address.getLocality(),
-	                        address.getCountryName());
-	                        result.add(addressText);
+                geocoder = new Geocoder(getApplicationContext());
+                result.clear();
 
-                            info = addressText;
-                            locationFound = true;
+                info = getResources().getString(R.string.service_no_location);
 
-	            }
-	            else
-	            {
-	            	String addressText = "null";
-	            	result.add(addressText);
-	            			
-	            }
-	            
-	            
-	        }catch (Exception e) {
-	                e.printStackTrace();
-	                result.clear();
- 		        	result.add("null");
- 		   	        result.add("null");
- 		   	        return result;
+                try {
+                    user = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+                    lat=(double)user.get(0).getLatitude();
+                    lng=(double)user.get(0).getLongitude();
 
-	        }
+                    result.add(lat+"#"+lng);
 
 
-	    }
-	     return result;
-	     
-	  }
-		
-		else {
-    		//Toast.makeText(getApplicationContext(),"Fara conexiune de date.", Toast.LENGTH_SHORT).show();
+                    if (user != null && user.size() > 0) {
+                        Address address = user.get(0);
+
+                        String addressText = String.format("%s, %s, %s",
+                                address.getMaxAddressLineIndex() > 0 ? address.getAddressLine(0) : "",
+                                address.getLocality(),
+                                address.getCountryName());
+                        result.add(addressText);
+
+                        info = addressText;
+                        locationFound = true;
+
+                    }
+                    else
+                    {
+                        String addressText = "null";
+                        result.add(addressText);
+
+                    }
+
+
+                }catch (Exception e) {
+                    e.printStackTrace();
+                    result.clear();
+                    result.add("null");
+                    result.add("null");
+                    return result;
+
+                }
+
+
+            }
+            return result;
+
+        }
+
+        else {
+            //Toast.makeText(getApplicationContext(),"Fara conexiune de date.", Toast.LENGTH_SHORT).show();
             info = getResources().getString(R.string.service_no_connexion);
-    		result.clear();
-	        result.add("null");
-	   	    result.add("null");
-		}
+            result.clear();
+            result.add("null");
+            result.add("null");
+        }
 
         String locationProviders = Settings.Secure.getString(getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
 
@@ -557,10 +587,9 @@ public class HistoryService extends Service{
 
         }
 
-		return result;
-		
-	}
+        return result;
 
+    }
 
     public void toggleIcon(){
 
@@ -568,14 +597,14 @@ public class HistoryService extends Service{
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         Notification n = new Notification(R.drawable.icon_status, "Contacts History",0);
-    	
+
         Intent launchMain = new Intent(getApplicationContext(),
                 MainActivity.class);
         launchMain .setAction("android.intent.action.MAIN");
         launchMain .addCategory("android.intent.category.LAUNCHER");
-        
+
         PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, launchMain, PendingIntent.FLAG_UPDATE_CURRENT);
-        
+
         n.flags = Notification.FLAG_NO_CLEAR;
         n.setLatestEventInfo(this, getResources().getString(R.string.service_icon_firstline), getResources().getString(R.string.service_icon_secondline), pendingIntent);
 
@@ -597,20 +626,20 @@ public class HistoryService extends Service{
 
 
     @Override
-	public void onDestroy() {
+    public void onDestroy() {
 
-        getContentResolver().unregisterContentObserver(obs);
+        observer.unregisterContentObserver(obs);
 
         super.onDestroy();
 
         Intent startServiceIntent = new Intent(this.getBaseContext(), HistoryService.class);
-        
-        
+
+
         // TRY TO RESTART SERVICE ON SERVICE STOP
         this.getBaseContext().startService(startServiceIntent);
 
-       // Toast.makeText(getApplicationContext(),"serv inchis! ", Toast.LENGTH_LONG).show();
-        
+        // Toast.makeText(getApplicationContext(),"serv inchis! ", Toast.LENGTH_LONG).show();
+
         /*	Notification notification_service_stop = new Notification(R.drawable.icon_status_red, "Contacts History",0);
         	PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
                 new Intent(this, MainActivity.class), 0);
@@ -621,12 +650,13 @@ public class HistoryService extends Service{
         toggleIcon();
         exit =0;
 
-	}
+    }
 
 
-	@Override
-	public IBinder onBind(Intent intent) {
 
-		return null;
-	}
+    @Override
+    public IBinder onBind(Intent intent) {
+
+        return null;
+    }
 }

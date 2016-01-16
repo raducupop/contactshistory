@@ -11,7 +11,6 @@ import android.database.Cursor;
 import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
 import android.util.Log;
-import android.widget.Toast;
 
 
 public class GetListHelper {
@@ -78,6 +77,7 @@ public class GetListHelper {
                 	    }
                     
                 } while (c.moveToNext());
+
                 
             }
             
@@ -109,7 +109,7 @@ public class GetListHelper {
     	    		if (c.moveToFirst()) {
                         do {
 
-                            if (c.getString(0).contains(id)) {
+                            if (c.getString(0).substring(1, c.getString(0).length() - 1).equalsIgnoreCase(id)) {
                                 data = c.getString(1);
                                 locatie = c.getString(2);
                                 adresa = c.getString(3);
@@ -141,24 +141,28 @@ public class GetListHelper {
                                     {
                                         if (account.toLowerCase().contains("phone") && sharedPrefs.getBoolean("prefSourceDevice",true) )
                                         {
-                                            Log.v("ch","Contact on DEVICE");
+                                            Log.v("ch", "Contact on DEVICE");
+                                            if (!list.contains(contact))
                                             list.add(contact);
                                         }
 
                                         if (account.toLowerCase().contains("sim") && sharedPrefs.getBoolean("prefSourceSim",true) )
                                         {
-                                            Log.v("ch","Contact on SIM");
+                                            Log.v("ch", "Contact on SIM");
+                                            if (!list.contains(contact))
                                             list.add(contact);
                                         }
 
                                         if ( (!account.toLowerCase().contains("phone") && !account.toLowerCase().contains("sim")) && sharedPrefs.getBoolean("prefSourceAccounts",true) )
                                         {
-                                            Log.v("ch","Contact on OTHER ACCOUNT");
+                                            Log.v("ch", "Contact on OTHER ACCOUNT");
+                                            if (!list.contains(contact))
                                             list.add(contact);
                                         }
                                     }
 
                                     else{
+                                        if (!list.contains(contact))
                                         list.add(contact);
                                     }
                                 }
@@ -246,9 +250,9 @@ public class GetListHelper {
                 if (tmp.contains(id))
     	    	{
     	    		if (c.moveToFirst())
-    	            do { 
+    	            do {
 
-    	                	if (c.getString(0).contains(id) )
+                        if (c.getString(0).substring(1, c.getString(0).length() - 1).equalsIgnoreCase(id) )
     	                	{
     	                	   data = c.getString(1);
     	                	   locatie = c.getString(2);
@@ -280,24 +284,28 @@ public class GetListHelper {
                                     {
                                         if (account.toLowerCase().contains("phone") && sharedPrefs.getBoolean("prefSourceDevice",true) )
                                         {
-                                            Log.v("ch","Contact on DEVICE");
+                                            Log.v("ch", "Contact on DEVICE");
+                                            if (!list.contains(contact))
                                             list.add(contact);
                                         }
 
                                         if (account.toLowerCase().contains("sim") && sharedPrefs.getBoolean("prefSourceSim",true) )
                                         {
-                                            Log.v("ch","Contact on SIM");
+                                            Log.v("ch", "Contact on SIM");
+                                            if (!list.contains(contact))
                                             list.add(contact);
                                         }
 
                                         if ( (!account.toLowerCase().contains("phone") && !account.toLowerCase().contains("sim")) && sharedPrefs.getBoolean("prefSourceAccounts",true) )
                                         {
-                                            Log.v("ch","Contact on OTHER ACCOUNT");
+                                            Log.v("ch", "Contact on OTHER ACCOUNT");
+                                            if (!list.contains(contact))
                                             list.add(contact);
                                         }
                                     }
 
                                     else{
+                                        if (!list.contains(contact))
                                         list.add(contact);
                                     }
                                 }
@@ -401,7 +409,7 @@ public class GetListHelper {
                     if (c.moveToFirst()) {
                         do {
 
-                            if (c.getString(0).contains(id)) {
+                            if (c.getString(0).substring(1, c.getString(0).length()-1).equalsIgnoreCase(id)) {
                                 data = c.getString(1);
                                 locatie = c.getString(2);
                                 adresa = c.getString(3);
@@ -433,24 +441,28 @@ public class GetListHelper {
                                     {
                                         if (account.toLowerCase().contains("phone") && sharedPrefs.getBoolean("prefSourceDevice",true) )
                                         {
-                                            Log.v("ch","Contact on DEVICE");
+                                            Log.v("ch", "Contact on DEVICE");
+                                            if (!list.contains(contact))
                                             list.add(contact);
                                         }
 
                                         if (account.toLowerCase().contains("sim") && sharedPrefs.getBoolean("prefSourceSim",true) )
                                         {
-                                            Log.v("ch","Contact on SIM");
+                                            Log.v("ch", "Contact on SIM");
+                                            if (!list.contains(contact))
                                             list.add(contact);
                                         }
 
                                         if ( (!account.toLowerCase().contains("phone") && !account.toLowerCase().contains("sim")) && sharedPrefs.getBoolean("prefSourceAccounts",true) )
                                         {
-                                            Log.v("ch","Contact on OTHER ACCOUNT");
+                                            Log.v("ch", "Contact on OTHER ACCOUNT");
+                                            if (!list.contains(contact))
                                             list.add(contact);
                                         }
                                     }
 
                                     else{
+                                        if (!list.contains(contact))
                                         list.add(contact);
                                     }
                                 }
