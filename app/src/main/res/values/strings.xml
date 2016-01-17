@@ -111,11 +111,6 @@
     <string name="setting_category_contacts">Contacts</string>
     <string name="setting_category_notifications">Notifications</string>
 
-
-    <string name="setting_source">Contact sources</string>
-    <string name="setting_source_summary">Pick contact sources to use</string>
-
-
             <string name="setting_source_internal">Internal memory</string>
             <string name="setting_source_internal_summary">Contacts that are stored in device\'s internal memory.</string>
 

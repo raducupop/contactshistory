@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -214,6 +215,7 @@ public class LocationFragment extends Fragment {
         CustomList contacts_adapter = new  CustomList(getActivity(), lst.getByLocation(search_location, context));
 
         contacte.setAdapter(contacts_adapter);
+
 
         contacte.setOnItemClickListener (new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> aView, View v, int position, long id) {

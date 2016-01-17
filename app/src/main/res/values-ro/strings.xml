@@ -112,11 +112,6 @@
     <string name="setting_category_contacts">Contacte</string>
     <string name="setting_category_notifications">Notificari</string>
 
-
-    <string name="setting_source">Sursa contactelor</string>
-    <string name="setting_source_summary">Alegeti sursa contactelor ce vor fi afisate</string>
-
-
             <string name="setting_source_internal">Memoria interna</string>
             <string name="setting_source_internal_summary">Contactele stocate in memoria interna a device-ului.</string>
 

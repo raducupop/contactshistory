@@ -4,14 +4,7 @@
 
     <PreferenceCategory android:title="@string/setting_category_contacts" >
 
-        <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-                          android:title="@string/setting_source"
-                          android:key="prefSource"
-                          android:summary="@string/setting_source_summary">
-            
-            <PreferenceCategory android:title="@string/setting_source"
-                                android:summary="@string/setting_source_summary"/>
-                 
+
             <CheckBoxPreference
                     android:key="prefSourceDevice"
                     android:summary="@string/setting_source_internal_summary"
@@ -28,7 +21,6 @@
                     android:title="@string/setting_source_other"
                     android:defaultValue="true"/>
 
-        </PreferenceScreen>
 
         <CheckBoxPreference
                 android:key="prefWriteData"
