@@ -2,7 +2,9 @@
 <resources>
     <color name="ColorPrimary">#01579b</color>
     <color name="ColorPrimaryDark">#072980</color>
-    <color name="tabsScrollColor">#040e83</color>
+    <color name="tabsScrollColor">#6297c2</color>
+
+    <color name="fabColorClick">#040e83</color>
 
     <color name="toolbar_title_text">#ffffff</color>
     <color name="toolbar_owerflow_icon">#6297c2</color>

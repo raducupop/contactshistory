@@ -2,8 +2,8 @@
 <resources>
 
     <string name="app_name">Contacts History</string>
-    <string name="app_version">Versiunea: 0.8.5 alpha</string>
-    <string name="app_cr_text">© 2015 POP</string>
+    <string name="app_version">Versiunea: 1.0 beta</string>
+    <string name="app_cr_text">© 2015 POP SOFTWARE</string>
 
     <string name="action_settings">Settings</string>
 

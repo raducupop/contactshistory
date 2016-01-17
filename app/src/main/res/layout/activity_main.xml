@@ -43,7 +43,7 @@
         android:layout_marginBottom="@dimen/fab_margin_bottom"
         android:layout_marginRight="@dimen/fab_margin_right"
         app:backgroundTint="@color/ColorPrimary"
-        app:rippleColor="@color/tabsScrollColor"
+        app:rippleColor="@color/fabColorClick"
         xmlns:app="http://schemas.android.com/apk/res-auto"/>
 
 </FrameLayout>
