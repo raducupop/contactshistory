@@ -61,7 +61,7 @@ public class MonthFragment extends Fragment {
                 .getDefaultSharedPreferences(context);
         SimpleDateFormat display_format = new SimpleDateFormat(sharedPrefs.getString("prefDateFormat","dd MMMM yyyy"));
 
-        ListView contacte = (ListView) rootView.findViewById(R.id.listView1);
+        final ListView contacte = (ListView) rootView.findViewById(R.id.listView1);
         
         Date date = Calendar.getInstance().getTime();
 	    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -82,6 +82,25 @@ public class MonthFragment extends Fragment {
 
     	contacte.setAdapter(contacts_adapter);
 
+
+        image.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                CustomList contacts_adapter = new  CustomList(getActivity(), lst.getList(data_unu_luna, data_azi, context));
+
+                contacte.setAdapter(contacts_adapter);
+
+                ImageView img = (ImageView) rootView.findViewById(R.id.statusImage);
+                if (contacts_adapter.getCount()==0)
+                {
+                    img.setVisibility(View.VISIBLE);
+                }
+                else
+                    img.setVisibility(View.GONE);
+            }
+
+        });
+
         final SwipeRefreshLayout swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
         swipeLayout.setOnRefreshListener( new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -91,6 +110,13 @@ public class MonthFragment extends Fragment {
                 ListView cnct = (ListView) rootView.findViewById(R.id.listView1);
                 CustomList contacts_adapter = new  CustomList(getActivity(), lst.getList(data_unu_luna, data_azi, context));
                 cnct.setAdapter(contacts_adapter);
+                ImageView img = (ImageView) rootView.findViewById(R.id.statusImage);
+                if (contacts_adapter.getCount()==0)
+                {
+                    img.setVisibility(View.VISIBLE);
+                }
+                else
+                    img.setVisibility(View.GONE);
                 swipeLayout.setRefreshing(false);
             }
         });

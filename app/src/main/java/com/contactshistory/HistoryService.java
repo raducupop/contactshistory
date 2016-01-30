@@ -259,7 +259,6 @@ public class HistoryService extends Service{
                 }
 
 
-
                 if ((na == n) && (edit == 1)) {
 
                     ArrayList<String> old_id = new ArrayList<String>();
@@ -310,73 +309,84 @@ public class HistoryService extends Service{
 
                 }
 
-                DBAdapter db_tmp = new DBAdapter(getBaseContext());
+ /*             DBAdapter db_tmp = new DBAdapter(getBaseContext());
                 db_tmp.open();
                 Cursor db_ids =  db_tmp.getAllContacts();
-                int found_id = 0;
 
-                Long a=Long.valueOf(0);
-                Long b=Long.valueOf(0);
 
                 ArrayList<String> list_purge = new ArrayList<>();
 
-                //Toast.makeText(getApplicationContext(),"In DB: "+String.valueOf(db_ids.getCount()), Toast.LENGTH_SHORT).show();
+                ArrayList<String> x = new ArrayList<>();
+                ArrayList<String> y = new ArrayList<>();
+
+                Toast.makeText(getApplicationContext(),"In DB: "+String.valueOf(db_ids.getCount()), Toast.LENGTH_SHORT).show();
                 Cursor all_ids = getBaseContext().getContentResolver().query(ContactsContract.RawContacts.CONTENT_URI, null, null, null, null);
 
                 if (db_ids.getCount()>0)
                 {
                     if(db_ids.moveToFirst())
                     {
+                        //Toast.makeText(getApplicationContext(),"DB", Toast.LENGTH_SHORT).show();
                         do{
 
-                            found_id = 0;
                             String id_db = db_ids.getString(0);
 
                             String id_db_ok = id_db.substring(1, id_db.length()-1);
-                            try {
-                                a=Long.valueOf(id_db_ok);
-                            } catch (NumberFormatException e) {
-                                e.printStackTrace();
-                            }
 
-                            if(all_ids.getCount()>0)
-                            {
-                                if (all_ids.moveToFirst()){
-
-                                    do {
-
-                                        String id_provider_row = all_ids.getString(all_ids.getColumnIndex(ContactsContract.RawContacts._ID));
-                                        try {
-                                            b = Long.valueOf(id_provider_row);
-                                        } catch (NumberFormatException e) {
-                                            e.printStackTrace();
-                                        }
-
-                                        if (a.equals(b)) found_id = 1;
-                                    }while (all_ids.moveToNext());
-                                }
-                            }
-
-
-                            if (found_id == 0){
-                                list_purge.add(id_db);
-                            }
+                            x.add(id_db_ok);
 
                         }while (db_ids.moveToNext());
-
                     }
+                }
+
+                if(all_ids.getCount()>0)
+                {
+                    if (all_ids.moveToFirst()){
+
+                        do {
+
+                            String id_provider_row = all_ids.getString(all_ids.getColumnIndex(ContactsContract.RawContacts._ID));
+
+                            y.add(id_provider_row);
+
+                        }while (all_ids.moveToNext());
+                    }
+                }
+
+                all_ids.close();
+                db_ids.close();
+
+                int gasit = 0;
+
+                for (int i=0;i<x.size();i++){
+                       gasit = 0;
+                       for (int j=0; j<y.size(); j++) {
+
+                           try {
+                                Long a = Long.valueOf(x.get(i));
+                                Long b = Long.valueOf(y.get(j));
+
+                                if (a.equals(b)) gasit = 1;
+
+                           } catch (NumberFormatException e) {
+                               e.printStackTrace();
+                           }
+
+                       }
+
+                    if ( gasit == 0) list_purge.add(x.get(i));
 
                 }
 
                 if (list_purge.size()>0){
 
                     for (int i=0;i<list_purge.size();i++){
-                        //Toast.makeText(getApplicationContext(),"In purge: "+String.valueOf(list_purge.size()), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"In purge: "+String.valueOf(list_purge.size()), Toast.LENGTH_SHORT).show();
                         db_tmp.deleteContact(list_purge.get(i));
                     }
                 }
 
-                db_tmp.close();
+                db_tmp.close();*/
 
 
             }

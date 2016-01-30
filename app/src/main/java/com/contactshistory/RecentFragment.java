@@ -51,8 +51,24 @@ public class RecentFragment extends Fragment {
         image.setVisibility(View.GONE);
 
 
-        ListView contacte = (ListView) rootView.findViewById(R.id.listView1);
+        final ListView contacte = (ListView) rootView.findViewById(R.id.listView1);
+        image.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
 
+                CustomList contacts_adapter = new  CustomList(getActivity(), lst.getRecent(Integer.valueOf(sharedPrefs.getString("prefRecentNumber","10").toString() ), context));
+
+                contacte.setAdapter(contacts_adapter);
+                ImageView img = (ImageView) rootView.findViewById(R.id.statusImage);
+                if (contacts_adapter.getCount()==0)
+                {
+                    img.setVisibility(View.VISIBLE);
+                }
+                else
+                    img.setVisibility(View.GONE);
+            }
+
+        });
 
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
         
@@ -69,6 +85,13 @@ public class RecentFragment extends Fragment {
                 ListView cnct = (ListView) rootView.findViewById(R.id.listView1);
                 CustomList contacts_adapter = new  CustomList(getActivity(), lst.getRecent(Integer.valueOf(sPrefs.getString("prefRecentNumber","10").toString() ), context));
                 cnct.setAdapter(contacts_adapter);
+                ImageView img = (ImageView) rootView.findViewById(R.id.statusImage);
+                if (contacts_adapter.getCount()==0)
+                {
+                    img.setVisibility(View.VISIBLE);
+                }
+                else
+                    img.setVisibility(View.GONE);
                 swipeLayout.setRefreshing(false);
 
             }

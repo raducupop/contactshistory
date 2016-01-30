@@ -190,26 +190,6 @@
 
 	<string name="date_util_suffix">ago</string>
 
-     <string name="eula">END USER LICENSE AGREEMENT\n\n
-PLEASE READ THIS DOCUMENT CAREFULLY BEFORE USING THIS SOFTWARE.\n\n
-THIS LICENSE PROVIDES IMPORTANT INFORMATION CONCERNING THE SOFTWARE, PROVIDES YOU WITH A LICENSE TO USE THE SOFTWARE AND CONTAINS WARRANTY AND LIABILITY INFORMATION.\n\n
-
-BY USING THE SOFTWARE, YOU ARE ACCEPTING THE SOFTWARE "AS IS" AND AGREEING TO BE BOUND BY THE TERMS OF THIS LICENSE AGREEMENT.
-IN NO ENVENT WILL THE AUTHORS BE HELD LIABLE FOR ANY DAMAGES ARISING FROM THE USE OF THIS SOFTWARE.
-IF YOU DO NOT WISH TO DO SO, DO NOT USE THE SOFTWARE.\n\n
-
-1. Terms of License\n
-This license allows you to:\n
-(a) use the Software on a single device; and\n
-(b) If you wish to use the Software on more than one device, you must license another copy of the
-Software.\n\n
-
-2. Ownership\n
-This license provides you with limited rights to use the Software. The Owner retains all ownership, right, title and interest in, to and of the Software and all copies of it. All rights not specifically granted in this license, including domestic and international copyrights, are reserved by the Owner.\n\n
-
-3. Disclaimer of Warranties and Technical Support\n
-The Software is provided to you FREE and on an "AS IS" basis, without any technical support or warranty of any kind including, without limitation, any warranty or condition of merchantability, fitness for a particular purpose and non-infringement.\n\n
-
-SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF IMPLIED WARRANTIES, SO THE ABOVE EXCLUSION MAY NOT APPLY TO YOU. YOU MAY ALSO HAVE OTHER LEGAL RIGHTS WHICH VARY FROM JURISDICTION TO JURISDICTION.</string>
+     <string name="eula">This software is provided to you FREE and on an "AS IS" basis, without any technical support or warranty of any kind including, without limitation, any warranty or condition of merchantability, fitness for a particular purpose and non-infringement.\n\n</string>
 
 </resources>

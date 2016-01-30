@@ -1,5 +1,6 @@
 package com.contactshistory;
 
+import android.database.Cursor;
 import android.support.v7.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -25,6 +26,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -194,9 +197,7 @@ public class MainActivity extends ActionBarActivity {
             location_err.setIcon(R.drawable.ic_warning_black_24dp);
             location_err.show();
 
-
         }
-
 
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
         NetworkInfo wifi_con = connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
@@ -234,7 +235,6 @@ public class MainActivity extends ActionBarActivity {
             connection_err.show();
 
         }
-
 
         SharedPreferences.Editor edit = deftab.edit();
         edit.putInt("default_tab", 0);
