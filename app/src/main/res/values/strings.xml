@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">Contacts History</string>
-    <string name="app_version">Version: 1.0 beta</string>
+    <string name="app_version">Version: 1.0</string>
     <string name="app_cr_text">© 2015 POP SOFTWARE</string>
 
     <string name="action_settings">Settings</string>
@@ -190,6 +190,6 @@
 
 	<string name="date_util_suffix">ago</string>
 
-     <string name="eula">This software is provided to you FREE and on an "AS IS" basis, without any technical support or warranty of any kind including, without limitation, any warranty or condition of merchantability, fitness for a particular purpose and non-infringement.\n\n</string>
+     <string name="eula" translatable="false">This software is provided to you FREE and on an "AS IS" basis, without any technical support or warranty of any kind including, without limitation, any warranty or condition of merchantability, fitness for a particular purpose and non-infringement.\n\n</string>
 
 </resources>
