@@ -1,7 +1,7 @@
 # contactshistory
 Find people in your address book based on where and when you meet them.
 
-You cand filter your contacts:
+You can filter your contacts:
 - recent added contacts
 - contacts added today, this week, month
 - contacts added in a specific date
