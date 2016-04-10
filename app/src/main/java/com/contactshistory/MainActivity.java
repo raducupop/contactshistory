@@ -107,7 +107,7 @@ public class MainActivity extends ActionBarActivity {
 
             // se executa o singura data, la prima rulare a aplicatiei
 
-            Toast.makeText(getApplicationContext(), "Este prima data cand este deschisa aplicatia.", Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(), "Este prima data cand este deschisa aplicatia.", Toast.LENGTH_LONG).show();
 
             PreferenceManager.setDefaultValues(this, R.xml.settings_screen, false);
 
