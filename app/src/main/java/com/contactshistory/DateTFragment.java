@@ -448,11 +448,10 @@ public class DateTFragment extends Fragment {
 
     public void performSearch(){
 
-
         EditText search_string = (EditText) rootView.findViewById(R.id.search_string);
         ListView contacte = (ListView) rootView.findViewById(R.id.listView1);
         String query = search_string.getText().toString().toLowerCase();
-        ArrayAdapter<String> results_adapter =new ArrayAdapter<String>(context,R.layout.item, lst.searchList(lst.list, query));
+        CustomList results_adapter = new CustomList(getActivity(), lst.searchList(lst.list, query));
         contacte.setAdapter(results_adapter);
         ImageView image = (ImageView) rootView.findViewById(R.id.statusImage);
         if (results_adapter.getCount()==0)
@@ -462,9 +461,8 @@ public class DateTFragment extends Fragment {
         else
             image.setVisibility(View.GONE);
 
+
     }
-
-
 
 
 }
