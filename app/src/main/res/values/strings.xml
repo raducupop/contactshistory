@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Contacts History</string>
-    <string name="app_version">Version: 1.0</string>
-    <string name="app_cr_text">© 2015 POP SOFTWARE</string>
+    <string name="app_name" translatable="false">Contacts History</string>
+    <string name="app_version" translatable="false">v1.0.0</string>
+    <string name="app_cr_text" translatable="false">© 2016 POP SOFTWARE</string>
 
     <string name="action_settings">Settings</string>
 
@@ -127,6 +127,8 @@
     <string name="setting_read_info">Read data when importing</string>
     <string name="setting_read_info_summary">Read Contacts History data from contacts when imported</string>
 
+    <string name="setting_ui_type">Compact interface</string>
+    <string name="setting_ui_type_summary">Don\'t show Today, Week and Month tabs in main screen</string>
 
     <string name="setting_displaydate">Date format</string>
     <string name="setting_displaydate_summary">Pick date format</string>
@@ -190,6 +192,8 @@
 
 	<string name="date_util_suffix">ago</string>
 
-     <string name="eula" translatable="false">This software is provided to you FREE and on an "AS IS" basis, without any technical support or warranty of any kind including, without limitation, any warranty or condition of merchantability, fitness for a particular purpose and non-infringement.\n\n</string>
-
+     <string name="eula" translatable="false">This software is provided to you FREE and on an AS IS basis, without any technical support or warranty of any kind.\n</string>
+    <string name="notice" translatable="false">Please notice that this app is experimental and it may be buggy :)</string>
+     <string name="ghub_text" translatable="false">Contacts History is on GitHub! Visit us at </string>
+     <string name="ghub_link" translatable="false"><u>https://github.com/raducupop/contactshistory</u></string>
 </resources>

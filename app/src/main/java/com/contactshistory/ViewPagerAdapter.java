@@ -1,5 +1,7 @@
 package com.contactshistory;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -23,25 +25,47 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
 
-        switch (position) {
-            case 0:
-                return new RecentFragment();
-            case 1:
-                return new TodayFragment();
-            case 2:
-                return new WeekFragment();
-            case 3:
-                return new MonthFragment();
-            case 4:
-                return new DateFragment();
-            case 5:
-                return new DateTFragment();
-            case 6:
-                return new LocationFragment();
+
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.getAppContext());
+        Boolean compact_ui = sharedPrefs.getBoolean("prefCompactUI", true);
+
+        if (compact_ui){
+
+            switch (position) {
+                case 0:
+                    return new RecentFragment();
+                case 1:
+                    return new DateFragment();
+                case 2:
+                    return new DateTFragment();
+                case 3:
+                    return new LocationFragment();
+
+            }
+
+        }
+
+        else{
+
+            switch (position) {
+                case 0:
+                    return new RecentFragment();
+                case 1:
+                    return new TodayFragment();
+                case 2:
+                    return new WeekFragment();
+                case 3:
+                    return new MonthFragment();
+                case 4:
+                    return new DateFragment();
+                case 5:
+                    return new DateTFragment();
+                case 6:
+                    return new LocationFragment();
+            }
         }
 
         return null;
-
     }
 
     // This method return the titles for the Tabs in the Tab Strip

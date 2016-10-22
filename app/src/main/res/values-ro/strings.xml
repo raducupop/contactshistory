@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Contacts History</string>
-    <string name="app_version">Versiunea: 1.0</string>
-    <string name="app_cr_text">© 2015 POP SOFTWARE</string>
-
     <string name="action_settings">Settings</string>
 
     <string name="label_activity_settings">Setari</string>
@@ -128,6 +124,8 @@
     <string name="setting_read_info">Citeste datele la import</string>
     <string name="setting_read_info_summary">La importarea contactelor citeste datele memorate in acestea</string>
 
+    <string name="setting_ui_type">Interfata compacta</string>
+    <string name="setting_ui_type_summary">Nu se afiseaza tab-urile Astazi, Saptamana si Luna in ecranul principal</string>
 
     <string name="setting_displaydate">Formatul datei</string>
     <string name="setting_displaydate_summary">Setati modul in care va fi afisata data.</string>

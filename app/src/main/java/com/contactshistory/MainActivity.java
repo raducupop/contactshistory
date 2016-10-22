@@ -1,6 +1,5 @@
 package com.contactshistory;
 
-import android.database.Cursor;
 import android.support.v7.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -25,9 +24,6 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
-
-import java.util.ArrayList;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -40,7 +36,10 @@ public class MainActivity extends ActionBarActivity {
     ViewPagerAdapter adapter;
     SlidingTabLayout tabs;
     
-    int NumberOfTabs = 7;
+    int numberOfTabs = 7;
+    int numberOfTabs_compact = 4;
+
+    boolean compact_ui = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,12 +54,28 @@ public class MainActivity extends ActionBarActivity {
                 getResources().getString(R.string.tab_twodates),
                 getResources().getString(R.string.tab_location)  };
 
+        String [] titles_compact = { getResources().getString(R.string.tab_recent),
+                getResources().getString(R.string.tab_date),
+                getResources().getString(R.string.tab_twodates),
+                getResources().getString(R.string.tab_location)  };
+
         // Creating The Toolbar and setting it as the Toolbar for the activity
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
 
         // Creating The ViewPagerAdapter and Passing Fragment Manager, Titles for the Tabs and Number Of Tabs.
-        adapter =  new ViewPagerAdapter(getSupportFragmentManager(),titles,NumberOfTabs);
+
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        compact_ui = sharedPrefs.getBoolean("prefCompactUI", true);
+
+        if (compact_ui){
+            adapter =  new ViewPagerAdapter(getSupportFragmentManager(),titles_compact, numberOfTabs_compact);
+        }
+
+        else {
+            adapter = new ViewPagerAdapter(getSupportFragmentManager(), titles, numberOfTabs);
+        }
+
 
         // Assigning ViewPager View and setting the adapter
         pager = (ViewPager) findViewById(R.id.pager);

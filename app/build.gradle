@@ -8,8 +8,7 @@ android {
         applicationId "com.contactshistory"
         minSdkVersion 14
         targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
+
     }
     buildTypes {
         release {

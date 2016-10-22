@@ -39,6 +39,12 @@
 
     <PreferenceCategory android:title="@string/setting_category_display" >
 
+        <CheckBoxPreference
+            android:key="prefCompactUI"
+            android:defaultValue="true"
+            android:summary="@string/setting_ui_type_summary"
+            android:title="@string/setting_ui_type" />
+
         <ListPreference
             android:key="prefDateFormat"
             android:defaultValue="dd MMMM yyyy"

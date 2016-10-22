@@ -43,17 +43,19 @@ public class CallListener extends PhoneStateListener {
      if (TelephonyManager.CALL_STATE_RINGING == state) {
          // phone ringing
 
+         //Toast.makeText(context, "Intrare apel.", Toast.LENGTH_LONG).show();
+
          Uri lookupUri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(incomingNumber));
          String[] projection = new String[]
                  {
                          // retrive name and id
 
-                         ContactsContract.Data.DISPLAY_NAME,
-                         ContactsContract.Data.RAW_CONTACT_ID,
+                         ContactsContract.RawContacts.DISPLAY_NAME_PRIMARY,
+                         ContactsContract.RawContacts._ID,
                  };
          String id = null;
          String name = null;
-         String sortOrder = ContactsContract.CommonDataKinds.StructuredPostal.DISPLAY_NAME + " COLLATE LOCALIZED ASC";
+         String sortOrder = ContactsContract.CommonDataKinds.StructuredPostal.DISPLAY_NAME_PRIMARY + " COLLATE LOCALIZED ASC";
 
          cursor_contacts = context.getContentResolver().query(lookupUri, projection, null, null, sortOrder);
 
@@ -64,19 +66,16 @@ public class CallListener extends PhoneStateListener {
          if (cursor_contacts.getCount() > 0) {
              if (cursor_contacts.moveToFirst()) {
 
-
                  do {
 
-                     id = cursor_contacts.getString(cursor_contacts.getColumnIndex(ContactsContract.Data.RAW_CONTACT_ID));
+
+                     id = cursor_contacts.getString(cursor_contacts.getColumnIndex(ContactsContract.RawContacts._ID));
 
                      Cursor infoForId = db.getAllContacts();
 
                      if (infoForId.getCount() > 0) {
 
-
                          if (infoForId.moveToFirst()) {
-
-
 
                              SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
 
@@ -85,8 +84,6 @@ public class CallListener extends PhoneStateListener {
                              Date d = null;
 
                              do {
-
-
 
                                  if (infoForId.getString(0).substring(1, infoForId.getString(0).length()-1).equals(id)) {
 
