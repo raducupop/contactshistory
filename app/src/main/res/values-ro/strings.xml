@@ -150,9 +150,7 @@
 
     <!-- Tutorial text -->
 
-    <string name="tutorial_main">Contacts History va permite sa cautati persoane in agenda dupa data si locul in care le-ati cunoscut.\n\n
-  - Dupa ce adaugati persoane in agenda veti putea cauta printre acestea dupa locul in care va aflati atunci cand ati memorat numele si numarul lor de telefon in agenda.\n\n
-  - veti putea vizualiza peroanele adaugate in agenda recent sau intr-un anumit interval de timp.\n</string>
+    <string name="tutorial_main">Contacts History va permite sa cautati persoane in agenda dupa data si locul in care le-ati cunoscut.\n\nLuati in considerare ca aceasta aplicatie este experimentala, este posibil sa aiba unele bug-uri :)\n\nAceasta aplicatie functioneaza doar cu contactele create de acum inainte, pentru ca Android nu memoreaza impreuna cu contactele data si locul crearii acestora.</string>
 
     <string name="tutorial_header1">Cum functioneaza ?</string>
     <string name="tutorial_header2">Obtinerea locatiei</string>
@@ -163,6 +161,8 @@
     <string name="tutorial_content2">Locatia este obtinuta prin informatiile de la reteaua WiFi sau de la operatorul de telefonie. Localizarea prin GPS nu este disponibila in acest moment.</string>
     <string name="tutorial_content3">Cautarea contactelor dupa data este posibila prin alegerea a doua date intre care vor fi afisate contactele memorate.</string>
     <string name="tutorial_content4">Cautarea dupa locatie se realizeaza prin tastarea unei parti din adresa cautata in pagina "Locatie". Vor fi afisate toate contactele corespunzatoare locatiei dorite, indiferent de data la care au fost memorate.</string>
+
+    <string name="tutorial_ok_button">OK, AM INTELES</string>
 
     <!-- Date Util -->
 	<string name="date_util_term_less">Less than</string>

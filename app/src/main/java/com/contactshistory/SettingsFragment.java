@@ -16,7 +16,6 @@ public class SettingsFragment extends PreferenceFragment {
         addPreferencesFromResource(R.xml.settings_screen);
 
 
-
         final CheckBoxPreference checkboxPref = (CheckBoxPreference) getPreferenceManager().findPreference("prefDisplayIcon");
         assert checkboxPref != null;
         checkboxPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {

@@ -17,6 +17,8 @@
 
     <color name="text_other">#01579b</color>
     <color name="tutorial_text">#000000</color>
+    <color name="tutorial_header">#ffffff</color>
+    <color name="tutorial_ok">#299124</color>
 
     <color name="list_text_main">#01579b</color>
     <color name="list_text">#000000</color>

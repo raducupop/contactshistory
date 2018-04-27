@@ -27,15 +27,14 @@ import android.view.View;
 
 public class MainActivity extends ActionBarActivity {
 
-    SharedPreferences runpref, deftab;
+    SharedPreferences firstrun, deftab;
     public static Context appcontext;
-
 
     Toolbar toolbar;
     ViewPager pager;
     ViewPagerAdapter adapter;
     SlidingTabLayout tabs;
-    
+
     int numberOfTabs = 7;
     int numberOfTabs_compact = 4;
 
@@ -99,7 +98,8 @@ public class MainActivity extends ActionBarActivity {
         appcontext = getApplicationContext();
         Context context = this.getApplicationContext();
         
-        runpref = context.getSharedPreferences("firstRunPrefs", 0); //0 = mode private. only this app can read these preferences
+        firstrun = context.getSharedPreferences("firstRun_tutorial", 0); //0 = mode private. only this app can read these preferences
+
         deftab = context.getSharedPreferences("tabPrefes",0);
 
         Intent startServiceIntent = new Intent(this, HistoryService.class);
@@ -129,6 +129,10 @@ public class MainActivity extends ActionBarActivity {
             SharedPreferences.Editor edit = deftab.edit();
             edit.putInt("default_tab", 0);
             edit.commit();
+
+            Intent startTutorial = new Intent(MainActivity.this, TutorialActivity.class);
+            MainActivity.this.startActivity(startTutorial);
+
 
             setNotFirst();
         }
@@ -188,68 +192,68 @@ public class MainActivity extends ActionBarActivity {
         }
 
 
-        String locationProviders = Settings.Secure.getString(getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
+//        String locationProviders = Settings.Secure.getString(getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
+//
+//        if (locationProviders == null || locationProviders.equals("")) {
+//
+//
+//            final AlertDialog.Builder location_err = new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle);
+//            location_err.setTitle(getResources().getString(R.string.warning_location_title))
+//                    .setMessage(getResources().getString(R.string.warning_location_text))
+//                    .setPositiveButton(getResources().getString(R.string.warning_location_positive_btn), new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int id) {
+//
+//                            startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+//
+//                        }
+//                    })
+//                    .setNeutralButton(getResources().getString(R.string.warning_location_neutral_btn), new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int id) {
+//
+//                        }
+//                    });
+//
+//            location_err.setIcon(R.drawable.ic_warning_black_24dp);
+//            location_err.show();
+//
+//        }
 
-        if (locationProviders == null || locationProviders.equals("")) {
-
-
-            final AlertDialog.Builder location_err = new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle);
-            location_err.setTitle(getResources().getString(R.string.warning_location_title))
-                    .setMessage(getResources().getString(R.string.warning_location_text))
-                    .setPositiveButton(getResources().getString(R.string.warning_location_positive_btn), new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-
-                            startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
-
-                        }
-                    })
-                    .setNeutralButton(getResources().getString(R.string.warning_location_neutral_btn), new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-
-                        }
-                    });
-
-            location_err.setIcon(R.drawable.ic_warning_black_24dp);
-            location_err.show();
-
-        }
-
-        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
-        NetworkInfo wifi_con = connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-        NetworkInfo data_con = connMgr.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
-
-        if (!wifi_con.isConnected() && !data_con.isConnected())
-        {
-
-            final AlertDialog.Builder connection_err = new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle);
-            connection_err.setTitle(getResources().getString(R.string.warning_conn_title))
-                    .setMessage(getResources().getString(R.string.warning_conn_text))
-                    .setPositiveButton(getResources().getString(R.string.warning_conn_positive_btn), new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-
-                            startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
-
-                        }
-                    })
-
-                    .setNegativeButton(getResources().getString(R.string.warning_conn_negative_btn), new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-
-                            startActivity(new Intent(Settings.ACTION_SETTINGS));
-
-                        }
-                    })
-
-                    .setNeutralButton(getResources().getString(R.string.warning_conn_neutral_btn), new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-
-                        }
-                    });
-
-            connection_err.setIcon(R.drawable.ic_warning_black_24dp);
-            connection_err.show();
-
-        }
+//        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+//        NetworkInfo wifi_con = connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+//        NetworkInfo data_con = connMgr.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+//
+//        if (!wifi_con.isConnected() && !data_con.isConnected())
+//        {
+//
+//            final AlertDialog.Builder connection_err = new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle);
+//            connection_err.setTitle(getResources().getString(R.string.warning_conn_title))
+//                    .setMessage(getResources().getString(R.string.warning_conn_text))
+//                    .setPositiveButton(getResources().getString(R.string.warning_conn_positive_btn), new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int id) {
+//
+//                            startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+//
+//                        }
+//                    })
+//
+//                    .setNegativeButton(getResources().getString(R.string.warning_conn_negative_btn), new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int id) {
+//
+//                            startActivity(new Intent(Settings.ACTION_SETTINGS));
+//
+//                        }
+//                    })
+//
+//                    .setNeutralButton(getResources().getString(R.string.warning_conn_neutral_btn), new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int id) {
+//
+//                        }
+//                    });
+//
+//            connection_err.setIcon(R.drawable.ic_warning_black_24dp);
+//            connection_err.show();
+//
+//        }
 
         SharedPreferences.Editor edit = deftab.edit();
         edit.putInt("default_tab", 0);
@@ -281,11 +285,13 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public boolean getFirstRun() {
-        return runpref.getBoolean("firstRun", true);
+
+        return firstrun.getBoolean("firstRun", true);
+
     }
 
     public void setNotFirst() {
-        SharedPreferences.Editor edit = runpref.edit();
+        SharedPreferences.Editor edit = firstrun.edit();
         edit.putBoolean("firstRun", false);
         edit.commit();
     }

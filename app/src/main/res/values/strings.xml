@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name" translatable="false">Contacts History</string>
-    <string name="app_version" translatable="false">v1.0.0</string>
+    <string name="app_version" translatable="false">v1.0.1</string>
     <string name="app_cr_text" translatable="false">© 2016 POP SOFTWARE</string>
 
     <string name="action_settings">Settings</string>
@@ -155,7 +155,7 @@
 
     <!-- Tutorial text -->
 
-    <string name="tutorial_main">Contacts History allows you to search contacts by date and location where you meet them.\n\n</string>
+    <string name="tutorial_main">Contacts History allows you to search contacts by date and location where you meet them.\n\nPlease notice that this app is experimental and it may be buggy :)\n\nThis will work only for contacts stored from now on, since Android do not store this information by default.\n</string>
 
     <string name="tutorial_header1">How does this work ?</string>
     <string name="tutorial_header2">Obtaining location</string>
@@ -166,6 +166,8 @@
     <string name="tutorial_content2">Location is only from WiFi or mobile data carrier. GPS location is not available at this time.</string>
     <string name="tutorial_content3">Searching for contacts is available by choosing two dates and getting contacts stored between these two dates.</string>
     <string name="tutorial_content4">Use "Location" tab. Type address and get contacts stored at that location.</string>
+
+    <string name="tutorial_ok_button">OK, I GOT IT</string>
 
     <!-- Date Util -->
 	<string name="date_util_term_less">Less than</string>

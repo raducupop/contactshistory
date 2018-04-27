@@ -245,8 +245,8 @@ public class HistoryService extends Service{
                     edit = 1;
                 }
 
-                if ( (na < n) && ( contacts_count != contacts_count_after)) {
-
+                //if ( (na < n) && ( contacts_count != contacts_count_after)) {
+                if ( (na < n)) {
                     temp = contacte;
                     temp.removeAll(contacte_a);
 
@@ -555,9 +555,8 @@ public class HistoryService extends Service{
                     if (user != null && user.size() > 0) {
                         Address address = user.get(0);
 
-                        String addressText = String.format("%s, %s, %s",
-                                address.getMaxAddressLineIndex() > 0 ? address.getAddressLine(0) : "",
-                                address.getLocality(),
+                        String addressText = String.format("%s, %s",
+                                address.getMaxAddressLineIndex() > 0 ? address.getAddressLine(0) : address.getLocality(),
                                 address.getCountryName());
                         result.add(addressText);
 

@@ -97,7 +97,7 @@
             android:key="prefDisplayIcon"
             android:summary="@string/setting_icon_summary"
             android:title="@string/setting_icon"
-            android:defaultValue="true" />
+            android:defaultValue="false" />
 
     </PreferenceCategory>
 
