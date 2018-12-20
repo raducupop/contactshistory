@@ -4,10 +4,10 @@ package com.contactshistory;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
@@ -46,110 +46,127 @@ public class RecentFragment extends Fragment {
 
         initializeSearch();
         
-        ImageView image = (ImageView) rootView.findViewById(R.id.statusImage);
-        image.setImageResource(R.drawable.status);
+        ImageView image = rootView.findViewById(R.id.statusImage);
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        boolean dark = prefs.getBoolean("prefDarkUI", false);
+        int img = R.drawable.status;
+        if (dark) {
+           img = R.drawable.status_dark;
+        }
+        image.setImageResource(img);
         image.setVisibility(View.GONE);
 
+        CustomList contacts_adapter = null;
+        try {
+            final ListView contacte = rootView.findViewById(R.id.listView1);
+            image.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
 
-        final ListView contacte = (ListView) rootView.findViewById(R.id.listView1);
-        image.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
+                    CustomList contacts_adapter = new  CustomList(getActivity(), lst.getRecent(Integer.valueOf(sharedPrefs.getString("prefRecentNumber","10")), context));
 
-                CustomList contacts_adapter = new  CustomList(getActivity(), lst.getRecent(Integer.valueOf(sharedPrefs.getString("prefRecentNumber","10").toString() ), context));
-
-                contacte.setAdapter(contacts_adapter);
-                ImageView img = (ImageView) rootView.findViewById(R.id.statusImage);
-                if (contacts_adapter.getCount()==0)
-                {
-                    img.setVisibility(View.VISIBLE);
-                }
-                else
-                    img.setVisibility(View.GONE);
-            }
-
-        });
-
-        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-        
-        CustomList contacts_adapter = new  CustomList(getActivity(), lst.getRecent(Integer.valueOf(sharedPrefs.getString("prefRecentNumber","10").toString() ), context));
-
-    	contacte.setAdapter(contacts_adapter);
-
-        final SwipeRefreshLayout swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
-        swipeLayout.setOnRefreshListener( new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                swipeLayout.setRefreshing(true);
-                SharedPreferences sPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-                ListView cnct = (ListView) rootView.findViewById(R.id.listView1);
-                CustomList contacts_adapter = new  CustomList(getActivity(), lst.getRecent(Integer.valueOf(sPrefs.getString("prefRecentNumber","10").toString() ), context));
-                cnct.setAdapter(contacts_adapter);
-                ImageView img = (ImageView) rootView.findViewById(R.id.statusImage);
-                if (contacts_adapter.getCount()==0)
-                {
-                    img.setVisibility(View.VISIBLE);
-                }
-                else
-                    img.setVisibility(View.GONE);
-                swipeLayout.setRefreshing(false);
-
-            }
-
-        });
-
-        swipeLayout.setColorScheme(android.R.color.holo_green_dark,
-                android.R.color.holo_red_dark,
-                android.R.color.holo_blue_dark,
-                android.R.color.holo_orange_dark);
-
-        contacte.setOnItemClickListener (new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> aView, View v, int position, long id) {
-
-                int contact_found = 0;
-                String rawid_from_list = lst.list.get(position).id;
-                String found_lookup = "";
-                Cursor contcats_cursor = context.getContentResolver().query(ContactsContract.Data.CONTENT_URI, null, null, null, null);
-                if (contcats_cursor.getCount() > 0)
-                {
-                    contcats_cursor.moveToFirst();
-                    do {
-                        String idraw = contcats_cursor.getString(contcats_cursor.getColumnIndex(ContactsContract.Data.RAW_CONTACT_ID));
-                        String idlookup = contcats_cursor.getString(contcats_cursor.getColumnIndex(ContactsContract.Data.LOOKUP_KEY));
-
-
-                        if (idraw.contentEquals(rawid_from_list))
-                        {
-                            found_lookup = idlookup;
-                            contact_found = 1;
-                            //Toast.makeText(getApplicationContext(), "gasit. ", Toast.LENGTH_LONG).show();
-                        }
-
-                    } while (contcats_cursor.moveToNext());
-                    //contcats_cursor.close();
+                    contacte.setAdapter(contacts_adapter);
+                    ImageView img = rootView.findViewById(R.id.statusImage);
+                    if (contacts_adapter.getCount()==0)
+                    {
+                        img.setVisibility(View.VISIBLE);
+                    }
+                    else
+                        img.setVisibility(View.GONE);
                 }
 
+            });
 
-                try {
-                        if (contact_found == 1)
-                        {
-                            Uri lookup = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_LOOKUP_URI, found_lookup);
-                            Intent intent = new Intent(Intent.ACTION_VIEW);
-                            intent.setData(lookup);
-                            RecentFragment.this.startActivity(intent);
-                           }
-                        else Toast.makeText(context, getResources().getString(R.string.err_no_info), Toast.LENGTH_LONG).show();
+            SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
 
+            contacts_adapter = new CustomList(getActivity(), lst.getRecent(Integer.valueOf(sharedPrefs.getString("prefRecentNumber","10")), context));
 
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Toast.makeText(context, getResources().getString(R.string.err_no_info), Toast.LENGTH_LONG).show();
+            contacte.setAdapter(contacts_adapter);
+
+            final SwipeRefreshLayout swipeLayout = rootView.findViewById(R.id.swipe_container);
+            swipeLayout.setOnRefreshListener( new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    swipeLayout.setRefreshing(true);
+                    SharedPreferences sPrefs = PreferenceManager.getDefaultSharedPreferences(context);
+                    ListView cnct = rootView.findViewById(R.id.listView1);
+                    CustomList contacts_adapter = new  CustomList(getActivity(), lst.getRecent(Integer.valueOf(sPrefs.getString("prefRecentNumber","10")), context));
+                    cnct.setAdapter(contacts_adapter);
+                    ImageView img = rootView.findViewById(R.id.statusImage);
+                    if (contacts_adapter.getCount()==0)
+                    {
+                        img.setVisibility(View.VISIBLE);
+                    }
+                    else
+                        img.setVisibility(View.GONE);
+                    swipeLayout.setRefreshing(false);
 
                 }
 
-            }
-        });
+            });
 
+            swipeLayout.setColorScheme(android.R.color.holo_green_dark,
+                    android.R.color.holo_red_dark,
+                    android.R.color.holo_blue_dark,
+                    android.R.color.holo_orange_dark);
+
+            contacte.setOnItemClickListener (new AdapterView.OnItemClickListener() {
+                public void onItemClick(AdapterView<?> aView, View v, int position, long id) {
+
+                    int contact_found = 0;
+                    String rawid_from_list = lst.list.get(position).id;
+                    String found_lookup = "";
+                    Cursor contcats_cursor = context.getContentResolver().query(ContactsContract.Data.CONTENT_URI, null, null, null, null);
+
+                    //Toast.makeText(MainActivity.getAppContext(), "id in CH "+rawid_from_list, Toast.LENGTH_LONG).show();
+
+                    if (contcats_cursor.getCount() > 0)
+                    {
+                        contcats_cursor.moveToFirst();
+                        do {
+                            String idraw = contcats_cursor.getString(contcats_cursor.getColumnIndex(ContactsContract.Data.RAW_CONTACT_ID));
+                            String idlookup = contcats_cursor.getString(contcats_cursor.getColumnIndex(ContactsContract.Data.LOOKUP_KEY));
+
+
+                            if (idraw.contentEquals(rawid_from_list))
+                            {
+                                found_lookup = idlookup;
+                                contact_found = 1;
+
+                                //Toast.makeText(MainActivity.getAppContext(), "id in CH "+rawid_from_list+" in device "+idraw+" lookup "+found_lookup, Toast.LENGTH_LONG).show();
+
+                            }
+
+                        } while (contcats_cursor.moveToNext());
+                        contcats_cursor.close();
+                    }
+
+
+                    try {
+                            if (contact_found == 1)
+                            {
+                                Uri lookup = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_LOOKUP_URI, found_lookup);
+                                Intent intent = new Intent(Intent.ACTION_VIEW);
+                                intent.setData(lookup);
+                                RecentFragment.this.startActivity(intent);
+                               }
+                            else Toast.makeText(context, getResources().getString(R.string.err_no_info), Toast.LENGTH_LONG).show();
+
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        Toast.makeText(context, getResources().getString(R.string.err_no_info), Toast.LENGTH_LONG).show();
+
+                    }
+
+                }
+            });
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        } catch (Resources.NotFoundException e) {
+            e.printStackTrace();
+        }
 
 
         if (contacts_adapter.getCount()==0)
@@ -161,7 +178,7 @@ public class RecentFragment extends Fragment {
 
 
 
-        EditText search_string = (EditText) rootView.findViewById(R.id.search_string);
+        EditText search_string = rootView.findViewById(R.id.search_string);
 	    search_string.addTextChangedListener(new TextWatcher(){
 
 			@Override
@@ -198,7 +215,7 @@ public class RecentFragment extends Fragment {
 	
 	public boolean onOptionsItemSelected(MenuItem item) {
 		
-		  ListView contacte = (ListView) rootView.findViewById(R.id.listView1);
+		  ListView contacte = rootView.findViewById(R.id.listView1);
 		  
 		  switch (item.getItemId()) {
 		  
@@ -284,7 +301,7 @@ public class RecentFragment extends Fragment {
     public void initializeSearch(){
 	this.hideSearch();
 	
-	Button search_close_button = (Button) rootView.findViewById(R.id.search_close_button);
+	Button search_close_button = rootView.findViewById(R.id.search_close_button);
 	search_close_button.setOnClickListener(new View.OnClickListener() {   	
         public void onClick(View v) {	    
         	hideSearch(); 
@@ -295,19 +312,19 @@ public class RecentFragment extends Fragment {
 	
 	public void showSearch(){
 	 
-		LinearLayout search_layout = (LinearLayout) rootView.findViewById(R.id.search_layout);
+		LinearLayout search_layout = rootView.findViewById(R.id.search_layout);
 		search_layout.setVisibility(View.VISIBLE);
 		SearchUsedFlag = 1;
  }
 	
 	public void hideSearch(){
 		 
-		LinearLayout search_layout = (LinearLayout) rootView.findViewById(R.id.search_layout);
+		LinearLayout search_layout = rootView.findViewById(R.id.search_layout);
 		search_layout.setVisibility(View.GONE);
 		
 		if (SearchUsedFlag!=0)
 		{
-		     ListView contacte = (ListView) rootView.findViewById(R.id.listView1);
+		     ListView contacte = rootView.findViewById(R.id.listView1);
 		     CustomList reset = new CustomList(getActivity(), lst.resetSearch(lst.list));
 		     contacte.setAdapter(reset);
 		}
@@ -317,18 +334,19 @@ public class RecentFragment extends Fragment {
 	public void performSearch(){
 		 
 		
-		EditText search_string = (EditText) rootView.findViewById(R.id.search_string);
-		ListView contacte = (ListView) rootView.findViewById(R.id.listView1);
+		EditText search_string = rootView.findViewById(R.id.search_string);
+		ListView contacte = rootView.findViewById(R.id.listView1);
 		String query = search_string.getText().toString().toLowerCase();
 		CustomList results_adapter = new CustomList(getActivity(), lst.searchList(lst.list, query));
         contacte.setAdapter(results_adapter);
-        ImageView image = (ImageView) rootView.findViewById(R.id.statusImage);
+        ImageView image = rootView.findViewById(R.id.statusImage);
         if (results_adapter.getCount()==0)
         {
             image.setVisibility(View.VISIBLE);
         }
         else
             image.setVisibility(View.GONE);
- }
+
+    }
 
 }

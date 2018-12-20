@@ -4,13 +4,12 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-
 import android.app.Activity;
 import android.content.ContentUris;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.provider.ContactsContract;
 import android.util.Log;
@@ -21,28 +20,24 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 
 public class CustomListMultiple extends ArrayAdapter<String>{
 
-    public boolean[] checkBoxState;
+    boolean[] checkBoxState;
 
-    ViewHolder viewHolder;
-
-    Uri photoURI = null;
-
-    Boolean checkAllFlag, uncheckAllFlag;
+    private ViewHolder viewHolder;
+    Boolean checkAllFlag;
+    Boolean uncheckAllFlag;
 
 	private final Activity context;
-	ArrayList<String> contact_list = new ArrayList<String>();
+	private ArrayList<String> contact_list;
 	
-	String name, date, location, time;
+	String name, date, time;
 
     Bitmap photo = null;
 
-	public CustomListMultiple(Activity context, ArrayList<String> contact_list) {
-		
+	CustomListMultiple(Activity context, ArrayList<String> contact_list) {
+
 		super(context, R.layout.item, contact_list);
 		this.context = context;
 		this.contact_list = contact_list;
@@ -74,12 +69,12 @@ public class CustomListMultiple extends ArrayAdapter<String>{
             view=inflater.inflate(R.layout.item_multiple, null);
             viewHolder=new ViewHolder();
 
-            viewHolder.checkBox=(CheckBox) view.findViewById(R.id.checkBox1);
-            viewHolder.textName=(TextView) view.findViewById(R.id.text_name);
-            viewHolder.textDate=(TextView) view.findViewById(R.id.text_date);
-            viewHolder.textLocation=(TextView) view.findViewById(R.id.text_location);
-            viewHolder.textTime=(TextView) view.findViewById(R.id.text_time);
-            viewHolder.contactPhoto = (ImageView) view.findViewById(R.id.photo);
+            viewHolder.checkBox= view.findViewById(R.id.checkBox1);
+            viewHolder.textName= view.findViewById(R.id.text_name);
+            viewHolder.textDate= view.findViewById(R.id.text_date);
+            viewHolder.textLocation= view.findViewById(R.id.text_location);
+            viewHolder.textTime= view.findViewById(R.id.text_time);
+            viewHolder.contactPhoto = view.findViewById(R.id.photo);
 
             view.setTag(viewHolder);
 
@@ -98,29 +93,44 @@ public class CustomListMultiple extends ArrayAdapter<String>{
 
 
         Long id_by_name = retrieveContactID(context, list_fields[1]);
-        photoURI = getPhotoURI(context, id_by_name);
+        Uri photoURI = getPhotoURI(context, id_by_name);
 
 
-        if (photoURI!= null) {
-            viewHolder.contactPhoto.setImageURI(photoURI);
+        if (photoURI != null) {
+
+            try {
+                InputStream inputStream = getContext().getContentResolver().openInputStream(photoURI);
+                Drawable draw = Drawable.createFromStream(inputStream, photoURI.toString() );
+                viewHolder.contactPhoto.setImageDrawable(draw);
+            } catch (FileNotFoundException e) {
+                System.out.println("Error " + e.getMessage());
+            }
+
         } else {
 
             Uri nophoto = Uri.parse("android.resource://com.contactshistory/drawable/nophoto");
-            viewHolder.contactPhoto.setImageURI(nophoto);
+
+            try {
+                InputStream inputStream = getContext().getContentResolver().openInputStream(nophoto);
+                Drawable draw = Drawable.createFromStream(inputStream, nophoto.toString() );
+                viewHolder.contactPhoto.setImageDrawable(draw);
+            } catch (FileNotFoundException e) {
+                System.out.println("Error " + e.getMessage());
+            }
 
         }
 
 
         viewHolder.checkBox.setChecked(checkBoxState[i]);
 
-        if (checkAllFlag==true)
+        if (checkAllFlag)
         {
             checkBoxState[i]=true;
             viewHolder.checkBox.setChecked(true);
 
         }
 
-        if (uncheckAllFlag==true)
+        if (uncheckAllFlag)
         {
             checkBoxState[i]=false;
             viewHolder.checkBox.setChecked(false);
@@ -130,11 +140,7 @@ public class CustomListMultiple extends ArrayAdapter<String>{
         viewHolder.checkBox.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                if(((CheckBox)v).isChecked())
-                    checkBoxState[i]=true;
-                else
-                    checkBoxState[i]=false;
-
+                checkBoxState[i] = ((CheckBox) v).isChecked();
             }
         });
 
@@ -147,7 +153,7 @@ public class CustomListMultiple extends ArrayAdapter<String>{
 		
 	}
 
-    public static long retrieveContactID(Context context, String nume) {
+    private static long retrieveContactID(Context context, String nume) {
         Uri uri = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_FILTER_URI, Uri.encode(nume.trim()));
         Cursor mapContact = context.getContentResolver().query(uri, new String[]{ContactsContract.PhoneLookup._ID}, null, null, null);
         String id;
@@ -160,7 +166,7 @@ public class CustomListMultiple extends ArrayAdapter<String>{
         return Long.parseLong(id);
     }
 
-    public Uri getPhotoURI(Context ctx, Long id_contact) {
+    private Uri getPhotoURI(Context ctx, Long id_contact) {
 
         Uri contact = ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, id_contact);
         Uri picUri = Uri.withAppendedPath(contact,ContactsContract.Contacts.Photo.CONTENT_DIRECTORY);

@@ -3,13 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/background">
+    android:background="?attr/background">
 
     <LinearLayout
         android:id="@+id/search_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/background_search_box" >
+        android:background="?attr/backgroundSearchBox" >
 
         <EditText
             android:id="@+id/search_string"
@@ -20,7 +20,6 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="@string/search_hint" >
-
             <requestFocus />
         </EditText>
 
@@ -35,13 +34,12 @@
     </LinearLayout>
 
     <EditText
+        android:id="@+id/search_term"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/search_term"
-        android:maxLines="1"
-        android:hint="@string/location_hint"
         android:layout_margin="13dp"
-        android:foreground="@color/ColorPrimary" />
+        android:hint="@string/location_hint"
+        android:maxLines="1" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -57,7 +55,7 @@
         android:layout_height="fill_parent"
         android:layout_weight="1"
         android:clickable="true"
-        android:divider="@color/list_divider"
+        android:divider="?attr/listDivider"
         android:dividerHeight="2px"
         android:drawSelectorOnTop="false"
         android:longClickable="false"

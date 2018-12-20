@@ -8,12 +8,12 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
-    String [] titles; // This will Store the Titles of the Tabs which are Going to be passed when ViewPagerAdapter is created
-    int numberOfTabs; // Store the number of tabs, this will also be passed when the ViewPagerAdapter is created
+    private String [] titles; // This will Store the Titles of the Tabs which are Going to be passed when ViewPagerAdapter is created
+    private int numberOfTabs; // Store the number of tabs, this will also be passed when the ViewPagerAdapter is created
 
 
     // Build a Constructor and assign the passed Values to appropriate values in the class
-    public ViewPagerAdapter(FragmentManager fm,String [] mTitles, int mNumberOfTabs) {
+    ViewPagerAdapter(FragmentManager fm,String [] mTitles, int mNumberOfTabs) {
         super(fm);
 
         this.titles = mTitles;

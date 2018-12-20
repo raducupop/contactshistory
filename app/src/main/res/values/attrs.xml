@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="background" format="reference"/>
+    <attr name="backgroundListItem" format="reference" />
+    <attr name="backgroundSearchBox" format="reference" />
+    <attr name="listTextMain" format="reference" />
+    <attr name="listText" format="reference" />
+    <attr name="listTextTime" format="reference" />
+    <attr name="listDivider" format="reference" />
+    <attr name="tutorialText" format="reference" />
+    <attr name="tutorialHeader" format="reference" />
+    <attr name="aboutTextColor" format="reference" />
+</resources>

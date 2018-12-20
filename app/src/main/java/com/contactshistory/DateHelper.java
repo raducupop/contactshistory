@@ -5,15 +5,15 @@ import java.util.Date;
 
 import android.content.Context;
 
-public class DateHelper {
+class DateHelper {
 
 	
-	public static Date currentDate() {
+	private static Date currentDate() {
 	    Calendar calendar = Calendar.getInstance();
 	    return calendar.getTime();
 	}
 
-	public static String getTimeAgo(Date date, Context ctx) {
+	String getTimeAgo(Date date, Context ctx) {
 
 	    if(date == null) {
 	        return null;
@@ -29,7 +29,7 @@ public class DateHelper {
 
 	    int dim = getTimeDistanceInMinutes(time);
 
-	    String timeAgo = null;
+	    String timeAgo;
 
 	    if (dim == 0) {
 	        timeAgo = ctx.getResources().getString(R.string.date_util_term_less) + " " +  ctx.getResources().getString(R.string.date_util_term_a) + " " + ctx.getResources().getString(R.string.date_util_unit_minute);

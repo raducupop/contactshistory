@@ -1,7 +1,5 @@
 package com.contactshistory;
 
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AlertDialog;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -10,6 +8,7 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -25,7 +24,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -66,16 +64,24 @@ public class DateTFragment extends Fragment {
 
         initializeSearch();
 
-        final ImageView image = (ImageView) rootView.findViewById(R.id.statusImage);
-        image.setImageResource(R.drawable.status);
+        final ImageView image = rootView.findViewById(R.id.statusImage);
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        boolean dark = prefs.getBoolean("prefDarkUI", false);
+        int img = R.drawable.status;
+        if (dark) {
+            img = R.drawable.status_dark;
+        }
+        image.setImageResource(img);
+
         image.setVisibility(View.VISIBLE);
 
-        final TextView txt1 = (TextView) rootView.findViewById(R.id.text1);
+        final TextView txt1 = rootView.findViewById(R.id.text1);
         txt1.setText("");
-        final TextView txt2 = (TextView) rootView.findViewById(R.id.text2);
+        final TextView txt2 = rootView.findViewById(R.id.text2);
         txt2.setText("");
 
-        final Button pick1 = (Button) rootView.findViewById(R.id.pick1);
+        final Button pick1 = rootView.findViewById(R.id.pick1);
         pick1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
@@ -84,7 +90,7 @@ public class DateTFragment extends Fragment {
         });
 
 
-        final Button pick2 = (Button) rootView.findViewById(R.id.pick2);
+        final Button pick2 = rootView.findViewById(R.id.pick2);
         pick2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
@@ -92,12 +98,12 @@ public class DateTFragment extends Fragment {
             }
         });
 
-        final Button show = (Button) rootView.findViewById(R.id.show);
+        final Button show = rootView.findViewById(R.id.show);
         show.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
 
-                ListView contacte = (ListView) rootView.findViewById(R.id.listView1);
+                ListView contacte = rootView.findViewById(R.id.listView1);
 
                 if (!(date_from_picker1.contentEquals(" ")) && !(date_from_picker2.contentEquals(" ")))
                 {
@@ -111,7 +117,7 @@ public class DateTFragment extends Fragment {
                         date_display2=date_display1;
                         date_display1=temp;
 
-                        Date temp_date = null;
+                        Date temp_date;
 
                         temp_date = date2;
                         date2=date1;
@@ -129,59 +135,64 @@ public class DateTFragment extends Fragment {
 
                     Toast.makeText(context, date_display1+" - "+date_display2 , Toast.LENGTH_SHORT).show();
 
-                    CustomList contacts_adapter = new  CustomList(getActivity(), lst.getList(date_from_picker1, date_from_picker2, context));
+                    CustomList contacts_adapter = null;
+                    try {
+                        contacts_adapter = new CustomList(getActivity(), lst.getList(date_from_picker1, date_from_picker2, context));
 
-                	contacte.setAdapter(contacts_adapter);
+                        contacte.setAdapter(contacts_adapter);
 
-                    contacte.setOnItemClickListener (new AdapterView.OnItemClickListener() {
-                        public void onItemClick(AdapterView<?> aView, View v, int position, long id) {
+                        contacte.setOnItemClickListener (new AdapterView.OnItemClickListener() {
+                            public void onItemClick(AdapterView<?> aView, View v, int position, long id) {
 
-                            int contact_found = 0;
-                            String rawid_from_list = lst.list.get(position).id;
-                            String found_lookup = "";
-                            Cursor contcats_cursor = context.getContentResolver().query(ContactsContract.Data.CONTENT_URI, null, null, null, null);
-                            if (contcats_cursor.getCount() > 0)
-                            {
-                                contcats_cursor.moveToFirst();
-                                do {
-                                    String idraw = contcats_cursor.getString(contcats_cursor.getColumnIndex(ContactsContract.Data.RAW_CONTACT_ID));
-                                    String idlookup = contcats_cursor.getString(contcats_cursor.getColumnIndex(ContactsContract.Data.LOOKUP_KEY));
-
-
-                                    if (idraw.contentEquals(rawid_from_list))
-                                    {
-                                        found_lookup = idlookup;
-                                        contact_found = 1;
-                                        //Toast.makeText(getApplicationContext(), "gasit. ", Toast.LENGTH_LONG).show();
-                                    }
-
-                                } while (contcats_cursor.moveToNext());
-                                //contcats_cursor.close();
-                            }
-
-
-                            try {
-                                if (contact_found == 1)
+                                int contact_found = 0;
+                                String rawid_from_list = lst.list.get(position).id;
+                                String found_lookup = "";
+                                Cursor contcats_cursor = context.getContentResolver().query(ContactsContract.Data.CONTENT_URI, null, null, null, null);
+                                if (contcats_cursor.getCount() > 0)
                                 {
-                                    Uri lookup = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_LOOKUP_URI, found_lookup);
-                                    Intent intent = new Intent(Intent.ACTION_VIEW);
-                                    intent.setData(lookup);
-                                    DateTFragment.this.startActivity(intent);
+                                    contcats_cursor.moveToFirst();
+                                    do {
+                                        String idraw = contcats_cursor.getString(contcats_cursor.getColumnIndex(ContactsContract.Data.RAW_CONTACT_ID));
+                                        String idlookup = contcats_cursor.getString(contcats_cursor.getColumnIndex(ContactsContract.Data.LOOKUP_KEY));
+
+
+                                        if (idraw.contentEquals(rawid_from_list))
+                                        {
+                                            found_lookup = idlookup;
+                                            contact_found = 1;
+                                            //Toast.makeText(getApplicationContext(), "gasit. ", Toast.LENGTH_LONG).show();
+                                        }
+
+                                    } while (contcats_cursor.moveToNext());
+                                    contcats_cursor.close();
                                 }
-                                else Toast.makeText(context, getResources().getString(R.string.err_no_info), Toast.LENGTH_LONG).show();
 
 
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                                Toast.makeText(context, getResources().getString(R.string.err_no_info), Toast.LENGTH_LONG).show();
+                                try {
+                                    if (contact_found == 1)
+                                    {
+                                        Uri lookup = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_LOOKUP_URI, found_lookup);
+                                        Intent intent = new Intent(Intent.ACTION_VIEW);
+                                        intent.setData(lookup);
+                                        DateTFragment.this.startActivity(intent);
+                                    }
+                                    else Toast.makeText(context, getResources().getString(R.string.err_no_info), Toast.LENGTH_LONG).show();
+
+
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                    Toast.makeText(context, getResources().getString(R.string.err_no_info), Toast.LENGTH_LONG).show();
+
+                                }
 
                             }
+                        });
+                    } catch (Resources.NotFoundException e) {
+                        e.printStackTrace();
+                    }
 
-                        }
-                    });
 
-
-                    ImageView image = (ImageView) rootView.findViewById(R.id.statusImage);
+                    ImageView image = rootView.findViewById(R.id.statusImage);
                     if (contacts_adapter.getCount()==0)
                     {
                         image.setVisibility(View.VISIBLE);
@@ -203,7 +214,7 @@ public class DateTFragment extends Fragment {
         });
 
 
-        EditText search_string = (EditText) rootView.findViewById(R.id.search_string);
+        EditText search_string = rootView.findViewById(R.id.search_string);
         search_string.addTextChangedListener(new TextWatcher(){
 
             @Override
@@ -232,18 +243,12 @@ public class DateTFragment extends Fragment {
 
     private void showStartDatePicker() {
         DatePickerFragment date = new DatePickerFragment();
-        /**
-         * Set Up Current Date Into dialog
-         */
         Calendar calender = Calendar.getInstance();
         Bundle args = new Bundle();
         args.putInt("year", calender.get(Calendar.YEAR));
         args.putInt("month", calender.get(Calendar.MONTH));
         args.putInt("day", calender.get(Calendar.DAY_OF_MONTH));
         date.setArguments(args);
-        /**
-         * Set Call back to capture selected date
-         */
         date.setCallBack(onDateStartSet);
         date.show(getFragmentManager(), getResources().getString(R.string.title_pick_date));
     }
@@ -251,18 +256,12 @@ public class DateTFragment extends Fragment {
 
     private void showEndDatePicker() {
         DatePickerFragment date = new DatePickerFragment();
-        /**
-         * Set Up Current Date Into dialog
-         */
         Calendar calender = Calendar.getInstance();
         Bundle args = new Bundle();
         args.putInt("year", calender.get(Calendar.YEAR));
         args.putInt("month", calender.get(Calendar.MONTH));
         args.putInt("day", calender.get(Calendar.DAY_OF_MONTH));
         date.setArguments(args);
-        /**
-         * Set Call back to capture selected date
-         */
         date.setCallBack(onDateEndSet);
         date.show(getFragmentManager(), getResources().getString(R.string.title_pick_date));
     }
@@ -277,12 +276,12 @@ public class DateTFragment extends Fragment {
                         .getDefaultSharedPreferences(context);
                 SimpleDateFormat display_format = new SimpleDateFormat(sharedPrefs.getString("prefDateFormat","dd MMMM yyyy"));
 
-                final TextView txt1 = (TextView) rootView.findViewById(R.id.text1);
+                final TextView txt1 = rootView.findViewById(R.id.text1);
                 date_from_picker1 = String.valueOf(dayOfMonth)+"/"+String.valueOf(monthOfYear+1)+"/"+String.valueOf(year); // luna incepe de la 0, deci treuie adunat 1;
                 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
                 date1 = null;
                 try {
-                    date1 = (Date)formatter.parse(date_from_picker1);
+                    date1 = formatter.parse(date_from_picker1);
                 } catch (ParseException e1) {
                     e1.printStackTrace();
                 }
@@ -302,13 +301,13 @@ public class DateTFragment extends Fragment {
                     .getDefaultSharedPreferences(context);
             SimpleDateFormat display_format = new SimpleDateFormat(sharedPrefs.getString("prefDateFormat","dd MMMM yyyy"));
 
-            final TextView txt2 = (TextView) rootView.findViewById(R.id.text2);
+            final TextView txt2 = rootView.findViewById(R.id.text2);
 
             date_from_picker2 = String.valueOf(dayOfMonth)+"/"+String.valueOf(monthOfYear+1)+"/"+String.valueOf(year); // luna incepe de la 0, deci treuie adunat 1;
             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
             date2 = null;
             try {
-                date2 = (Date)formatter.parse(date_from_picker2);
+                date2 = formatter.parse(date_from_picker2);
             } catch (ParseException e1) {
                 e1.printStackTrace();
             }
@@ -331,7 +330,7 @@ public class DateTFragment extends Fragment {
 
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        ListView contacte = (ListView) rootView.findViewById(R.id.listView1);
+        ListView contacte = rootView.findViewById(R.id.listView1);
 
         switch (item.getItemId()) {
 
@@ -416,7 +415,7 @@ public class DateTFragment extends Fragment {
     public void initializeSearch(){
         this.hideSearch();
 
-        Button search_close_button = (Button) rootView.findViewById(R.id.search_close_button);
+        Button search_close_button = rootView.findViewById(R.id.search_close_button);
         search_close_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 hideSearch();
@@ -427,19 +426,19 @@ public class DateTFragment extends Fragment {
 
     public void showSearch(){
 
-        LinearLayout search_layout = (LinearLayout) rootView.findViewById(R.id.search_layout);
+        LinearLayout search_layout = rootView.findViewById(R.id.search_layout);
         search_layout.setVisibility(View.VISIBLE);
         SearchUsedFlag = 1;
     }
 
     public void hideSearch(){
 
-        LinearLayout search_layout = (LinearLayout) rootView.findViewById(R.id.search_layout);
+        LinearLayout search_layout = rootView.findViewById(R.id.search_layout);
         search_layout.setVisibility(View.GONE);
 
         if (SearchUsedFlag!=0)
         {
-            ListView contacte = (ListView) rootView.findViewById(R.id.listView1);
+            ListView contacte = rootView.findViewById(R.id.listView1);
 		    CustomList reset = new CustomList(getActivity(), lst.resetSearch(lst.list));
 		    contacte.setAdapter(reset);
         }
@@ -448,12 +447,12 @@ public class DateTFragment extends Fragment {
 
     public void performSearch(){
 
-        EditText search_string = (EditText) rootView.findViewById(R.id.search_string);
-        ListView contacte = (ListView) rootView.findViewById(R.id.listView1);
+        EditText search_string = rootView.findViewById(R.id.search_string);
+        ListView contacte = rootView.findViewById(R.id.listView1);
         String query = search_string.getText().toString().toLowerCase();
         CustomList results_adapter = new CustomList(getActivity(), lst.searchList(lst.list, query));
         contacte.setAdapter(results_adapter);
-        ImageView image = (ImageView) rootView.findViewById(R.id.statusImage);
+        ImageView image = rootView.findViewById(R.id.statusImage);
         if (results_adapter.getCount()==0)
         {
             image.setVisibility(View.VISIBLE);

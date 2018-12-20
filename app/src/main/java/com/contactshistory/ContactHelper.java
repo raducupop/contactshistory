@@ -13,11 +13,11 @@ import android.preference.PreferenceManager;
 
 public class ContactHelper implements Parcelable {
 
-	String id = null;
-	String name = null;
-	String date = null;
-	String location = null;
-	String address = null;
+	String id;
+	String name;
+	String date;
+	String location ;
+	String address;
 
 
 
@@ -40,9 +40,7 @@ public class ContactHelper implements Parcelable {
 	}
 
 
-    public String toText(){
-
-    	
+   String toText(){
 
         Context applicationContext = MainActivity.getAppContext();
 
@@ -50,13 +48,11 @@ public class ContactHelper implements Parcelable {
 
         SimpleDateFormat display_format = new SimpleDateFormat(prefs.getString("prefDateFormat","dd MMMM yyyy")+" "+prefs.getString("prefTimeFormat","HH:mm"));
 
-        
         SimpleDateFormat stored_format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-        
-        
+
 		Date d = null;
 		try {
-			d = (Date)stored_format.parse(date);
+			d = stored_format.parse(date);
 		} catch (ParseException e1) {
 
 			e1.printStackTrace();
@@ -66,16 +62,14 @@ public class ContactHelper implements Parcelable {
 		DateHelper datehelper = new DateHelper();
         String relativeTime = datehelper.getTimeAgo(d, applicationContext);
 
-        String output = null;
+        String output;
 
 		if (address.equals("null"))
 
 			output = id+"\n"+name+"\n"+date_display+"\n"+applicationContext.getResources().getString(R.string.helper_nolocation)+"\n"+relativeTime;
 		else
 			output = id+"\n"+name+"\n"+date_display+"\n"+address+"\n"+relativeTime;
-		
-		
-		
+
 		return output;
 	}
 	

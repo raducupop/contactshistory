@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/background">
+    android:background="?attr/background">
 
     <include
         android:id="@+id/tool_bar"
@@ -15,7 +15,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/background_search_box">
+        android:background="?attr/backgroundSearchBox">
 
         <CheckBox
             android:id="@+id/selectall_checkbox"
@@ -24,7 +24,6 @@
             android:checked="false"
             android:onClick="onCheckboxClicked"
             android:text="@string/rem_select_all"
-            android:foreground="@color/ColorPrimary"
             android:button="@null"
             android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
             android:layout_margin="7dp" />
@@ -36,13 +35,13 @@
         android:layout_height="fill_parent"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:background="@color/background">
+        android:background="?attr/background">
 
         <ListView
             android:id="@+id/list_remove"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:cacheColorHint="@color/background"
+            android:cacheColorHint="?attr/backgroundSearchBox"
             android:clickable="true"
             android:divider="@color/list_divider"
             android:dividerHeight="2px"

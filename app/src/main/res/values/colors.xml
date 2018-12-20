@@ -1,31 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="ColorPrimary">#01579b</color>
-    <color name="ColorPrimaryDark">#072980</color>
-    <color name="tabsScrollColor">#6297c2</color>
 
-    <color name="fabColorClick">#040e83</color>
+    <color name="black_nav">#000000</color>
 
     <color name="toolbar_title_text">#ffffff</color>
-    <color name="toolbar_owerflow_icon">#6297c2</color>
+    <color name="toolbar_overflow_icon">#5c81ae</color>
+
+    <color name="ColorPrimary">#01579b</color>
+    <color name="ColorPrimaryDark">#072980</color>
+
+    <color name="ColorPrimary_dark">#ffffff</color>
+    <color name="ColorPrimaryDark_dark">#000000</color>
+
+
+    <color name="tabsScrollColor">#6297c2</color>
+    <color name="fabColorClick">#040e83</color>
 
     <color name="background">#efebe9</color>
     <color name="background_list_item">#efebe9</color>
     <color name="background_search_box">#c4c4c4</color>
-
-    <color name="list_divider">#bdbdbd</color>
-
-    <color name="text_other">#01579b</color>
-    <color name="tutorial_text">#000000</color>
-    <color name="tutorial_header">#ffffff</color>
-    <color name="tutorial_ok">#299124</color>
-
     <color name="list_text_main">#01579b</color>
     <color name="list_text">#000000</color>
     <color name="list_text_time">#9e9e9e</color>
+    <color name="list_divider">#bdbdbd</color>
+    <color name="tutorial_text">#000000</color>
+    <color name="tutorial_header">#ffffff</color>
+    <color name="about_text_color">#000000</color>
+
+
+    <color name="background_dark">#000000</color>
+    <color name="background_list_item_dark">#151616</color>
+    <color name="background_search_box_dark">#272929</color>
+    <color name="list_text_main_dark">#64e0f5</color>
+    <color name="list_text_dark">#2aa5da</color>
+    <color name="list_text_time_dark">#9e9e9e</color>
+    <color name="list_divider_dark">#3a3a40</color>
+    <color name="tutorial_text_dark">#ffffff</color>
+    <color name="tutorial_header_dark">#ffffff</color>
+    <color name="about_text_color_dark">#ffffff</color>
+
+    <color name="text_other">#01579b</color>
+    <color name="tutorial_ok">#299124</color>
 
     <color name="pref_text">#000000</color>
-    <color name="pref_text_description">#9e9e9e</color>
+    <color name="pref_text_description">#5b5b5b</color>
 
+    <color name="pref_text_dark">#ffffff</color>
+    <color name="pref_text_description_dark">#5b5b5b</color>
+
+    <color name="snackbar">#365169</color>
+
+    <color name="tutorial_accept">#365169</color>
 
 </resources>

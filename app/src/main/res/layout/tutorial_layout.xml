@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/background">
+    android:background="?attr/background">
 
     <include
         android:id="@+id/tool_bar"
@@ -19,116 +20,136 @@
         android:id="@+id/TutorialScrollView" >
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/tutorial_welcome"
+                android:textColor="?attr/listTextMain"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/tutorial_accept"
+                android:padding="10dp"
+                android:text="@string/tutorial_accept"
+                android:textColor="?attr/tutorialHeader"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/MainTextView1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/tutorial_text"
-                android:text="@string/tutorial_main"
-                android:id="@+id/MainTextView1"
-                android:padding="10dp"
+                android:baselineAligned="false"
                 android:fontFamily="sans-serif"
+                android:padding="10dp"
+                android:text="@string/tutorial_main"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="?attr/tutorialText"
                 android:textStyle="normal|bold" />
 
             <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/tutorial_header"
-                android:text="@string/tutorial_header1"
                 android:id="@+id/HeaderTextView1"
-                android:textStyle="bold"
-                android:background="@color/toolbar_owerflow_icon"
-                android:padding="10dp" />
-
-
-                            <TextView
-                                android:layout_width="fill_parent"
-                                android:layout_height="wrap_content"
-                                android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:textColor="@color/tutorial_text"
-                                android:text="@string/tutorial_content1"
-                                android:id="@+id/TextView1"
-                                android:padding="10dp" />
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/ColorPrimaryDark"
+                android:padding="10dp"
+                android:text="@string/tutorial_header1"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="?attr/tutorialHeader"
+                android:textStyle="bold" />
 
 
             <TextView
+                android:id="@+id/TextView1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/tutorial_content1"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:background="@color/toolbar_owerflow_icon"
-                android:textColor="@color/tutorial_header"
-                android:text="@string/tutorial_header2"
+                android:textColor="?attr/tutorialText" />
+
+
+            <TextView
                 android:id="@+id/HeaderTextView2"
-                android:textStyle="bold"
-                android:padding="10dp" />
-
-
-                            <TextView
-                                android:layout_width="fill_parent"
-                                android:layout_height="wrap_content"
-                                android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:textColor="@color/tutorial_text"
-                                android:text="@string/tutorial_content2"
-                                android:id="@+id/TextView2"
-                                android:padding="10dp" />
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/ColorPrimaryDark"
+                android:padding="10dp"
+                android:text="@string/tutorial_header2"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="?attr/tutorialHeader"
+                android:textStyle="bold" />
 
 
             <TextView
+                android:id="@+id/TextView2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/tutorial_content2"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:background="@color/toolbar_owerflow_icon"
-                android:textColor="@color/tutorial_header"
-                android:text="@string/tutorial_header3"
+                android:textColor="?attr/tutorialText" />
+
+
+            <TextView
                 android:id="@+id/HeaderTextView3"
-                android:textStyle="bold"
-                android:padding="10dp" />
-
-
-                            <TextView
-                                android:layout_width="fill_parent"
-                                android:layout_height="wrap_content"
-                                android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:textColor="@color/tutorial_text"
-                                android:text="@string/tutorial_content3"
-                                android:id="@+id/TextView3"
-                                android:padding="10dp" />
-
-
-            <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/ColorPrimaryDark"
+                android:padding="10dp"
+                android:text="@string/tutorial_header3"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:background="@color/toolbar_owerflow_icon"
-                android:textColor="@color/tutorial_header"
-                android:text="@string/tutorial_header4"
-                android:id="@+id/HeaderTextView4"
-                android:textStyle="bold"
-                android:padding="10dp" />
+                android:textColor="?attr/tutorialHeader"
+                android:textStyle="bold" />
 
 
             <TextView
-                                android:layout_width="fill_parent"
-                                android:layout_height="wrap_content"
-                                android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:textColor="@color/tutorial_text"
-                                android:text="@string/tutorial_content4"
-                                android:id="@+id/TextView4"
-                                android:padding="10dp" />
+                android:id="@+id/TextView3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/tutorial_content3"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="?attr/tutorialText" />
+
+
+            <TextView
+                android:id="@+id/HeaderTextView4"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/ColorPrimaryDark"
+                android:padding="10dp"
+                android:text="@string/tutorial_header4"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="?attr/tutorialHeader"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/TextView4"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/tutorial_content4"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="?attr/tutorialText" />
 
             <Button
+                android:id="@+id/ok"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="15dp"
                 android:background="@color/tutorial_ok"
-                android:id="@+id/ok"
                 android:text="@string/tutorial_ok_button"
-                android:textColor="@color/tutorial_header"
-                android:layout_margin="15dp" />
+                android:textColor="@color/tutorial_header" />
 
 
         </LinearLayout>

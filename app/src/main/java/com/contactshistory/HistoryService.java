@@ -5,16 +5,19 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.Service;
-import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.OperationApplicationException;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.database.ContentObserver;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -22,36 +25,38 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
-import android.os.Looper;
-import android.os.RemoteException;
 import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
 import android.content.ContentResolver;
 import android.content.ContentProviderOperation;
 import android.provider.Settings;
+import android.support.v4.app.NotificationCompat;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.provider.ContactsContract.CommonDataKinds;
 import android.widget.Toast;
 
+import static android.location.LocationManager.*;
 
-public class HistoryService extends Service{
+public class HistoryService extends Service {
+
 
     Cursor c, observer;
     public ContentObserver obs;
-    int n=0,na=0;
+    int n = 0, na = 0;
     int contacts_count = 0;
-    ArrayList<String> contacte = new ArrayList<String>();
-    ArrayList<String> contacte_a = new ArrayList<String>();
-    ArrayList<String> temp = new ArrayList<String>();
-
-    String info =null;
-
+    ArrayList<String> contacte = new ArrayList<>();
+    ArrayList<String> contacte_a = new ArrayList<>();
+    ArrayList<String> temp = new ArrayList<>();
+    String info = null;
     Boolean locationFound = false;
+    TelephonyManager tm;
+    CallNumberReceiver numberReceiver = new CallNumberReceiver();
 
     int exit = 0;
     int edit = 1;
@@ -61,28 +66,32 @@ public class HistoryService extends Service{
 
         super.onCreate();
 
-        // Toast.makeText(getApplicationContext(),"serv creat! ", Toast.LENGTH_LONG).show();
+        try {
 
-        Intent startServiceIntent = new Intent(this.getBaseContext(), HistoryService.class);
-        this.getBaseContext().startService(startServiceIntent);
 
-        c = getContentResolver().query(ContactsContract.RawContacts.CONTENT_URI, null, null, null, null);
-        Cursor full_contacts = getContentResolver().query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null);
-        int contacts_count = full_contacts.getCount();
+            //Toast.makeText(getApplicationContext(),"serv creat! ", Toast.LENGTH_LONG).show();
 
-        n = c.getCount();
-        contacte.clear();
-        String id=null;
+            Intent startServiceIntent = new Intent(this.getBaseContext(), HistoryService.class);
+            this.getBaseContext().startService(startServiceIntent);
+            c = getContentResolver().query(ContactsContract.RawContacts.CONTENT_URI, null, null, null, null);
 
-        if (c.getCount() > 0)
-        {
+            assert c != null;
+            n = c.getCount();
+            contacte.clear();
+            String id;
 
-            c.moveToFirst();
-            do {
-                id = c.getString(c.getColumnIndex(ContactsContract.RawContacts._ID));
-                contacte.add(id);
-            } while (c.moveToNext());
-            c.close();
+            if (c.getCount() > 0) {
+
+                c.moveToFirst();
+                do {
+                    id = c.getString(c.getColumnIndex(ContactsContract.RawContacts._ID));
+                    contacte.add(id);
+                } while (c.moveToNext());
+                c.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(getApplicationContext(), "Contacts History stopped. Check if all permissions are granted.", Toast.LENGTH_LONG).show();
         }
 
     }
@@ -92,313 +101,347 @@ public class HistoryService extends Service{
 
         super.onStart(intent, startId);
 
-        // Toast.makeText(getApplicationContext(),"serv pornit! ", Toast.LENGTH_LONG).show();
+        try {
+            //Toast.makeText(getApplicationContext(),"serv pornit! ", Toast.LENGTH_LONG).show();
 
-        toggleIcon();
+            toggleIcon();
 
+            tm = (TelephonyManager) this.getSystemService(Context.TELEPHONY_SERVICE);
 
-        CallListener phoneListener = new CallListener(getApplicationContext());
-        TelephonyManager telephonyManager = (TelephonyManager) this.getSystemService(Context.TELEPHONY_SERVICE);
-        telephonyManager.listen(phoneListener, PhoneStateListener.LISTEN_CALL_STATE);
+            tm.listen(numberReceiver, PhoneStateListener.LISTEN_CALL_STATE);
 
+            final DBAdapter db = new DBAdapter(this);
 
-        final DBAdapter db = new DBAdapter(this);
+            observer = getContentResolver().query(ContactsContract.RawContacts.CONTENT_URI, null, null, null, null);
 
-        observer = getContentResolver().query(ContactsContract.RawContacts.CONTENT_URI, null, null, null, null);
+            obs = new ContentObserver(new Handler()) {
 
-
-        obs = new ContentObserver(new Handler()) {
-
-            @Override
-            public void onChange(boolean selfChange) {
+                @Override
+                public void onChange(boolean selfChange) {
 
 
-                SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                    SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
-                Boolean ok_to_notify = false;
-                NotificationManager changeNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-                Notification main_notification = new Notification(R.drawable.icon_change, "Contacts History", 0);
-                Notification no_location_notification = new Notification(R.drawable.ic_location_off_white_24dp, "Contacts History", 0);
+                    Boolean ok_to_notify = false;
 
+                    Intent launchMain = new Intent(getApplicationContext(),
+                            MainActivity.class);
+                    launchMain.setAction("android.intent.action.MAIN");
+                    launchMain.addCategory("android.intent.category.LAUNCHER");
 
+                    PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, launchMain, PendingIntent.FLAG_UPDATE_CURRENT);
 
-                Intent launchMain = new Intent(getApplicationContext(),
-                        MainActivity.class);
-                launchMain.setAction("android.intent.action.MAIN");
-                launchMain.addCategory("android.intent.category.LAUNCHER");
+                    Date date = Calendar.getInstance().getTime();
+                    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+                    final String data_azi = formatter.format(date);
 
-                PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, launchMain, PendingIntent.FLAG_UPDATE_CURRENT);
+                    Cursor ca = getContentResolver().query(ContactsContract.RawContacts.CONTENT_URI, null, null, null, null);
 
-                Date date = Calendar.getInstance().getTime();
-                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-                final String data_azi = formatter.format(date);
-
-                Cursor ca = getContentResolver().query(ContactsContract.RawContacts.CONTENT_URI, null, null, null, null);
-
-                Cursor full_contacts_after = getContentResolver().query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null);
-                int contacts_count_after = full_contacts_after.getCount();
+                    Cursor full_contacts_after = getContentResolver().query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null);
+                    assert full_contacts_after != null;
+                    int contacts_count_after = full_contacts_after.getCount();
 
 
-                na = ca.getCount();
-                String id_contact = null;
-                contacte_a.clear();
+                    assert ca != null;
+                    na = ca.getCount();
+                    String id_contact;
+                    contacte_a.clear();
 
-                if (ca.getCount() > 0) {
-                    ca.moveToFirst();
-                    do {
-                        id_contact = ca.getString(ca.getColumnIndex(ContactsContract.RawContacts._ID));
-                        contacte_a.add(id_contact);
-                    } while (ca.moveToNext());
+                    if (ca.getCount() > 0) {
+                        ca.moveToFirst();
+                        do {
+                            id_contact = ca.getString(ca.getColumnIndex(ContactsContract.RawContacts._ID));
+                            contacte_a.add(id_contact);
+                        } while (ca.moveToNext());
 
-                }
+                    }
 
-                if ( (na > n) && (contacts_count != contacts_count_after) ) {
+                    if ((na > n) && (contacts_count != contacts_count_after)) {
 
-                    edit = 1;
+                        edit = 1;
 
-                    ok_to_notify = true;
+                        ok_to_notify = true;
 
-                    temp = contacte_a;
-                    temp.removeAll(contacte);
-                    db.open();
-                    db.insertContact(temp.toString(), data_azi, getLocation().get(0), getLocation().get(1));
-                    db.close();
-                    //Toast.makeText(getApplicationContext(), temp.toString() + " Adaugat in Contacts History \n\n" + data_azi + "\n" + getLocation(), Toast.LENGTH_SHORT).show();
-
-
-
-                    String cid = temp.toString();
-                    String cidd = cid.substring(1, cid.length() - 1);
+                        temp = contacte_a;
+                        temp.removeAll(contacte);
+                        db.open();
+                        db.insertContact(temp.toString(), data_azi, getLocation().get(0), getLocation().get(1));
+                        db.close();
+                        //Toast.makeText(getApplicationContext(), temp.toString() + " Adaugat in Contacts History \n\n" + data_azi + "\n" + getLocation(), Toast.LENGTH_SHORT).show();
 
 
+                        String cid = temp.toString();
+                        String cidd = cid.substring(1, cid.length() - 1);
 
-                    if (sharedPrefs.getBoolean("prefReadData", true)) {
 
-                        //Log.v("ReadData","Pref active");
-                        ContentResolver cr = getContentResolver();
-                        Cursor read = getContentResolver().query(ContactsContract.Data.CONTENT_URI, null, null, null, null);
+                        if (sharedPrefs.getBoolean("prefReadData", true)) {
 
-                        if (read.getCount() > 0) {
-                            read.moveToFirst();
-                            //Log.v("ReadData","All cursor > 0");
+                            //Log.v("ReadData","Pref active");
+                            ContentResolver cr = getContentResolver();
+                            Cursor read = getContentResolver().query(ContactsContract.Data.CONTENT_URI, null, null, null, null);
 
-                            int count = 0;
+                            assert read != null;
+                            if (read.getCount() > 0) {
+                                read.moveToFirst();
+                                //Log.v("ReadData","All cursor > 0");
 
-                            do {
+                                int count = 0;
 
-                                //String id = read.getString(read.getColumnIndex(ContactsContract.Contacts._ID));
-                                String lookupid = read.getString(read.getColumnIndex(ContactsContract.Data.RAW_CONTACT_ID));
+                                do {
 
-                                if ((lookupid.contentEquals(cidd)) && (count == 0)) {
-                                    count = 1;
+                                    //String id = read.getString(read.getColumnIndex(ContactsContract.Contacts._ID));
+                                    String lookupid = read.getString(read.getColumnIndex(ContactsContract.Data.RAW_CONTACT_ID));
 
-                                    //Log.d("ReadData","Contact found");
+                                    if ((lookupid.contentEquals(cidd)) && (count == 0)) {
+                                        count = 1;
 
-                                    String noteWhere = ContactsContract.Data.RAW_CONTACT_ID + " = ? AND " + ContactsContract.Data.MIMETYPE + " = ?";
-                                    String[] noteWhereParams = new String[]{cidd,
-                                            ContactsContract.CommonDataKinds.Note.CONTENT_ITEM_TYPE};
-                                    Cursor noteCur = cr.query(ContactsContract.Data.CONTENT_URI, null, noteWhere, noteWhereParams, null);
-                                    //Log.d("ReadData","Notes count for contact: "+String.valueOf(noteCur.getCount()));
+                                        //Log.d("ReadData","Contact found");
 
-                                    if (noteCur.moveToFirst()) {
+                                        String noteWhere = ContactsContract.Data.RAW_CONTACT_ID + " = ? AND " + ContactsContract.Data.MIMETYPE + " = ?";
+                                        String[] noteWhereParams = new String[]{cidd,
+                                                CommonDataKinds.Note.CONTENT_ITEM_TYPE};
+                                        Cursor noteCur = cr.query(ContactsContract.Data.CONTENT_URI, null, noteWhere, noteWhereParams, null);
+                                        //Log.d("ReadData","Notes count for contact: "+String.valueOf(noteCur.getCount()));
 
-                                        db.open();
+                                        assert noteCur != null;
+                                        if (noteCur.moveToFirst()) {
 
-                                        do {
+                                            db.open();
 
-                                            String note = noteCur.getString(noteCur.getColumnIndex(ContactsContract.CommonDataKinds.Note.NOTE));
+                                            do {
 
-                                            //Log.d("ReadData", note);
+                                                String note = noteCur.getString(noteCur.getColumnIndex(CommonDataKinds.Note.NOTE));
 
-                                            if (note.contains("Contacts History Data")) {
+                                                //Log.d("ReadData", note);
 
-                                                String[] note_data = note.split("\\|");
+                                                if (note.contains("Contacts History Data")) {
 
-                                                if ((note_data[1].length() > 0) && (note_data[2].length() > 0) && (note_data[3].length() > 0)) {
-                                                    //Log.d("ReadData", "\n " + temp.toString() + " " + note_data[1] + " " + note_data[3] + " " + note_data[2]);
-                                                    db.insertContact(temp.toString(), note_data[1], note_data[3], note_data[2]);
+                                                    String[] note_data = note.split("\\|");
+
+                                                    if ((note_data[1].length() > 0) && (note_data[2].length() > 0) && (note_data[3].length() > 0)) {
+                                                        //Log.d("ReadData", "\n " + temp.toString() + " " + note_data[1] + " " + note_data[3] + " " + note_data[2]);
+                                                        db.insertContact(temp.toString(), note_data[1], note_data[3], note_data[2]);
+
+                                                    }
 
                                                 }
 
-                                            }
+                                            } while (noteCur.moveToNext());
 
-                                        } while (noteCur.moveToNext());
+                                            db.close();
 
-                                        db.close();
-
+                                        }
+                                        noteCur.close();
                                     }
-                                    noteCur.close();
-                                }
-                            } while (read.moveToNext());
+                                } while (read.moveToNext());
+
+                            }
+                            read.close();
+
 
                         }
-                        read.close();
+                        if (sharedPrefs.getBoolean("prefWriteData", true)) {
 
+                            writeToContact(cidd, data_azi, getLocation().get(0), getLocation().get(1));
+                        }
 
+                        edit = 1;
                     }
 
-                    if (sharedPrefs.getBoolean("prefWriteData", true)) {
-
-                        writeToContact(cidd, data_azi, getLocation().get(0), getLocation().get(1));
-                    }
-
-                    edit = 1;
-                }
-
-                //if ( (na < n) && ( contacts_count != contacts_count_after)) {
-                if ( (na < n)) {
-                    temp = contacte;
-                    temp.removeAll(contacte_a);
-
-                    db.open();
-                    db.deleteContact(temp.toString());
-                    db.close();
-
-                    info = "Contact sters.";
-                    //Toast.makeText(getApplicationContext(),"Sters din Contacts History", Toast.LENGTH_SHORT).show();
-                }
-
-
-                if ((na == n) && (edit == 1)) {
-
-                    ArrayList<String> old_id = new ArrayList<String>();
-                    ArrayList<String> new_id = new ArrayList<String>();
-
-                    old_id.addAll(contacte);
-                    new_id.addAll(contacte_a);
-
-                    old_id.removeAll(contacte_a);
-                    new_id.removeAll(contacte);
-
-                    if (old_id.size() > 0) {
-                        //Toast.makeText(getApplicationContext(),"Contact editat in Contacts History", Toast.LENGTH_SHORT).show();
-                        info = "Contact editat.";
+                    //if ( (na < n) && ( contacts_count != contacts_count_after)) {
+                    if ((na < n)) {
+                        temp = contacte;
+                        temp.removeAll(contacte_a);
 
                         db.open();
-                        db.updateContact(old_id.toString(), new_id.toString());
-                        //db.insertContact(new_id.toString(),data_azi,getLocation().get(0),getLocation().get(1));
+                        db.deleteContact(temp.toString());
                         db.close();
 
+                        info = "Contact sters.";
+                        //Toast.makeText(getApplicationContext(),"Sters din Contacts History", Toast.LENGTH_SHORT).show();
                     }
 
 
-                }
+                    if ((na == n) && (edit == 1)) {
 
-                contacte.clear();
-                contacte.addAll(contacte_a);
-                n = ca.getCount();
-                ca.close();
+                        ArrayList<String> old_id = new ArrayList<>();
+                        ArrayList<String> new_id = new ArrayList<>();
 
-                if ((ok_to_notify == true) && (sharedPrefs.getBoolean("prefDisplayIconContact", true))) {
+                        old_id.addAll(contacte);
+                        new_id.addAll(contacte_a);
+
+                        old_id.removeAll(contacte_a);
+                        new_id.removeAll(contacte);
+
+                        if (old_id.size() > 0) {
+                            //Toast.makeText(getApplicationContext(),"Contact editat in Contacts History", Toast.LENGTH_SHORT).show();
+                            info = "Contact changed.";
+
+                            db.open();
+                            db.updateContact(old_id.toString(), new_id.toString());
+                            //db.insertContact(new_id.toString(),data_azi,getLocation().get(0),getLocation().get(1));
+                            db.close();
+
+                        }
 
 
-                    if (locationFound) {
-                        main_notification.setLatestEventInfo(getApplicationContext(), getResources().getString(R.string.service_icon_contact), info, pendingIntent);
-                        main_notification.flags = Notification.FLAG_AUTO_CANCEL;
-                        changeNotificationManager.notify(65152, main_notification);
                     }
 
-                    else {
 
-                        no_location_notification.setLatestEventInfo(getApplicationContext(), getResources().getString(R.string.service_icon_contact), info, pendingIntent);
-                        no_location_notification.flags = Notification.FLAG_AUTO_CANCEL;
-                        changeNotificationManager.notify(65153, no_location_notification);
+                    contacte.clear();
+                    contacte.addAll(contacte_a);
+                    n = ca.getCount();
+                    ca.close();
+                    full_contacts_after.close();
+
+                    if (ok_to_notify && (sharedPrefs.getBoolean("prefDisplayIconContact", true))) {
+
+
+                        NotificationManager iconUpdate = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+
+                        if (locationFound) {
+                            NotificationCompat.Builder location_notification = new NotificationCompat.Builder(getApplicationContext(), "notify_002");
+                            location_notification.setAutoCancel(true);
+                            location_notification.setContentTitle(getResources().getString(R.string.service_icon_contact));
+                            location_notification.setContentText(info);
+                            location_notification.setSmallIcon(R.drawable.ic_social_person_add);
+                            location_notification.setContentIntent(pendingIntent);
+                            location_notification.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                            location_notification.setOngoing(false);
+                            location_notification.setDefaults(0);
+                            location_notification.setChannelId("notify_002");
+
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                NotificationChannel channel = new NotificationChannel("notify_002", getResources().getString(R.string.notification_new),
+                                        NotificationManager.IMPORTANCE_LOW);
+                                channel.setShowBadge(false);
+                                iconUpdate.createNotificationChannel(channel);
+                            }
+
+                            iconUpdate.notify(65151, location_notification.build());
+                        } else {
+
+                            NotificationCompat.Builder no_location_notification = new NotificationCompat.Builder(getApplicationContext(), "notify_002");
+                            no_location_notification.setAutoCancel(true);
+                            no_location_notification.setContentTitle(getResources().getString(R.string.service_icon_contact));
+                            no_location_notification.setContentText(info);
+                            no_location_notification.setSmallIcon(R.drawable.ic_location_off_white_24dp);
+                            no_location_notification.setContentIntent(pendingIntent);
+                            no_location_notification.setOngoing(false);
+                            no_location_notification.setDefaults(0);
+                            no_location_notification.setChannelId("notify_002");
+
+
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                NotificationChannel channel = new NotificationChannel("notify_002", getResources().getString(R.string.notification_new),
+                                        NotificationManager.IMPORTANCE_LOW);
+                                channel.setShowBadge(false);
+                                iconUpdate.createNotificationChannel(channel);
+                            }
+
+                            iconUpdate.notify(65152, no_location_notification.build());
+                        }
 
                     }
 
-
-                }
-
- /*             DBAdapter db_tmp = new DBAdapter(getBaseContext());
-                db_tmp.open();
-                Cursor db_ids =  db_tmp.getAllContacts();
+     /*             DBAdapter db_tmp = new DBAdapter(getBaseContext());
+                    db_tmp.open();
+                    Cursor db_ids =  db_tmp.getAllContacts();
 
 
-                ArrayList<String> list_purge = new ArrayList<>();
+                    ArrayList<String> list_purge = new ArrayList<>();
 
-                ArrayList<String> x = new ArrayList<>();
-                ArrayList<String> y = new ArrayList<>();
+                    ArrayList<String> x = new ArrayList<>();
+                    ArrayList<String> y = new ArrayList<>();
 
-                Toast.makeText(getApplicationContext(),"In DB: "+String.valueOf(db_ids.getCount()), Toast.LENGTH_SHORT).show();
-                Cursor all_ids = getBaseContext().getContentResolver().query(ContactsContract.RawContacts.CONTENT_URI, null, null, null, null);
+                    Toast.makeText(getApplicationContext(),"In DB: "+String.valueOf(db_ids.getCount()), Toast.LENGTH_SHORT).show();
+                    Cursor all_ids = getBaseContext().getContentResolver().query(ContactsContract.RawContacts.CONTENT_URI, null, null, null, null);
 
-                if (db_ids.getCount()>0)
-                {
-                    if(db_ids.moveToFirst())
+                    if (db_ids.getCount()>0)
                     {
-                        //Toast.makeText(getApplicationContext(),"DB", Toast.LENGTH_SHORT).show();
-                        do{
+                        if(db_ids.moveToFirst())
+                        {
+                            //Toast.makeText(getApplicationContext(),"DB", Toast.LENGTH_SHORT).show();
+                            do{
 
-                            String id_db = db_ids.getString(0);
+                                String id_db = db_ids.getString(0);
 
-                            String id_db_ok = id_db.substring(1, id_db.length()-1);
+                                String id_db_ok = id_db.substring(1, id_db.length()-1);
 
-                            x.add(id_db_ok);
+                                x.add(id_db_ok);
 
-                        }while (db_ids.moveToNext());
+                            }while (db_ids.moveToNext());
+                        }
                     }
-                }
 
-                if(all_ids.getCount()>0)
-                {
-                    if (all_ids.moveToFirst()){
+                    if(all_ids.getCount()>0)
+                    {
+                        if (all_ids.moveToFirst()){
 
-                        do {
+                            do {
 
-                            String id_provider_row = all_ids.getString(all_ids.getColumnIndex(ContactsContract.RawContacts._ID));
+                                String id_provider_row = all_ids.getString(all_ids.getColumnIndex(ContactsContract.RawContacts._ID));
 
-                            y.add(id_provider_row);
+                                y.add(id_provider_row);
 
-                        }while (all_ids.moveToNext());
+                            }while (all_ids.moveToNext());
+                        }
                     }
-                }
 
-                all_ids.close();
-                db_ids.close();
+                    all_ids.close();
+                    db_ids.close();
 
-                int gasit = 0;
+                    int gasit = 0;
 
-                for (int i=0;i<x.size();i++){
-                       gasit = 0;
-                       for (int j=0; j<y.size(); j++) {
+                    for (int i=0;i<x.size();i++){
+                           gasit = 0;
+                           for (int j=0; j<y.size(); j++) {
 
-                           try {
-                                Long a = Long.valueOf(x.get(i));
-                                Long b = Long.valueOf(y.get(j));
+                               try {
+                                    Long a = Long.valueOf(x.get(i));
+                                    Long b = Long.valueOf(y.get(j));
 
-                                if (a.equals(b)) gasit = 1;
+                                    if (a.equals(b)) gasit = 1;
 
-                           } catch (NumberFormatException e) {
-                               e.printStackTrace();
+                               } catch (NumberFormatException e) {
+                                   e.printStackTrace();
+                               }
+
                            }
 
-                       }
+                        if ( gasit == 0) list_purge.add(x.get(i));
 
-                    if ( gasit == 0) list_purge.add(x.get(i));
-
-                }
-
-                if (list_purge.size()>0){
-
-                    for (int i=0;i<list_purge.size();i++){
-                        Toast.makeText(getApplicationContext(),"In purge: "+String.valueOf(list_purge.size()), Toast.LENGTH_SHORT).show();
-                        db_tmp.deleteContact(list_purge.get(i));
                     }
+
+                    if (list_purge.size()>0){
+
+                        for (int i=0;i<list_purge.size();i++){
+                            Toast.makeText(getApplicationContext(),"In purge: "+String.valueOf(list_purge.size()), Toast.LENGTH_SHORT).show();
+                            db_tmp.deleteContact(list_purge.get(i));
+                        }
+                    }
+
+                    db_tmp.close();*/
+
                 }
 
-                db_tmp.close();*/
+                @Override
+                public boolean deliverSelfNotifications() {
+                    return false;
+                }
+            };
 
+            observer.registerContentObserver(obs);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Resources.NotFoundException e) {
+            e.printStackTrace();
+        } catch (Exception e){
+            Toast.makeText(getApplicationContext(), "Contacts History stopped. Check if all permissions are granted.", Toast.LENGTH_LONG).show();
+        }
 
-            }
-            @Override
-            public boolean deliverSelfNotifications() {
-                return false;
-            }
-        };
-
-        observer.registerContentObserver(obs);
-
-        return(START_STICKY);
+        return (START_STICKY);
     }
 
 /*
@@ -429,97 +472,95 @@ public class HistoryService extends Service{
         return rawid;
     }*/
 
-    public void writeToContact(String ID, String Date, String Geo, String Location)
-    {
+    public void writeToContact(String ID, String Date, String Geo, String Location) {
 
-
-        if (ID.length()>0)
-        {
+        if (ID.length() > 0) {
 
             ArrayList<ContentProviderOperation> ops =
-                    new ArrayList<ContentProviderOperation>();
+                    new ArrayList<>();
 
             ops.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
                     .withValue(ContactsContract.Data.RAW_CONTACT_ID, ID)
                     .withValue(ContactsContract.Data.MIMETYPE, CommonDataKinds.Note.CONTENT_ITEM_TYPE)
-                    .withValue(ContactsContract.Data.DATA1, "Contacts History Data |"+Date+"|"+Location+"|"+Geo)
+                    .withValue(ContactsContract.Data.DATA1, "Contacts History Data |" + Date + "|" + Location + "|" + Geo)
                     .build());
             try {
                 getContentResolver().applyBatch(ContactsContract.AUTHORITY, ops);
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            } catch (OperationApplicationException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
         }
     }
 
-    public ArrayList<String> getLocation(){
+    public ArrayList<String> getLocation() {
 
         locationFound = false;
 
-        ArrayList<String> result = new ArrayList<String>();
+        ArrayList<String> result = new ArrayList<>();
         Location location = null;
 
         ConnectivityManager connManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
         NetworkInfo wifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
         NetworkInfo dcon = connManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
 
-        if (wifi.isConnected() || dcon.isConnected())
-        {
+        if (wifi.isConnected() || dcon.isConnected()) {
 
             final LocationManager locationManager;
-            String svcName = Context.LOCATION_SERVICE;
-            locationManager = (LocationManager)getSystemService(svcName);
-
-
-            final String provider = locationManager.NETWORK_PROVIDER;
-
+            locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            final String provider = NETWORK_PROVIDER;
 
             LocationListener myLocationListener = new LocationListener() {
                 public void onLocationChanged(Location location) {
-                    location = locationManager.getLastKnownLocation(provider);
 
 
-                    Log.d("contactshistory_service", "on location changed - update efectuat");
+                    Log.d("contactshistory_service", "on location changed - update ok");
 
 
                 }
-                public void onProviderDisabled(String provider){
+
+                public void onProviderDisabled(String provider) {
 
                 }
-                public void onProviderEnabled(String provider){
+
+                public void onProviderEnabled(String provider) {
                 }
-                public void onStatusChanged(String provider, int status,Bundle extras){
+
+                public void onStatusChanged(String provider, int status, Bundle extras) {
                 }
             };
 
-            Looper looper = null;
-
-            for(int i= 1; i<=10; i++)    //  refresh location
+            for (int i = 1; i <= 10; i++)    //  refresh location
             {
-                Log.d("contactshistory_service", "inainte de update");
+                Log.d("contactshistory_service", "before update ...");
 
-                locationManager.requestSingleUpdate(provider, myLocationListener, looper);
+                try {
+                    locationManager.requestSingleUpdate(provider, myLocationListener, null);
+                } catch (SecurityException e) {
+                    e.printStackTrace();
+                }
 
-                Log.d("contactshistory_service", "dupa request, inainte de get last");
+                Log.d("contactshistory_service", "after request ...");
             }
 
-            location = locationManager.getLastKnownLocation(provider);
+
+            try {
+                location = locationManager.getLastKnownLocation(provider);
+            } catch (SecurityException e) {
+                e.printStackTrace();
+            }
 
             locationManager.removeUpdates(myLocationListener);
 
             Geocoder geocoder;
 
-            List<Address> user = null;
+            List<Address> user;
             double lat;
             double lng;
 
-
             result.add("null");
             result.add("null");
-
+            
             if (location == null){
 
                 //Toast.makeText(getApplicationContext(),"Locatia nu a putut sa fie determinata",Toast.LENGTH_SHORT).show();
@@ -533,26 +574,22 @@ public class HistoryService extends Service{
 
                 }
 
-
             }
             else
             {
 
-
                 geocoder = new Geocoder(getApplicationContext());
                 result.clear();
-
                 info = getResources().getString(R.string.service_no_location);
 
                 try {
                     user = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
-                    lat=(double)user.get(0).getLatitude();
-                    lng=(double)user.get(0).getLongitude();
+                    lat=user.get(0).getLatitude();
+                    lng=user.get(0).getLongitude();
 
                     result.add(lat+"#"+lng);
 
-
-                    if (user != null && user.size() > 0) {
+                    if (user.size() > 0) {
                         Address address = user.get(0);
 
                         String addressText = String.format("%s, %s",
@@ -601,43 +638,53 @@ public class HistoryService extends Service{
 
             //Toast.makeText(getApplicationContext(),"Fara acces la locatie.", Toast.LENGTH_SHORT).show();
             info = getResources().getString(R.string.warning_location_title);
-
         }
-
         return result;
-
     }
 
     public void toggleIcon(){
 
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-
-        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        Notification n = new Notification(R.drawable.icon_status, "Contacts History",0);
-
-        Intent launchMain = new Intent(getApplicationContext(),
-                MainActivity.class);
+        Intent launchMain = new Intent(getApplicationContext(), MainActivity.class);
         launchMain .setAction("android.intent.action.MAIN");
         launchMain .addCategory("android.intent.category.LAUNCHER");
-
         PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, launchMain, PendingIntent.FLAG_UPDATE_CURRENT);
+        NotificationManager iconMain = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-        n.flags = Notification.FLAG_NO_CLEAR;
-        n.setLatestEventInfo(this, getResources().getString(R.string.service_icon_firstline), getResources().getString(R.string.service_icon_secondline), pendingIntent);
+        NotificationCompat.Builder main_status_icon = new NotificationCompat.Builder(getApplicationContext(), "notify_001");
+        main_status_icon.setAutoCancel(false);
+        main_status_icon.setContentTitle(getResources().getString(R.string.service_icon_firstline));
+        main_status_icon.setContentText(getResources().getString(R.string.service_icon_secondline));
+        main_status_icon.setSmallIcon(R.mipmap.ic_launcher);
+        main_status_icon.setContentIntent(pendingIntent);
+        main_status_icon.setDefaults(0);
+        main_status_icon.setChannelId("notify_001");
+        main_status_icon.setPriority(NotificationCompat.PRIORITY_MIN);
+        main_status_icon.setOngoing(true);
+        main_status_icon.setWhen(0);
+        //main_status_icon.setShowWhen(false);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+
+            NotificationChannel channel = new NotificationChannel("notify_001", getResources().getString(R.string.notification_main),
+                    NotificationManager.IMPORTANCE_MIN);
+            channel.setShowBadge(false);
+            iconMain.createNotificationChannel(channel);
+        }
 
         if ( sharedPrefs.getBoolean("prefDisplayIcon", true) )
         {
-            notificationManager.notify(65151, n);
+            iconMain.notify(65150, main_status_icon.build());
         }
 
         else
         {
-            notificationManager.cancel(65151);
+            iconMain.cancel(65150);
         }
 
         if (exit==1)
         {
-            notificationManager.cancel(65151);
+            iconMain.cancel(65150);
         }
     }
 
@@ -648,12 +695,14 @@ public class HistoryService extends Service{
         observer.unregisterContentObserver(obs);
 
         super.onDestroy();
-
         Intent startServiceIntent = new Intent(this.getBaseContext(), HistoryService.class);
 
-
         // TRY TO RESTART SERVICE ON SERVICE STOP
-        this.getBaseContext().startService(startServiceIntent);
+        try {
+            this.getBaseContext().startService(startServiceIntent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         // Toast.makeText(getApplicationContext(),"serv inchis! ", Toast.LENGTH_LONG).show();
 
@@ -667,15 +716,17 @@ public class HistoryService extends Service{
         toggleIcon();
         exit =0;
 
+        tm.listen(numberReceiver, PhoneStateListener.LISTEN_NONE);
+
         observer.close();
 
     }
-
-
 
     @Override
     public IBinder onBind(Intent intent) {
 
         return null;
     }
+
+
 }

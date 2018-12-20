@@ -4,13 +4,13 @@
   android:orientation="vertical"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-    android:background="@color/background">
+    android:background="?attr/background">
 
       <LinearLayout
         android:id="@+id/search_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/background_search_box" >
+        android:background="?attr/backgroundSearchBox" >
 
         <EditText
             android:id="@+id/search_string"
@@ -59,7 +59,7 @@
         android:id="@+id/listView1"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:divider="@color/list_divider"
+        android:divider="?attr/listDivider"
         android:dividerHeight="2px"
         android:layout_weight="1"
         android:choiceMode="singleChoice"

@@ -2,12 +2,12 @@ package com.contactshistory;
 
 import java.util.ArrayList;
 
-import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.preference.PreferenceManager;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
@@ -16,7 +16,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 
-public class RemoveActivity extends ActionBarActivity {
+public class RemoveActivity extends AppCompatActivity {
 
     Toolbar toolbar;
 
@@ -29,23 +29,32 @@ public class RemoveActivity extends ActionBarActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        
-    	super.onCreate(savedInstanceState);
+
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        boolean dark_theme = sharedPrefs.getBoolean("prefDarkUI", false);
+        if (dark_theme) {
+            setTheme(R.style.AppThemeDark);
+        }
+        else {
+            setTheme(R.style.AppTheme);
+        }
+
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.remove_layout);
 
-        toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        toolbar = findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         Bundle b = getIntent().getExtras();
 
-        myList = (ListView)findViewById(R.id.list_remove);
-	    CheckBox selectAll = (CheckBox) findViewById(R.id.selectall_checkbox);
+        myList = findViewById(R.id.list_remove);
+	    CheckBox selectAll = findViewById(R.id.selectall_checkbox);
         selectAll.setChecked(false);
 
-        doDelete = (Button)findViewById(R.id.remove_del_button);
-        goBack = (Button)findViewById(R.id.remove_cancel_button);
+        doDelete = findViewById(R.id.remove_del_button);
+        goBack = findViewById(R.id.remove_cancel_button);
 
 		ArrayList<ContactHelper> lista =  (ArrayList<ContactHelper>) b.getSerializable("lista");
 
@@ -59,8 +68,8 @@ public class RemoveActivity extends ActionBarActivity {
  
             public void onClick(View v) {
 
-                String key_selected = "";
-                String date_selected = "";
+                String key_selected;
+                String date_selected;
 
                 Context context = RemoveActivity.this.getApplicationContext(); 
                 int flag=0;
@@ -71,7 +80,7 @@ public class RemoveActivity extends ActionBarActivity {
                 for(int i = 0; i < del_list_adapter.getCount(); i++)
                 {
 
-                		if(del_list_adapter.checkBoxState[i] == true)
+                		if(del_list_adapter.checkBoxState[i])
                 		{
                 			key_selected = "["+lst.list.get(i).id+"]";
                             date_selected = lst.list.get(i).date;
@@ -95,7 +104,7 @@ public class RemoveActivity extends ActionBarActivity {
                 SharedPreferences dtab = context.getSharedPreferences("tabPrefes",0);
                 SharedPreferences.Editor edit = dtab.edit();
                 edit.putInt("default_tab", bundle.getInt("tab", 0));
-                edit.commit();
+                edit.apply();
 
                 Intent myIntent = new Intent(RemoveActivity.this, MainActivity.class );
                 myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 

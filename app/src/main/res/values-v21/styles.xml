@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -17,6 +18,7 @@
         <item name="tutorialHeader">@color/tutorial_header</item>
         <item name="aboutTextColor">@color/about_text_color</item>
         <item name="colorAccent">@color/ColorPrimary</item>
+        <item name="android:navigationBarColor">@color/ColorPrimaryDark</item>
     </style>
 
     <style name="AppThemeDark" parent="Theme.AppCompat.NoActionBar">
@@ -35,21 +37,6 @@
         <item name="tutorialHeader">@color/tutorial_header_dark</item>
         <item name="aboutTextColor">@color/about_text_color_dark</item>
         <item name="colorAccent">@color/ColorPrimary</item>
+        <item name="android:navigationBarColor">@color/black_nav</item>
     </style>
-
-    <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="colorAccent">@color/ColorPrimaryDark</item>
-        <item name="android:textColorPrimary">#000000</item>
-        <item name="android:background">#ffffff</item>
-    </style>
-
-    <style name="customToolbar">
-        <item name="android:textColorPrimary">@color/toolbar_title_text</item>
-        <item name="android:textColorSecondary">@color/toolbar_overflow_icon</item>
-    </style>
-
-    <style name="AppThemeDark.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="AppThemeDark.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
 </resources>

@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="notification_main">Serviciul ruleaza</string>
+    <string name="notification_new">Un contact nou a fost creat</string>
+
     <string name="action_settings">Settings</string>
+
+    <string name="title_activity_permissions">Setare permisiuni…</string>
 
     <string name="label_activity_settings">Setari</string>
     <string name="label_activity_delete">Stergeti</string>
@@ -45,7 +50,7 @@
     <string name="info_location_firstline">Tastati locatia pentru care</string>
     <string name="info_location_secondline">doriti sa vizualizati contactele.</string>
 
-    <string name="button_pick_date">Alegeti data...</string>
+    <string name="button_pick_date">Alegeti data…</string>
     <string name="button_pick_first_date">Data start</string>
     <string name="button_pick_second_date">Data sfarsit</string>
     <string name="button_done">Afiseaza</string>
@@ -91,12 +96,12 @@
     <!-- Strings used in Service Class-->
 
 
-    <string name="service_icon_firstline">Contacts History functioneaza.</string>
-    <string name="service_icon_secondline">"Atingeti pentru a deschide"</string>
+    <string name="service_icon_firstline">Contacts History functioneaza</string>
+    <string name="service_icon_secondline">Atingeti pentru a deschide</string>
 
     <string name="service_icon_contact">Contact adaugat</string>
 
-    <string name="service_no_location">Locatia nu a putut sa fie determinata.</string>
+    <string name="service_no_location">Locatia nu a putut sa fie determinata</string>
     <string name="service_no_connexion">Fara conexiune la internet.</string>
 
 
@@ -115,7 +120,7 @@
             <string name="setting_source_sim_summary">Contactele stocate pe cartela SIM.</string>
 
             <string name="setting_source_other">Alte conturi</string>
-            <string name="setting_source_other_summary">Afiseaza contactele din alte conturi (Google, Facebook, Yahoo, ...)</string>
+            <string name="setting_source_other_summary">Afiseaza contactele din alte conturi (Google, Facebook, Yahoo, …)</string>
 
 
     <string name="setting_write_info">Scrie informatii in contact</string>
@@ -123,6 +128,9 @@
 
     <string name="setting_read_info">Citeste datele la import</string>
     <string name="setting_read_info_summary">La importarea contactelor citeste datele memorate in acestea</string>
+
+    <string name="setting_ui_theme">Modul de noapte</string>
+    <string name="setting_ui_theme_summary"></string>
 
     <string name="setting_ui_type">Interfata compacta</string>
     <string name="setting_ui_type_summary">Nu se afiseaza tab-urile Astazi, Saptamana si Luna in ecranul principal</string>
@@ -142,15 +150,19 @@
     <string name="setting_callinfo">Informatii despre apel</string>
     <string name="setting_callinfo_summary">Arata data si locatia la care a fost memorat contactul care va apeleaza.</string>
 
-    <string name="setting_icon">Afiseaza icon</string>
-    <string name="setting_icon_summary">Afiseaza un icon in bara de notificari atunci cand service-ul Contacts Histry ruleaza</string>
+    <string name="setting_icon">Afiseaza notificare</string>
+    <string name="setting_icon_summary">Afiseaza o notificare atunci cand service-ul Contacts Histry ruleaza.</string>
 
     <string name="setting_icon_contact">Adaugare contact</string>
     <string name="setting_icon_contact_summary">Afiseaza un icon in bara de notificari atunci cand este adaugat un nou contact</string>
 
     <!-- Tutorial text -->
 
-    <string name="tutorial_main">Contacts History va permite sa cautati persoane in agenda dupa data si locul in care le-ati cunoscut.\n\nLuati in considerare ca aceasta aplicatie este experimentala, este posibil sa aiba unele bug-uri :)\n\nAceasta aplicatie functioneaza doar cu contactele create de acum inainte, pentru ca Android nu memoreaza impreuna cu contactele data si locul crearii acestora.</string>
+    <string name="tutorial_welcome">Bun venit la\nContacts History</string>
+
+    <string name="tutorial_accept">Pentru ca aceasta aplicatie sa functioneze corect este necesar:\n\n- Sa acordati toate permisiunile necesare\n- Sa va asigurati ca serviciul pe care se bazeaza asceasta aplicatie nu este blocat de o aplicatie de tip task manager sau de modul economisire energie.</string>
+
+    <string name="tutorial_main">Contacts History va permite sa cutati persoane in agenda dupa data si locul in care le-ati cunoscut.\n\nLuati in considerare ca aceasta aplicatie este experimentala, este posibil sa aiba unele bug-uri :)\n\nAceasta aplicatie functioneaza doar cu contactele create de acum inainte, pentru ca Android nu memoreaza impreuna cu contactele data si locul crearii acestora.</string>
 
     <string name="tutorial_header1">Cum functioneaza ?</string>
     <string name="tutorial_header2">Obtinerea locatiei</string>
@@ -160,33 +172,11 @@
     <string name="tutorial_content1">Adaugati contactele in agenda iar apoi contatcele vor aparea in Contacts History. Aceasta aplicatie se bazeaza pe un serviviu care trebuie sa ruleze in background pentru a detecta noile contacte, iar daca acest serviciu este inchis noile contacte create nu vor fi detectate. Deci, daca utilizati o aplicatie pentru managementul proceselor (Task Manager) va rugam sa adaugati aceasta aplicatie pe lista celor permise sa ruleze in background.\n\nDe asemenea, pentru a functiona corespunzator aplicatia trebuie sa fie instalata in memoria sistem.</string>
     <string name="tutorial_content2">Locatia este obtinuta prin informatiile de la reteaua WiFi sau de la operatorul de telefonie. Localizarea prin GPS nu este disponibila in acest moment.</string>
     <string name="tutorial_content3">Cautarea contactelor dupa data este posibila prin alegerea a doua date intre care vor fi afisate contactele memorate.</string>
-    <string name="tutorial_content4">Cautarea dupa locatie se realizeaza prin tastarea unei parti din adresa cautata in pagina "Locatie". Vor fi afisate toate contactele corespunzatoare locatiei dorite, indiferent de data la care au fost memorate.</string>
+    <string name="tutorial_content4">Cautarea dupa locatie se realizeaza prin tastarea unei parti din adresa cautata in pagina Locatie. Vor fi afisate toate contactele corespunzatoare locatiei dorite, indiferent de data la care au fost memorate.</string>
 
     <string name="tutorial_ok_button">OK, AM INTELES</string>
 
-    <!-- Date Util -->
-	<string name="date_util_term_less">Less than</string>
-	<string name="date_util_term_a">a</string>
-	<string name="date_util_term_an">an</string>
+    <string name="snack_permissions_nok">Trebuie sa acordati toate permisiunile.</string>
 
-	<string name="date_util_unit_second">second</string>
-	<string name="date_util_unit_seconds">seconds</string>
-	<string name="date_util_unit_minute">minute</string>
-	<string name="date_util_unit_minutes">minutes</string>
-	<string name="date_util_unit_hour">hour</string>
-	<string name="date_util_unit_hours">hours</string>
-	<string name="date_util_unit_day">day</string>
-	<string name="date_util_unit_days">days</string>
-	<string name="date_util_unit_month">month</string>
-	<string name="date_util_unit_months">months</string>
-	<string name="date_util_unit_year">year</string>
-	<string name="date_util_unit_years">years</string>
-
-	<string name="date_util_prefix_lt">Less than a</string>
-	<string name="date_util_prefix_about">About</string>
-	<string name="date_util_prefix_over">Over</string>
-	<string name="date_util_prefix_almost">Almost</string>
-
-	<string name="date_util_suffix">ago</string>
-
+    <string name="do_not_show">Nu mai afisa</string>
 </resources>

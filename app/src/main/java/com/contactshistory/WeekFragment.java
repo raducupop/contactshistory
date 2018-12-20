@@ -6,10 +6,10 @@ import java.util.Date;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
@@ -52,15 +52,23 @@ public class WeekFragment extends Fragment {
 
         initializeSearch();
 
-        ImageView image = (ImageView) rootView.findViewById(R.id.statusImage);
-        image.setImageResource(R.drawable.status);
+        ImageView image = rootView.findViewById(R.id.statusImage);
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        boolean dark = prefs.getBoolean("prefDarkUI", false);
+        int img = R.drawable.status;
+        if (dark) {
+            img = R.drawable.status_dark;
+        }
+        image.setImageResource(img);
+
         image.setVisibility(View.GONE);
 
         SharedPreferences sharedPrefs = PreferenceManager
                 .getDefaultSharedPreferences(context);
         SimpleDateFormat display_format = new SimpleDateFormat(sharedPrefs.getString("prefDateFormat","dd MMMM yyyy"));
 
-        final ListView contacte = (ListView) rootView.findViewById(R.id.listView1);
+        final ListView contacte = rootView.findViewById(R.id.listView1);
 
         Date date = Calendar.getInstance().getTime();
 	    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -78,103 +86,108 @@ public class WeekFragment extends Fragment {
 	    date_display_w1 = display_format.format(date1w);
 
 		// Toast.makeText(getApplicationContext(),date_display_w1+" - "+date_display_today, Toast.LENGTH_LONG).show();
-		
-        CustomList contacts_adapter = new  CustomList(getActivity(), lst.getList(data_unu_sapt, data_azi, context));
 
-    	contacte.setAdapter(contacts_adapter);
+        CustomList contacts_adapter = null;
+        try {
+            contacts_adapter = new CustomList(getActivity(), lst.getList(data_unu_sapt, data_azi, context));
+
+            contacte.setAdapter(contacts_adapter);
 
 
-        image.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                CustomList contacts_adapter = new CustomList(getActivity(), lst.getList(data_unu_sapt, data_azi, context));
+            image.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    CustomList contacts_adapter = new CustomList(getActivity(), lst.getList(data_unu_sapt, data_azi, context));
 
-                contacte.setAdapter(contacts_adapter);
+                    contacte.setAdapter(contacts_adapter);
 
-                ImageView img = (ImageView) rootView.findViewById(R.id.statusImage);
-                if (contacts_adapter.getCount()==0)
-                {
-                    img.setVisibility(View.VISIBLE);
+                    ImageView img = rootView.findViewById(R.id.statusImage);
+                    if (contacts_adapter.getCount()==0)
+                    {
+                        img.setVisibility(View.VISIBLE);
+                    }
+                    else
+                        img.setVisibility(View.GONE);
                 }
-                else
-                    img.setVisibility(View.GONE);
-            }
 
-        });
+            });
 
-        final SwipeRefreshLayout swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
-        swipeLayout.setOnRefreshListener( new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                swipeLayout.setRefreshing(true);
-                ListView cnct = (ListView) rootView.findViewById(R.id.listView1);
-                CustomList contacts_adapter = new  CustomList(getActivity(), lst.getList(data_unu_sapt, data_azi, context));
-                cnct.setAdapter(contacts_adapter);
-                ImageView img = (ImageView) rootView.findViewById(R.id.statusImage);
-                if (contacts_adapter.getCount()==0)
-                {
-                    img.setVisibility(View.VISIBLE);
+            final SwipeRefreshLayout swipeLayout = rootView.findViewById(R.id.swipe_container);
+            swipeLayout.setOnRefreshListener( new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    swipeLayout.setRefreshing(true);
+                    ListView cnct = rootView.findViewById(R.id.listView1);
+                    CustomList contacts_adapter = new  CustomList(getActivity(), lst.getList(data_unu_sapt, data_azi, context));
+                    cnct.setAdapter(contacts_adapter);
+                    ImageView img = rootView.findViewById(R.id.statusImage);
+                    if (contacts_adapter.getCount()==0)
+                    {
+                        img.setVisibility(View.VISIBLE);
+                    }
+                    else
+                        img.setVisibility(View.GONE);
+                    swipeLayout.setRefreshing(false);
                 }
-                else
-                    img.setVisibility(View.GONE);
-                swipeLayout.setRefreshing(false);
-            }
-        });
+            });
 
-        swipeLayout.setColorScheme(android.R.color.holo_green_dark,
-                android.R.color.holo_red_dark,
-                android.R.color.holo_blue_dark,
-                android.R.color.holo_orange_dark);
+            swipeLayout.setColorScheme(android.R.color.holo_green_dark,
+                    android.R.color.holo_red_dark,
+                    android.R.color.holo_blue_dark,
+                    android.R.color.holo_orange_dark);
 
-        contacte.setOnItemClickListener (new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> aView, View v, int position, long id) {
+            contacte.setOnItemClickListener (new AdapterView.OnItemClickListener() {
+                public void onItemClick(AdapterView<?> aView, View v, int position, long id) {
 
-                int contact_found = 0;
-                String rawid_from_list = lst.list.get(position).id;
-                String found_lookup = "";
-                Cursor contcats_cursor = context.getContentResolver().query(ContactsContract.Data.CONTENT_URI, null, null, null, null);
-                if (contcats_cursor.getCount() > 0)
-                {
-                    contcats_cursor.moveToFirst();
-                    do {
-                        String idraw = contcats_cursor.getString(contcats_cursor.getColumnIndex(ContactsContract.Data.RAW_CONTACT_ID));
-                        String idlookup = contcats_cursor.getString(contcats_cursor.getColumnIndex(ContactsContract.Data.LOOKUP_KEY));
+                    int contact_found = 0;
+                    String rawid_from_list = lst.list.get(position).id;
+                    String found_lookup = "";
+                    Cursor contcats_cursor = context.getContentResolver().query(ContactsContract.Data.CONTENT_URI, null, null, null, null);
+                    if (contcats_cursor.getCount() > 0)
+                    {
+                        contcats_cursor.moveToFirst();
+                        do {
+                            String idraw = contcats_cursor.getString(contcats_cursor.getColumnIndex(ContactsContract.Data.RAW_CONTACT_ID));
+                            String idlookup = contcats_cursor.getString(contcats_cursor.getColumnIndex(ContactsContract.Data.LOOKUP_KEY));
 
 
-                        if (idraw.contentEquals(rawid_from_list))
-                        {
-                            found_lookup = idlookup;
-                            contact_found = 1;
-                            //Toast.makeText(getApplicationContext(), "gasit. ", Toast.LENGTH_LONG).show();
+                            if (idraw.contentEquals(rawid_from_list))
+                            {
+                                found_lookup = idlookup;
+                                contact_found = 1;
+                                //Toast.makeText(getApplicationContext(), "gasit. ", Toast.LENGTH_LONG).show();
+                            }
+
+                        } while (contcats_cursor.moveToNext());
+                        try {
+                            contcats_cursor.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
+                    }
 
-                    } while (contcats_cursor.moveToNext());
+
                     try {
-                        contcats_cursor.close();
+                        if (contact_found == 1)
+                        {
+                            Uri lookup = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_LOOKUP_URI, found_lookup);
+                            Intent intent = new Intent(Intent.ACTION_VIEW);
+                            intent.setData(lookup);
+                            WeekFragment.this.startActivity(intent);
+                        }
+                        else Toast.makeText(context, getResources().getString(R.string.err_no_info), Toast.LENGTH_LONG).show();
+
+
                     } catch (Exception e) {
                         e.printStackTrace();
+                        Toast.makeText(context, getResources().getString(R.string.err_no_info), Toast.LENGTH_LONG).show();
+
                     }
-                }
-
-
-                try {
-                    if (contact_found == 1)
-                    {
-                        Uri lookup = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_LOOKUP_URI, found_lookup);
-                        Intent intent = new Intent(Intent.ACTION_VIEW);
-                        intent.setData(lookup);
-                        WeekFragment.this.startActivity(intent);
-                    }
-                    else Toast.makeText(context, getResources().getString(R.string.err_no_info), Toast.LENGTH_LONG).show();
-
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Toast.makeText(context, getResources().getString(R.string.err_no_info), Toast.LENGTH_LONG).show();
 
                 }
-
-            }
-        });
+            });
+        } catch (Resources.NotFoundException e) {
+            e.printStackTrace();
+        }
 
 
         if (contacts_adapter.getCount()==0)
@@ -184,7 +197,7 @@ public class WeekFragment extends Fragment {
         else
             image.setVisibility(View.GONE);
 	    
-        EditText search_string = (EditText) rootView.findViewById(R.id.search_string);
+        EditText search_string = rootView.findViewById(R.id.search_string);
 	    search_string.addTextChangedListener(new TextWatcher(){
 
 			@Override
@@ -222,7 +235,7 @@ public class WeekFragment extends Fragment {
 	
 	public boolean onOptionsItemSelected(MenuItem item) {
 		
-		  ListView contacte = (ListView) rootView.findViewById(R.id.listView1);
+		  ListView contacte = rootView.findViewById(R.id.listView1);
 
 		  switch (item.getItemId()) {
 		  
@@ -308,7 +321,7 @@ public class WeekFragment extends Fragment {
  public void initializeSearch(){
 	this.hideSearch();
 	
-	Button search_close_button = (Button) rootView.findViewById(R.id.search_close_button);
+	Button search_close_button = rootView.findViewById(R.id.search_close_button);
 	search_close_button.setOnClickListener(new View.OnClickListener() {   	
         public void onClick(View v) {	    
         	hideSearch(); 
@@ -319,19 +332,19 @@ public class WeekFragment extends Fragment {
 	
 	public void showSearch(){
 	 
-		LinearLayout search_layout = (LinearLayout) rootView.findViewById(R.id.search_layout);
+		LinearLayout search_layout = rootView.findViewById(R.id.search_layout);
 		search_layout.setVisibility(View.VISIBLE);
 		SearchUsedFlag = 1;
  }
 	
 	public void hideSearch(){
 		 
-		LinearLayout search_layout = (LinearLayout) rootView.findViewById(R.id.search_layout);
+		LinearLayout search_layout = rootView.findViewById(R.id.search_layout);
 		search_layout.setVisibility(View.GONE);
 		
 		if (SearchUsedFlag!=0)
 		{
-		     ListView contacte = (ListView) rootView.findViewById(R.id.listView1);
+		     ListView contacte = rootView.findViewById(R.id.listView1);
 		     CustomList reset = new CustomList(getActivity(), lst.resetSearch(lst.list));
 		     contacte.setAdapter(reset);
 
@@ -342,12 +355,12 @@ public class WeekFragment extends Fragment {
 	public void performSearch(){
 		 
 		
-		EditText search_string = (EditText) rootView.findViewById(R.id.search_string);
-		ListView contacte = (ListView) rootView.findViewById(R.id.listView1);
+		EditText search_string = rootView.findViewById(R.id.search_string);
+		ListView contacte = rootView.findViewById(R.id.listView1);
 		String query = search_string.getText().toString().toLowerCase();
 		CustomList results_adapter = new CustomList(getActivity(), lst.searchList(lst.list, query));
         contacte.setAdapter(results_adapter);
-        ImageView image = (ImageView) rootView.findViewById(R.id.statusImage);
+        ImageView image = rootView.findViewById(R.id.statusImage);
         if (results_adapter.getCount()==0)
         {
             image.setVisibility(View.VISIBLE);
@@ -356,7 +369,6 @@ public class WeekFragment extends Fragment {
             image.setVisibility(View.GONE);
 
  }
-	
-	
+
 	
 }
