@@ -87,11 +87,6 @@
     <PreferenceCategory android:title="@string/setting_category_notifications"
                         android:layout="@layout/pref_category_layout">
 
-        <SwitchPreference
-            android:key="prefDisplayCallInfo"
-            android:summary="@string/setting_callinfo_summary"
-            android:title="@string/setting_callinfo"
-            android:defaultValue="true"/>
 
         <SwitchPreference
             android:key="prefDisplayIconContact"

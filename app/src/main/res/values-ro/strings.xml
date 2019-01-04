@@ -6,8 +6,6 @@
 
     <string name="action_settings">Settings</string>
 
-    <string name="title_activity_permissions">Setare permisiuni…</string>
-
     <string name="label_activity_settings">Setari</string>
     <string name="label_activity_delete">Stergeti</string>
     <string name="label_activity_tutorial">Tutorial</string>
@@ -146,9 +144,6 @@
 
     <string name="setting_defaultsort">Sortare implicita</string>
     <string name="setting_defaultsort_summary">Alegeti modul in care va fi sortata lista</string>
-
-    <string name="setting_callinfo">Informatii despre apel</string>
-    <string name="setting_callinfo_summary">Arata data si locatia la care a fost memorat contactul care va apeleaza.</string>
 
     <string name="setting_icon">Afiseaza notificare</string>
     <string name="setting_icon_summary">Afiseaza o notificare atunci cand service-ul Contacts Histry ruleaza.</string>

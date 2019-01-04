@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name" translatable="false">Contacts History</string>
-    <string name="app_version" translatable="false">v1.0.2</string>
+    <string name="app_version" translatable="false">v1.0.3</string>
     <string name="app_cr_text" translatable="false">© 2018 POP SOFTWARE</string>
 
     <string name="notification_main">Service is running</string>
@@ -145,11 +145,6 @@
 
     <string name="setting_defaultsort">Default sorting</string>
     <string name="setting_defaultsort_summary">Choose the way contacts are sorted</string>
-
-
-    <string name="setting_callinfo">Info about incoming call</string>
-    <string name="setting_callinfo_summary">Show date and location info about incoming call contact.</string>
-
 
     <string name="setting_icon">Show notification</string>
     <string name="setting_icon_summary">Show notification when app service is running. This may help the service to keep running.</string>

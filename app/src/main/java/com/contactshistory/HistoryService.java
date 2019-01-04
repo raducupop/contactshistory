@@ -56,7 +56,6 @@ public class HistoryService extends Service {
     String info = null;
     Boolean locationFound = false;
     TelephonyManager tm;
-    CallNumberReceiver numberReceiver = new CallNumberReceiver();
 
     int exit = 0;
     int edit = 1;
@@ -107,8 +106,6 @@ public class HistoryService extends Service {
             toggleIcon();
 
             tm = (TelephonyManager) this.getSystemService(Context.TELEPHONY_SERVICE);
-
-            tm.listen(numberReceiver, PhoneStateListener.LISTEN_CALL_STATE);
 
             final DBAdapter db = new DBAdapter(this);
 
@@ -716,7 +713,6 @@ public class HistoryService extends Service {
         toggleIcon();
         exit =0;
 
-        tm.listen(numberReceiver, PhoneStateListener.LISTEN_NONE);
 
         observer.close();
 

@@ -210,14 +210,11 @@ public class MainActivity extends AppCompatActivity {
 //
 //        }
 
-
-
         SharedPreferences.Editor edit = deftab.edit();
         edit.putInt("default_tab", 0);
         edit.apply();
 
     }
-
 
     private void checkPermission() {
         if (    ContextCompat.checkSelfPermission(MainActivity.getAppContext(), Manifest.permission.GET_ACCOUNTS) == PackageManager.PERMISSION_GRANTED &&
@@ -225,8 +222,8 @@ public class MainActivity extends AppCompatActivity {
                 ContextCompat.checkSelfPermission(MainActivity.getAppContext(), Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED &&
                 ContextCompat.checkSelfPermission(MainActivity.getAppContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
                 ContextCompat.checkSelfPermission(MainActivity.getAppContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
-                ContextCompat.checkSelfPermission(MainActivity.getAppContext(), Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED &&
-                ContextCompat.checkSelfPermission(MainActivity.getAppContext(), Manifest.permission.READ_CALL_LOG) == PackageManager.PERMISSION_GRANTED)
+                ContextCompat.checkSelfPermission(MainActivity.getAppContext(), Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED)
+
            {
 
                checkLocationEnabled();
@@ -251,8 +248,7 @@ public class MainActivity extends AppCompatActivity {
                             Manifest.permission.READ_CONTACTS,
                             Manifest.permission.ACCESS_COARSE_LOCATION,
                             Manifest.permission.ACCESS_FINE_LOCATION,
-                            Manifest.permission.READ_PHONE_STATE,
-                            Manifest.permission.READ_CALL_LOG
+                            Manifest.permission.READ_PHONE_STATE
                               },
                     1000);
                   }
@@ -517,7 +513,6 @@ public class MainActivity extends AppCompatActivity {
                         && grantResults[3] == PackageManager.PERMISSION_GRANTED
                         && grantResults[4] == PackageManager.PERMISSION_GRANTED
                         && grantResults[5] == PackageManager.PERMISSION_GRANTED
-                        && grantResults[6] == PackageManager.PERMISSION_GRANTED
                         ) {
 
                     checkLocationEnabled();
