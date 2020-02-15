@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/pref"
+        android:title="@string/menu_settings"
+        android:enabled="true"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_action_settings" />
+   
+    
+    <item android:id="@+id/help"
+		  android:title="@string/menu_help"
+		  android:enabled="true"
+		  android:icon="@drawable/ic_action_help" >
+
+
+        <menu>
+
+            <item android:id="@+id/help_tutorial"
+                android:title="@string/menu_help_tutorial"
+                android:enabled="true" />
+
+            <item android:id="@+id/help_about"
+                android:title="@string/menu_help_about"
+                android:enabled="true" />
+
+        </menu>
+
+
+    </item>
+    
+</menu>

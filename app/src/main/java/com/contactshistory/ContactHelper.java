@@ -19,8 +19,6 @@ public class ContactHelper implements Parcelable {
 	String location ;
 	String address;
 
-
-
 	public ContactHelper(){
 		id = null;
 		name = null;
@@ -38,7 +36,6 @@ public class ContactHelper implements Parcelable {
 		address = a;
 			
 	}
-
 
    String toText(){
 

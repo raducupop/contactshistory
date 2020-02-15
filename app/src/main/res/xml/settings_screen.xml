@@ -92,7 +92,7 @@
             android:key="prefDisplayIconContact"
             android:summary="@string/setting_icon_contact_summary"
             android:title="@string/setting_icon_contact"
-            android:defaultValue="true"/>
+            android:defaultValue="false"/>
 
         <SwitchPreference
             android:key="prefDisplayIcon"

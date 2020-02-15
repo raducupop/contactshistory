@@ -239,13 +239,13 @@ public class LocationFragment extends Fragment {
                     int contact_found = 0;
                     String rawid_from_list = lst.list.get(position).id;
                     String found_lookup = "";
-                    Cursor contcats_cursor = context.getContentResolver().query(ContactsContract.Data.CONTENT_URI, null, null, null, null);
-                    if (contcats_cursor.getCount() > 0)
+                    Cursor contacts_cursor = context.getContentResolver().query(ContactsContract.Data.CONTENT_URI, null, null, null, null);
+                    if (contacts_cursor.getCount() > 0)
                     {
-                        contcats_cursor.moveToFirst();
+                        contacts_cursor.moveToFirst();
                         do {
-                            String idraw = contcats_cursor.getString(contcats_cursor.getColumnIndex(ContactsContract.Data.RAW_CONTACT_ID));
-                            String idlookup = contcats_cursor.getString(contcats_cursor.getColumnIndex(ContactsContract.Data.LOOKUP_KEY));
+                            String idraw = contacts_cursor.getString(contacts_cursor.getColumnIndex(ContactsContract.Data.RAW_CONTACT_ID));
+                            String idlookup = contacts_cursor.getString(contacts_cursor.getColumnIndex(ContactsContract.Data.LOOKUP_KEY));
 
 
                             if (idraw.contentEquals(rawid_from_list))
@@ -255,8 +255,8 @@ public class LocationFragment extends Fragment {
                                 //Toast.makeText(getApplicationContext(), "gasit. ", Toast.LENGTH_LONG).show();
                             }
 
-                        } while (contcats_cursor.moveToNext());
-                       contcats_cursor.close();
+                        } while (contacts_cursor.moveToNext());
+                       contacts_cursor.close();
                     }
 
 

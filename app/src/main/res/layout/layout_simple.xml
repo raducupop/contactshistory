@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="?attr/background">
+
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/swipe_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/listView_simple"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:clickable="true"
+            android:divider="?attr/listDivider"
+            android:dividerHeight="2px"
+            android:drawSelectorOnTop="false"
+            android:longClickable="false"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:smoothScrollbar="true"
+            android:layout_weight="1"
+            android:choiceMode="singleChoice"
+            android:layerType="hardware"
+            android:scrollingCache="false"
+            android:animationCache="false"
+            android:paddingTop="5dp">
+
+        </ListView>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</LinearLayout>

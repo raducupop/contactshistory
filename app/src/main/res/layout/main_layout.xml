@@ -64,6 +64,9 @@
                     android:smoothScrollbar="true"
                     android:layout_weight="1"
                     android:choiceMode="singleChoice"
+                    android:layerType="hardware"
+                    android:scrollingCache="false"
+                    android:animationCache="false"
                     android:paddingTop="5dp">
 
                 </ListView>

@@ -32,13 +32,16 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         if (compact_ui){
 
             switch (position) {
+
                 case 0:
-                    return new RecentFragment();
+                    return new AllFragment();
                 case 1:
-                    return new DateFragment();
+                    return new RecentFragment();
                 case 2:
-                    return new DateTFragment();
+                    return new DateFragment();
                 case 3:
+                    return new DateTFragment();
+                case 4:
                     return new LocationFragment();
 
             }
@@ -49,18 +52,20 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
             switch (position) {
                 case 0:
-                    return new RecentFragment();
+                    return new AllFragment();
                 case 1:
-                    return new TodayFragment();
+                    return new RecentFragment();
                 case 2:
-                    return new WeekFragment();
+                    return new TodayFragment();
                 case 3:
-                    return new MonthFragment();
+                    return new WeekFragment();
                 case 4:
-                    return new DateFragment();
+                    return new MonthFragment();
                 case 5:
-                    return new DateTFragment();
+                    return new DateFragment();
                 case 6:
+                    return new DateTFragment();
+                case 7:
                     return new LocationFragment();
             }
         }

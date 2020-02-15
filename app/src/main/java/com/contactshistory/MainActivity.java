@@ -28,13 +28,11 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,11 +44,8 @@ public class MainActivity extends AppCompatActivity {
     ViewPagerAdapter adapter;
     SlidingTabLayout tabs;
 
-    int numberOfTabs = 7;
-    int numberOfTabs_compact = 4;
-
-    int st = 0;
-    String nr = "0";
+    int numberOfTabs = 8;
+    int numberOfTabs_compact = 5;
 
     boolean compact_ui = true;
 
@@ -73,7 +68,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        String [] titles = { getResources().getString(R.string.tab_recent),
+        String [] titles = { getResources().getString(R.string.tab_all),
+                getResources().getString(R.string.tab_recent),
                 getResources().getString(R.string.tab_today),
                 getResources().getString(R.string.tab_week),
                 getResources().getString(R.string.tab_month),
@@ -81,7 +77,8 @@ public class MainActivity extends AppCompatActivity {
                 getResources().getString(R.string.tab_twodates),
                 getResources().getString(R.string.tab_location)  };
 
-        String [] titles_compact = { getResources().getString(R.string.tab_recent),
+        String [] titles_compact = { getResources().getString(R.string.tab_all),
+                getResources().getString(R.string.tab_recent),
                 getResources().getString(R.string.tab_date),
                 getResources().getString(R.string.tab_twodates),
                 getResources().getString(R.string.tab_location)  };
@@ -130,7 +127,6 @@ public class MainActivity extends AppCompatActivity {
         deftab = context.getSharedPreferences("tabPrefes",0);
 
 
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
                 // api >= M so must check for permissions
@@ -144,9 +140,7 @@ public class MainActivity extends AppCompatActivity {
                 this.startService(startServiceIntent);
                 permission_ok = true;
 
-
                 }
-
 
          // close if this activity it is started at device boot:
 
@@ -169,11 +163,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
         if(getFirstRun()){
 
-            // se executa o singura data, la prima rulare a aplicatiei
+            // Run only one time, at 1st start of the app.
 
             //Toast.makeText(getApplicationContext(), "Este prima data cand este deschisa aplicatia.", Toast.LENGTH_LONG).show();
 
@@ -188,7 +180,6 @@ public class MainActivity extends AppCompatActivity {
 
             setNotFirst();
         }
-
 
 //
 //        if (ContextCompat.checkSelfPermission(MainActivity.getAppContext(),
@@ -213,7 +204,6 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor edit = deftab.edit();
         edit.putInt("default_tab", 0);
         edit.apply();
-
     }
 
     private void checkPermission() {
@@ -226,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
 
            {
 
-               checkLocationEnabled();
+               // checkLocationEnabled();    DO NOT CHECK IF LOCATION IS ENABLED, AT APP STARTUP
 
                checkNetworkEnabled();
 
@@ -249,7 +239,9 @@ public class MainActivity extends AppCompatActivity {
                             Manifest.permission.ACCESS_COARSE_LOCATION,
                             Manifest.permission.ACCESS_FINE_LOCATION,
                             Manifest.permission.READ_PHONE_STATE
+
                               },
+
                     1000);
                   }
 
@@ -515,14 +507,41 @@ public class MainActivity extends AppCompatActivity {
                         && grantResults[5] == PackageManager.PERMISSION_GRANTED
                         ) {
 
-                    checkLocationEnabled();
+                    // checkLocationEnabled();
                     checkNetworkEnabled();
                     checkInstall();
 
                     Intent startServiceIntent = new Intent(this, HistoryService.class);
                     this.startService(startServiceIntent);
 
+
+                    // Assigning ViewPager View and setting the adapter
+                    pager = findViewById(R.id.pager);
+                    pager.setAdapter(adapter);
+
+                    // Assiging the Sliding Tab Layout View
+                    tabs = findViewById(R.id.tabs);
+                    tabs.setDistributeEvenly(false); // To make the Tabs Fixed set this true, This makes the tabs Space Evenly in Available width
+
+                    // Setting Custom Color for the Scroll bar indicator of the Tab View
+                    tabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
+                        @Override
+                        public int getIndicatorColor(int position) {
+                            return getResources().getColor(R.color.tabsScrollColor);
+                        }
+                    });
+
+                    // Setting the ViewPager For the SlidingTabsLayout
+                    tabs.setViewPager(pager);
+
+
+
+
+
+
                     permission_ok = true;
+
+
 
                     //Toast.makeText(getAppContext(), "Permissions granted.", Toast.LENGTH_SHORT).show();
 

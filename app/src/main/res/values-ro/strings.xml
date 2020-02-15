@@ -13,6 +13,7 @@
 
     <!-- Strings used in UI - Tab names, Dialogues, ... -->
 
+    <string name="tab_all">Toate</string>
     <string name="tab_recent">Recent</string>
     <string name="tab_today">Astazi</string>
     <string name="tab_week">Saptamana aceasta</string>

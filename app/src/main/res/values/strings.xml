@@ -2,8 +2,8 @@
 <resources>
 
     <string name="app_name" translatable="false">Contacts History</string>
-    <string name="app_version" translatable="false">v1.0.3</string>
-    <string name="app_cr_text" translatable="false">© 2018 POP SOFTWARE</string>
+    <string name="app_version" translatable="false">v1.0.4</string>
+    <string name="app_cr_text" translatable="false">2020 Pop Radu</string>
 
     <string name="notification_main">Service is running</string>
     <string name="notification_new">New contact created</string>
@@ -17,6 +17,7 @@
 
     <!-- Strings used in UI - Tab names, Dialogues, ... -->
 
+    <string name="tab_all">All</string>
     <string name="tab_recent">Recent</string>
     <string name="tab_today">Today</string>
     <string name="tab_week">This week</string>
