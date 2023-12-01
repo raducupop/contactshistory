@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+      
+  <string name="notification_main">O serviço está em execução</string>
+      
+  <string name="notification_new">Um novo contato foi criado</string>
+      
+  <string name="action_settings">Configurações</string>
+      
+  <string name="label_activity_settings">Configurações</string>
+      
+  <string name="label_activity_delete">Excluir</string>
+      
+  <string name="label_activity_tutorial">Tutorial</string>
+      
+  <string name="label_activity_about">Sobre</string>
+      
+  <!-- Strings used in UI - Tab names, Dialogues, ... -->
+      
+  <string name="tab_all">Todos</string>
+      
+  <string name="tab_recent">Recente</string>
+      
+  <string name="tab_today">Hoje</string>
+      
+  <string name="tab_week">Essa semana</string>
+      
+  <string name="tab_month">Este mês</string>
+      
+  <string name="tab_date">Data</string>
+      
+  <string name="tab_twodates">Duas datas</string>
+      
+  <string name="tab_location">Localização</string>
+      
+  <string name="warning_install_title">O aplicativo deve estar instalado na memória do sistema</string>
+      
+  <string name="warning_install_text">Altere o local nas configurações do sistema do aplicativo e reabra o aplicativo.</string>
+      
+  <string name="warning_install_positive_btn">Modifique agora</string>
+      
+  <string name="warning_install_neutral_btn">Mais tarde</string>
+      
+  <string name="warning_location_title">Não é permitido acesso ao local</string>
+      
+  <string name="warning_location_text">Altere a configuração para permitir que o aplicativo determine sua localização.</string>
+      
+  <string name="warning_location_positive_btn">Modifique agora</string>
+      
+  <string name="warning_location_neutral_btn">Mais tarde</string>
+      
+  <string name="warning_conn_title">Sem conexão com a Internet</string>
+      
+  <string name="warning_conn_text">A localização não pode ser determinada. Conecte-se à Internet, via WiFi ou dados móveis.</string>
+      
+  <string name="warning_conn_positive_btn">Wi-fi</string>
+      
+  <string name="warning_conn_negative_btn">Dados móveis</string>
+      
+  <string name="warning_conn_neutral_btn">Mais tarde</string>
+      
+  <string name="info_date_firstline">Escolha a data desejada</string>
+      
+  <string name="info_date_secondline">para ver a lista de contatos</string>
+      
+  <string name="info_two_dates_firstline">Escolha duas datas entre as quais você deseja</string>
+      
+  <string name="info_two_dates_secondline">para ver a lista de contatos</string>
+      
+  <string name="info_location_firstline">Digite o local para o qual</string>
+      
+  <string name="info_location_secondline">você deseja ver os contatos.</string>
+      
+  <string name="button_pick_date">Escolha a data...</string>
+      
+  <string name="button_pick_first_date">Data de início</string>
+      
+  <string name="button_pick_second_date">Data final</string>
+      
+  <string name="button_done">Mostrar</string>
+      
+  <string name="title_pick_date">Escolher data</string>
+      
+  <string name="button_close_search">Fechar</string>
+      
+  <string name="rem_close">Fechar</string>
+      
+  <string name="rem_delete">Excluir</string>
+      
+  <string name="rem_select_all">Selecionar tudo</string>
+      
+  <string name="rem_info">Os contatos foram excluídos do Histórico de Contatos. Eles não foram excluídos da lista telefônica.</string>
+      
+  <string name="err_no_info">Este contato não existe</string>
+      
+  <string name="location_hint">Procure um local</string>
+      
+  <string name="search_hint">Pesquise por nome, data ou local</string>
+      
+  <!-- Strings used in Menus-->
+      
+  <string name="menu_sort">Organizar</string>
+              
+  <string name="menu_sort_by_name">Por nome</string>
+              
+  <string name="menu_sort_by_date">Por data</string>
+              
+  <string name="menu_sort_by_location">Por localização</string>
+      
+  <string name="menu_display">Mostrar</string>
+              
+  <string name="menu_display_withlocation">Somente contatos com localização</string>
+              
+  <string name="menu_display_all">Todos os contatos</string>
+      
+  <string name="menu_search">Procurar</string>
+      
+  <string name="menu_delete">Excluir</string>
+      
+  <string name="menu_settings">Configurações</string>
+      
+  <string name="menu_help">Ajuda</string>
+      
+  <string name="menu_help_tutorial">Tutorial</string>
+      
+  <string name="menu_help_about">Sobre</string>
+      
+  <!-- Strings used in ContactHelper and GetListHelper Classes-->
+      
+  <string name="str_info_getbothdates">Escolha as duas datas!</string>
+      
+  <string name="helper_nolocation">Sem localização</string>
+      
+  <!-- Strings used in Service Class-->
+      
+  <string name="service_icon_firstline">O histórico de contatos está funcionando</string>
+      
+  <string name="service_icon_secondline">Toque para abrir</string>
+      
+  <string name="service_icon_contact">Contato adicionado</string>
+      
+  <string name="service_no_location">O local não pôde ser determinado</string>
+      
+  <string name="service_no_connexion">Sem conexão com a internet</string>
+
+  <!-- Strings used in Setting Activityes -->
+      
+  <string name="setting_category_display">Configurações do visor</string>
+      
+  <string name="setting_category_contacts">Contatos</string>
+      
+  <string name="setting_category_notifications">Notificações</string>
+              
+  <string name="setting_source_internal">Memória interna</string>
+              
+  <string name="setting_source_internal_summary">Contatos armazenados na memória interna do dispositivo.</string>
+              
+  <string name="setting_source_sim">SIM</string>
+              
+  <string name="setting_source_sim_summary">Contatos armazenados no cartão SIM.</string>
+              
+  <string name="setting_source_other">Outras contas</string>
+              
+  <string name="setting_source_other_summary">Mostrar contatos de outras contas (Google, Facebook, Yahoo, ...)</string>
+      
+  <string name="setting_write_info">Escreva informações de contato</string>
+      
+  <string name="setting_write_info_summary">Escreva a data e o local no campo Notas do contato, para reutilização durante a importação/exportação</string>
+      
+  <string name="setting_read_info">Leia os dados de importação</string>
+      
+  <string name="setting_read_info_summary">Ao importar contatos, leia os dados armazenados neles</string>
+      
+  <string name="setting_ui_theme">Modo escuro</string>
+      
+  <string name="setting_ui_theme_summary"/>
+      
+  <string name="setting_ui_type">Interface compacta</string>
+      
+  <string name="setting_ui_type_summary">As guias Hoje, Semana e Mês não são exibidas na tela principal</string>
+      
+  <string name="setting_displaydate">O formato da data</string>
+      
+  <string name="setting_displaydate_summary">Defina a forma como a data será exibida.</string>
+      
+  <string name="setting_displaytime">Formato de hora</string>
+      
+  <string name="setting_displaytime_summary">Defina a forma como a hora será exibida</string>
+      
+  <string name="setting_recentnumber">Contatos recentes</string>
+      
+  <string name="setting_recentnumber_summary">Escolha o número de contatos a serem exibidos na guia Recentes</string>
+      
+  <string name="setting_defaultsort">Classificação padrão</string>
+      
+  <string name="setting_defaultsort_summary">Escolha a forma como a lista será classificada</string>
+      
+  <string name="setting_icon">Mostrar notificação</string>
+      
+  <string name="setting_icon_summary">Exibe uma notificação quando o serviço Histórico de contatos está em execução.</string>
+      
+  <string name="setting_icon_contact">Adicionar contato</string>
+      
+  <string name="setting_icon_contact_summary">Exibe um ícone na barra de notificação quando um novo contato é adicionado</string>
+      
+  <!-- Tutorial text -->
+      
+  <string name="tutorial_welcome">Bem-vindo à\nHistórico de contatos</string>
+      
+  <string name="tutorial_accept">Para que esta aplicação funcione corretamente é necessário:\n\n- Conceda todas as permissões necessárias\n- Certifique-se de que o serviço no qual este aplicativo se baseia não esteja bloqueado por um aplicativo gerenciador de tarefas ou modo de economia de energia.</string>
+      
+  <string name="tutorial_main">O Histórico de Contatos permite que você pesquise pessoas no catálogo de endereços pela data e local onde as conheceu.\n\nObserve que este aplicativo é experimental, pode conter alguns bugs :)\n\nEste aplicativo só funciona com os contatos criados a partir de agora, pois o Android não lembra junto com os contatos a data e local de sua criação.</string>
+      
+  <string name="tutorial_header1">Como funciona?</string>
+      
+  <string name="tutorial_header2">Obtendo a localização</string>
+      
+  <string name="tutorial_header3">Pesquisar por data</string>
+      
+  <string name="tutorial_header4">Pesquise por localização</string>
+      
+  <string name="tutorial_content1">Adicione os contatos ao catálogo de endereços e eles aparecerão no Histórico de Contatos. Esta aplicação baseia-se num serviço que deve ser executado em segundo plano para detectar novos contactos, e se este serviço for fechado os novos contactos criados não serão detectados. Portanto, se você utiliza um aplicativo para gerenciamento de processos (Gerenciador de Tarefas), adicione este aplicativo à lista daqueles que podem ser executados em segundo plano.\n\nAlém disso, para funcionar corretamente, o aplicativo deve estar instalado na memória do sistema.</string>
+      
+  <string name="tutorial_content2">A localização é obtida através das informações da rede WiFi ou da operadora de telefonia. A localização GPS não está disponível neste momento.</string>
+      
+  <string name="tutorial_content3">A busca de contatos por data é possível escolhendo duas datas entre as quais serão exibidos os contatos salvos.</string>
+      
+  <string name="tutorial_content4">A busca por localização é feita digitando uma parte do endereço pesquisado na página Localização. Serão exibidos todos os contatos correspondentes ao local desejado, independente da data em que foram salvos.</string>
+      
+  <string name="tutorial_ok_button">OK, ENTENDI</string>
+      
+  <string name="snack_permissions_nok">Você deve conceder todas as permissões.</string>
+      
+  <string name="do_not_show">Não mostre mais</string>
+  
+</resources>

@@ -10,9 +10,6 @@ public class BootOkBroadcastReceiver extends BroadcastReceiver {
 	 @Override
 	    public void onReceive(Context context, Intent intent) {
 
-	 	//Intent startServiceIntent = new Intent(context, HistoryService.class);
-	 	//context.startService(startServiceIntent);
-
 		 Intent i = new Intent(context, MainActivity.class);
 
 		 boolean startFromService = true;

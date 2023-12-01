@@ -1,10 +1,6 @@
 package com.contactshistory;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -12,6 +8,12 @@ import android.database.SQLException;
 import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
 import android.util.Log;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 
 public class GetListHelper {
 
@@ -30,7 +32,8 @@ public class GetListHelper {
 	}
 	
 	
-	public ArrayList<String> getList(String d1, String d2, Context context)
+	@SuppressLint("Range")
+    public ArrayList<String> getList(String d1, String d2, Context context)
 	{
 
         ArrayList<String> lista_contacte = null;
@@ -245,7 +248,8 @@ public class GetListHelper {
 	}
 	
 
-	ArrayList<String> getRecent(int n, Context context)
+	@SuppressLint("Range")
+    ArrayList<String> getRecent(int n, Context context)
 	{
 
         ArrayList<String> lista_recente = null;
@@ -431,6 +435,7 @@ public class GetListHelper {
 	}
 
 
+    @SuppressLint("Range")
     ArrayList<String> getByLocation(String location, Context context)
     {
         ArrayList<String> lista_contacte = null;

@@ -2,15 +2,6 @@ package com.contactshistory;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.graphics.Color;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.Build;
-import android.provider.Settings;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -18,14 +9,15 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Build;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -34,15 +26,26 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
 public class MainActivity extends AppCompatActivity {
 
     SharedPreferences firstrun, deftab;
     public static Context appcontext;
 
     Toolbar toolbar;
-    ViewPager pager;
+
+    androidx.viewpager.widget.ViewPager pager;
     ViewPagerAdapter adapter;
-    SlidingTabLayout tabs;
+
+
 
     int numberOfTabs = 8;
     int numberOfTabs_compact = 5;
@@ -101,11 +104,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         // Assigning ViewPager View and setting the adapter
-        pager = findViewById(R.id.pager);
+        pager = findViewById(R.id.pager_);
         pager.setAdapter(adapter);
 
         // Assiging the Sliding Tab Layout View
-        tabs = findViewById(R.id.tabs);
+        SlidingTabLayout tabs = findViewById(R.id.tabs);
         tabs.setDistributeEvenly(false); // To make the Tabs Fixed set this true, This makes the tabs Space Evenly in Available width
 
         // Setting Custom Color for the Scroll bar indicator of the Tab View
@@ -117,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Setting the ViewPager For the SlidingTabsLayout
+
         tabs.setViewPager(pager);
 
         appcontext = getApplicationContext();
@@ -323,8 +327,7 @@ public class MainActivity extends AppCompatActivity {
 
             SharedPreferences settings = getSharedPreferences("location_dialog_do_not_show", 0);
             Boolean skip = settings.getBoolean("skipLocationDialog", false);
-            if (!skip)
-            location_err.show();
+            if (!skip) location_err.show();
 
         }
     }
@@ -398,8 +401,7 @@ public class MainActivity extends AppCompatActivity {
             connection_err.setIcon(R.drawable.ic_warning_black_24dp);
             SharedPreferences settings = getSharedPreferences("net_dialog_do_not_show", 0);
             Boolean skip = settings.getBoolean("skipNetDialog", false);
-            if (!skip)
-            connection_err.show();
+            if (!skip) connection_err.show();
 
         }
     }
@@ -493,6 +495,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onKeyUp(keycode, e);
     }
 
+    @SuppressLint("MissingSuperCall")
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
@@ -516,11 +519,11 @@ public class MainActivity extends AppCompatActivity {
 
 
                     // Assigning ViewPager View and setting the adapter
-                    pager = findViewById(R.id.pager);
+                    pager = findViewById(R.id.pager_);
                     pager.setAdapter(adapter);
 
                     // Assiging the Sliding Tab Layout View
-                    tabs = findViewById(R.id.tabs);
+                    SlidingTabLayout tabs = findViewById(R.id.tabs);
                     tabs.setDistributeEvenly(false); // To make the Tabs Fixed set this true, This makes the tabs Space Evenly in Available width
 
                     // Setting Custom Color for the Scroll bar indicator of the Tab View
@@ -533,11 +536,6 @@ public class MainActivity extends AppCompatActivity {
 
                     // Setting the ViewPager For the SlidingTabsLayout
                     tabs.setViewPager(pager);
-
-
-
-
-
 
                     permission_ok = true;
 
@@ -562,7 +560,7 @@ public class MainActivity extends AppCompatActivity {
                                     getApplicationContext().startActivity( applicationDetailsSettingsIntent );
                                 }
                             });
-                    TextView snakckTextView = snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);
+                    TextView snakckTextView = snackbar.getView().findViewById(com.google.android.material.R.id.snackbar_text);
                     View snack = snackbar.getView();
                     snack.setBackgroundColor(getResources().getColor(R.color.snackbar));
                     snakckTextView.setTextColor(Color.WHITE);
@@ -570,13 +568,12 @@ public class MainActivity extends AppCompatActivity {
                     snackbar.show();
 
                 }
-                return;
             }
 
-            }
+        }
 
             // other 'case' lines to check for other
             // permissions this app might request.
-        }
+    }
 
 }

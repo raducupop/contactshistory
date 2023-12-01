@@ -1,11 +1,13 @@
 package com.contactshistory;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
 import android.provider.ContactsContract;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class GetSimpleListHelper {
 
@@ -17,6 +19,7 @@ public class GetSimpleListHelper {
 
     }
 
+    @SuppressLint("Range")
     ArrayList<String> getContactsSortedByID(Context context) {
 
         ArrayList<String> lista = null;
@@ -52,18 +55,14 @@ public class GetSimpleListHelper {
                 cursor.close();
             }
 
-
-
         } catch (Exception e) {
 
         }
-
 
         Collections.reverse(list);
         Collections.reverse(lista);
 
         return lista;
     }
-
 
 }

@@ -1,10 +1,6 @@
 package com.contactshistory;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import android.app.Activity;
+import android.annotation.SuppressLint;
 import android.content.ContentUris;
 import android.content.Context;
 import android.database.Cursor;
@@ -17,13 +13,18 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.fragment.app.FragmentActivity;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
 
 public class CustomListSimple extends ArrayAdapter<String> {
 
-    private final Activity context;
+    private final FragmentActivity context;
     private ArrayList<String> contact_list;
 
-    CustomListSimple(Activity context, ArrayList<String> contact_list) {
+    CustomListSimple(FragmentActivity context, ArrayList<String> contact_list) {
 
         super(context, R.layout.item_simple, contact_list);
         this.context = context;
@@ -75,6 +76,7 @@ public class CustomListSimple extends ArrayAdapter<String> {
 
     }
 
+    @SuppressLint("Range")
     private static long retrieveContactID(Context context, String nume) {
         Uri uri = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_FILTER_URI, Uri.encode(nume.trim()));
         Cursor mapContact = context.getContentResolver().query(uri, new String[]{ContactsContract.PhoneLookup._ID}, null, null, null);

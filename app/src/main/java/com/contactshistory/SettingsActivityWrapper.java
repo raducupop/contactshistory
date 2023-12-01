@@ -3,13 +3,12 @@ package com.contactshistory;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.app.NavUtils;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.core.app.NavUtils;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class SettingsActivityWrapper extends AppCompatActivity {
 
-    Toolbar toolbar;
+    androidx.appcompat.widget.Toolbar toolbar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

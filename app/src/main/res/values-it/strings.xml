@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    
+  <string name="notification_main">Il servizio è in esecuzione</string>
+      
+  <string name="notification_new">È stato creato un nuovo contatto</string>
+      
+  <string name="action_settings">Impostazioni</string>
+      
+  <string name="label_activity_settings">Impostazioni</string>
+      
+  <string name="label_activity_delete">Eliminare</string>
+      
+  <string name="label_activity_tutorial">Esercitazione</string>
+      
+  <string name="label_activity_about">Di</string>
+      
+  <!-- Strings used in UI - Tab names, Dialogues, ... -->
+      
+  <string name="tab_all">Tutto</string>
+      
+  <string name="tab_recent">Recente</string>
+      
+  <string name="tab_today">Oggi</string>
+      
+  <string name="tab_week">Questa settimana</string>
+      
+  <string name="tab_month">Questo mese</string>
+      
+  <string name="tab_date">Data</string>
+      
+  <string name="tab_twodates">Due date</string>
+      
+  <string name="tab_location">Posizione</string>
+      
+  <string name="warning_install_title">L\'applicazione deve essere installata nella memoria del sistema</string>
+      
+  <string name="warning_install_text">Modifica la posizione nelle impostazioni di sistema dell\'applicazione, quindi riapri l\'applicazione.</string>
+      
+  <string name="warning_install_positive_btn">Modifica ora</string>
+      
+  <string name="warning_install_neutral_btn">Dopo</string>
+      
+  <string name="warning_location_title">Non è consentito l\'accesso alla sede</string>
+      
+  <string name="warning_location_text">Modifica l\'impostazione per consentire all\'app di determinare la tua posizione.</string>
+      
+  <string name="warning_location_positive_btn">Modifica ora</string>
+      
+  <string name="warning_location_neutral_btn">Dopo</string>
+      
+  <string name="warning_conn_title">Nessuna connessione internet</string>
+      
+  <string name="warning_conn_text">Non è possibile determinare la posizione. Connettiti a Internet, tramite WiFi o dati mobili.</string>
+      
+  <string name="warning_conn_positive_btn">Wifi</string>
+      
+  <string name="warning_conn_negative_btn">Dati mobili</string>
+      
+  <string name="warning_conn_neutral_btn">Dopo</string>
+      
+  <string name="info_date_firstline">Scegli la data che desideri</string>
+      
+  <string name="info_date_secondline">per visualizzare l\'elenco dei contatti</string>
+      
+  <string name="info_two_dates_firstline">Scegli due date tra le quali desideri</string>
+      
+  <string name="info_two_dates_secondline">per visualizzare l\'elenco dei contatti</string>
+      
+  <string name="info_location_firstline">Digitare la posizione per cui</string>
+      
+  <string name="info_location_secondline">desideri visualizzare i contatti.</string>
+      
+  <string name="button_pick_date">Scegli la data...</string>
+      
+  <string name="button_pick_first_date">Data d\'inizio</string>
+      
+  <string name="button_pick_second_date">Data di fine</string>
+      
+  <string name="button_done">Spettacolo</string>
+      
+  <string name="title_pick_date">Scegli la data</string>
+      
+  <string name="button_close_search">Vicino</string>
+      
+  <string name="rem_close">Vicino</string>
+      
+  <string name="rem_delete">Eliminare</string>
+      
+  <string name="rem_select_all">Seleziona tutto</string>
+      
+  <string name="rem_info">I contatti sono stati eliminati dalla cronologia dei contatti. Non sono stati cancellati dalla rubrica.</string>
+      
+  <string name="err_no_info">Questo contatto non esiste</string>
+      
+  <string name="location_hint">Cerca una posizione</string>
+      
+  <string name="search_hint">Cerca nome, data o luogo</string>
+      
+  <!-- Strings used in Menus-->
+      
+  <string name="menu_sort">Ordinare</string>
+              
+  <string name="menu_sort_by_name">Per nome</string>
+              
+  <string name="menu_sort_by_date">Per data</string>
+              
+  <string name="menu_sort_by_location">Per posizione</string>
+      
+  <string name="menu_display">Spettacolo</string>
+              
+  <string name="menu_display_withlocation">Solo contatti con posizione</string>
+              
+  <string name="menu_display_all">Tutti i contatti</string>
+      
+  <string name="menu_search">Ricerca</string>
+      
+  <string name="menu_delete">Eliminare</string>
+      
+  <string name="menu_settings">Impostazioni</string>
+      
+  <string name="menu_help">Aiuto</string>
+      
+  <string name="menu_help_tutorial">Esercitazione</string>
+      
+  <string name="menu_help_about">Di</string>
+      
+  <!-- Strings used in ContactHelper and GetListHelper Classes-->
+      
+  <string name="str_info_getbothdates">Scegli entrambe le date!</string>
+      
+  <string name="helper_nolocation">Nessuna posizione</string>
+      
+  <!-- Strings used in Service Class-->
+      
+  <string name="service_icon_firstline">La cronologia dei contatti funziona</string>
+      
+  <string name="service_icon_secondline">Tocca per aprire</string>
+      
+  <string name="service_icon_contact">Contatto aggiunto</string>
+      
+  <string name="service_no_location">Non è stato possibile determinare la posizione</string>
+      
+  <string name="service_no_connexion">Nessuna connessione internet</string>
+
+   <!-- Strings used in Setting Activityes -->
+      
+  <string name="setting_category_display">Impostazioni di visualizzazione</string>
+      
+  <string name="setting_category_contacts">Contatti</string>
+      
+  <string name="setting_category_notifications">Notifiche</string>
+              
+  <string name="setting_source_internal">Memoria interna</string>
+              
+  <string name="setting_source_internal_summary">Contatti archiviati nella memoria interna del dispositivo.</string>
+              
+  <string name="setting_source_sim">SIM</string>
+              
+  <string name="setting_source_sim_summary">Contatti memorizzati sulla scheda SIM.</string>
+              
+  <string name="setting_source_other">Altri conti</string>
+              
+  <string name="setting_source_other_summary">Mostra contatti di altri account (Google, Facebook, Yahoo, ...)</string>
+      
+  <string name="setting_write_info">Scrivi le informazioni di contatto</string>
+      
+  <string name="setting_write_info_summary">Scrivi la data e il luogo nel campo Note del contatto, per riutilizzarli durante l\'importazione/esportazione</string>
+      
+  <string name="setting_read_info">Leggi i dati di importazione</string>
+      
+  <string name="setting_read_info_summary">Quando importi i contatti, leggi i dati in essi memorizzati</string>
+      
+  <string name="setting_ui_theme">Modalità scura</string>
+      
+  <string name="setting_ui_theme_summary"/>
+      
+  <string name="setting_ui_type">Interfaccia compatta</string>
+      
+  <string name="setting_ui_type_summary">Le schede Oggi, Settimana e Mese non vengono visualizzate nella schermata principale</string>
+      
+  <string name="setting_displaydate">Il formato della data</string>
+      
+  <string name="setting_displaydate_summary">Imposta il modo in cui verrà visualizzata la data.</string>
+      
+  <string name="setting_displaytime">Formato orario</string>
+      
+  <string name="setting_displaytime_summary">Imposta il modo in cui verrà visualizzata l\'ora</string>
+      
+  <string name="setting_recentnumber">Contatti recenti</string>
+      
+  <string name="setting_recentnumber_summary">Scegli il numero di contatti da visualizzare nella scheda Recenti</string>
+      
+  <string name="setting_defaultsort">Ordinamento predefinito</string>
+      
+  <string name="setting_defaultsort_summary">Scegli il modo in cui verrà ordinato l\'elenco</string>
+      
+  <string name="setting_icon">Mostra notifica</string>
+      
+  <string name="setting_icon_summary">Visualizza una notifica quando il servizio Cronologia contatti è in esecuzione.</string>
+      
+  <string name="setting_icon_contact">Aggiungi contatto</string>
+      
+  <string name="setting_icon_contact_summary">Visualizza un\'icona nella barra delle notifiche quando viene aggiunto un nuovo contatto</string>
+      
+  <!-- Tutorial text -->
+      
+  <string name="tutorial_welcome">benvenuto a\nStoria dei contatti</string>
+      
+  <string name="tutorial_accept">Affinché questa applicazione funzioni correttamente è necessario:\n\n- Concedere tutte le autorizzazioni necessarie\n- Assicurati che il servizio su cui si basa questa applicazione non sia bloccato da un\'applicazione di gestione attività o dalla modalità di risparmio energetico.</string>
+      
+  <string name="tutorial_main">La cronologia dei contatti ti consente di cercare le persone nella rubrica in base alla data e al luogo in cui le hai incontrate.\n\nTieni presente che questa applicazione è sperimentale, potrebbe contenere alcuni bug :)\n\nQuesta applicazione funziona solo con i contatti creati da ora in poi, perché Android non ricorda insieme ai contatti la data e il luogo della loro creazione.</string>
+      
+  <string name="tutorial_header1">Come funziona?</string>
+      
+  <string name="tutorial_header2">Ottenere la posizione</string>
+      
+  <string name="tutorial_header3">Cerca per data</string>
+      
+  <string name="tutorial_header4">Cerca per posizione</string>
+      
+  <string name="tutorial_content1">Aggiungi i contatti alla rubrica e quindi i contatti verranno visualizzati nella cronologia dei contatti. Questa applicazione si basa su un servizio che deve essere eseguito in background per rilevare nuovi contatti e se questo servizio viene chiuso i nuovi contatti creati non verranno rilevati. Pertanto, se utilizzi un\'applicazione per la gestione dei processi (Task Manager), aggiungi questa applicazione all\'elenco di quelle che possono essere eseguite in background.\n\nInoltre, per funzionare correttamente, l\'applicazione deve essere installata nella memoria del sistema.</string>
+      
+  <string name="tutorial_content2">La posizione viene ottenuta attraverso le informazioni provenienti dalla rete WiFi o dall\'operatore telefonico. La posizione GPS non è disponibile in questo momento.</string>
+      
+  <string name="tutorial_content3">La ricerca dei contatti per data è possibile scegliendo due date tra le quali verranno visualizzati i contatti salvati.</string>
+      
+  <string name="tutorial_content4">La ricerca per località viene effettuata digitando una parte dell\'indirizzo cercato nella pagina Località. Verranno visualizzati tutti i contatti corrispondenti alla località desiderata, indipendentemente dalla data in cui sono stati salvati.</string>
+      
+  <string name="tutorial_ok_button">OK HO CAPITO</string>
+      
+  <string name="snack_permissions_nok">È necessario concedere tutte le autorizzazioni.</string>
+      
+  <string name="do_not_show">Non mostrarlo più</string>
+  
+</resources>

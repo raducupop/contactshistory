@@ -1,10 +1,6 @@
 package com.contactshistory;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import android.app.Activity;
+import android.annotation.SuppressLint;
 import android.content.ContentUris;
 import android.content.Context;
 import android.database.Cursor;
@@ -21,6 +17,13 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+
 public class CustomListMultiple extends ArrayAdapter<String>{
 
     boolean[] checkBoxState;
@@ -29,14 +32,14 @@ public class CustomListMultiple extends ArrayAdapter<String>{
     Boolean checkAllFlag;
     Boolean uncheckAllFlag;
 
-	private final Activity context;
+	private final AppCompatActivity context;
 	private ArrayList<String> contact_list;
 	
 	String name, date, time;
 
     Bitmap photo = null;
 
-	CustomListMultiple(Activity context, ArrayList<String> contact_list) {
+	CustomListMultiple(AppCompatActivity context, ArrayList<String> contact_list) {
 
 		super(context, R.layout.item, contact_list);
 		this.context = context;
@@ -153,6 +156,7 @@ public class CustomListMultiple extends ArrayAdapter<String>{
 		
 	}
 
+    @SuppressLint("Range")
     private static long retrieveContactID(Context context, String nume) {
         Uri uri = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_FILTER_URI, Uri.encode(nume.trim()));
         Cursor mapContact = context.getContentResolver().query(uri, new String[]{ContactsContract.PhoneLookup._ID}, null, null, null);

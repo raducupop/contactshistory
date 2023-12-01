@@ -1,24 +1,23 @@
 package com.contactshistory;
 
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
 
 
 public class RemoveActivity extends AppCompatActivity {
 
-    Toolbar toolbar;
+    androidx.appcompat.widget.Toolbar toolbar;
 
     ListView myList;
     Button doDelete;

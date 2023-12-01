@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+      
+  <string name="notification_main">Der Dienst läuft</string>
+      
+  <string name="notification_new">Ein neuer Kontakt wurde erstellt</string>
+      
+  <string name="action_settings">Einstellungen</string>
+      
+  <string name="label_activity_settings">Einstellungen</string>
+      
+  <string name="label_activity_delete">Löschen</string>
+      
+  <string name="label_activity_tutorial">Lernprogramm</string>
+      
+  <string name="label_activity_about">Um</string>
+      
+  <!-- Strings used in UI - Tab names, Dialogues, ... -->
+      
+  <string name="tab_all">Alle</string>
+      
+  <string name="tab_recent">Jüngste</string>
+      
+  <string name="tab_today">Heute</string>
+      
+  <string name="tab_week">Diese Woche</string>
+      
+  <string name="tab_month">Diesen Monat</string>
+      
+  <string name="tab_date">Datum</string>
+      
+  <string name="tab_twodates">Zwei Termine</string>
+      
+  <string name="tab_location">Standort</string>
+      
+  <string name="warning_install_title">Die Anwendung muss im Systemspeicher installiert sein</string>
+      
+  <string name="warning_install_text">Ändern Sie den Speicherort in den Systemeinstellungen der Anwendung und öffnen Sie die Anwendung dann erneut.</string>
+      
+  <string name="warning_install_positive_btn">Jetzt ändern</string>
+      
+  <string name="warning_install_neutral_btn">Später</string>
+      
+  <string name="warning_location_title">Der Zutritt zum Standort ist nicht gestattet</string>
+      
+  <string name="warning_location_text">Ändern Sie die Einstellung, damit die App Ihren Standort ermitteln kann.</string>
+      
+  <string name="warning_location_positive_btn">Jetzt ändern</string>
+      
+  <string name="warning_location_neutral_btn">Später</string>
+      
+  <string name="warning_conn_title">Keine Internetverbindung</string>
+      
+  <string name="warning_conn_text">Der Standort kann nicht ermittelt werden. Stellen Sie über WLAN oder mobile Daten eine Verbindung zum Internet her.</string>
+      
+  <string name="warning_conn_positive_btn">W-lan</string>
+      
+  <string name="warning_conn_negative_btn">Mobile Daten</string>
+      
+  <string name="warning_conn_neutral_btn">Später</string>
+      
+  <string name="info_date_firstline">Wählen Sie das gewünschte Datum</string>
+      
+  <string name="info_date_secondline">, um die Liste der Kontakte anzuzeigen</string>
+      
+  <string name="info_two_dates_firstline">Wählen Sie zwei Termine aus, zwischen denen Sie möchten</string>
+      
+  <string name="info_two_dates_secondline">, um die Liste der Kontakte anzuzeigen</string>
+      
+  <string name="info_location_firstline">Geben Sie den Standort ein, für den</string>
+      
+  <string name="info_location_secondline">Sie möchten die Kontakte anzeigen.</string>
+      
+  <string name="button_pick_date">Wählen Sie das Datum...</string>
+      
+  <string name="button_pick_first_date">Startdatum</string>
+      
+  <string name="button_pick_second_date">Endtermin</string>
+      
+  <string name="button_done">Zeigen</string>
+      
+  <string name="title_pick_date">Datum auswählen</string>
+      
+  <string name="button_close_search">Schließen</string>
+      
+  <string name="rem_close">Schließen</string>
+      
+  <string name="rem_delete">Löschen</string>
+      
+  <string name="rem_select_all">Wählen Sie Alle</string>
+      
+  <string name="rem_info">Kontakte wurden aus dem Kontaktverlauf gelöscht. Sie wurden nicht aus dem Telefonbuch gelöscht.</string>
+      
+  <string name="err_no_info">Dieser Kontakt existiert nicht</string>
+      
+  <string name="location_hint">Suchen Sie nach einem Ort</string>
+      
+  <string name="search_hint">Suchen Sie nach Name, Datum oder Ort</string>
+      
+  <!-- Strings used in Menus-->
+      
+  <string name="menu_sort">Sortieren</string>
+              
+  <string name="menu_sort_by_name">Namentlich</string>
+              
+  <string name="menu_sort_by_date">Nach Datum</string>
+              
+  <string name="menu_sort_by_location">Nach Standort</string>
+      
+  <string name="menu_display">Zeigen</string>
+              
+  <string name="menu_display_withlocation">Nur Kontakte mit Standort</string>
+              
+  <string name="menu_display_all">Alle Kontakte</string>
+      
+  <string name="menu_search">Suchen</string>
+      
+  <string name="menu_delete">Löschen</string>
+      
+  <string name="menu_settings">Einstellungen</string>
+      
+  <string name="menu_help">Helfen</string>
+      
+  <string name="menu_help_tutorial">Lernprogramm</string>
+      
+  <string name="menu_help_about">Um</string>
+      
+  <!-- Strings used in ContactHelper and GetListHelper Classes-->
+      
+  <string name="str_info_getbothdates">Wählen Sie beide Termine!</string>
+      
+  <string name="helper_nolocation">Kein Standort</string>
+      
+  <!-- Strings used in Service Class-->
+      
+  <string name="service_icon_firstline">Der Kontaktverlauf funktioniert</string>
+      
+  <string name="service_icon_secondline">Zum Öffnen berühren</string>
+      
+  <string name="service_icon_contact">Kontakt hinzugefügt</string>
+      
+  <string name="service_no_location">Der Standort konnte nicht ermittelt werden</string>
+      
+  <string name="service_no_connexion">Keine Internetverbindung</string>
+
+  <!-- Strings used in Setting Activityes -->
+      
+  <string name="setting_category_display">Bildschirmeinstellungen</string>
+      
+  <string name="setting_category_contacts">Kontakte</string>
+      
+  <string name="setting_category_notifications">Benachrichtigungen</string>
+              
+  <string name="setting_source_internal">Interner Speicher</string>
+              
+  <string name="setting_source_internal_summary">Im internen Speicher des Geräts gespeicherte Kontakte.</string>
+              
+  <string name="setting_source_sim">SIM</string>
+              
+  <string name="setting_source_sim_summary">Auf der SIM-Karte gespeicherte Kontakte.</string>
+              
+  <string name="setting_source_other">Andere Konten</string>
+              
+  <string name="setting_source_other_summary">Kontakte von anderen Konten anzeigen (Google, Facebook, Yahoo, ...)</string>
+      
+  <string name="setting_write_info">Kontaktinformationen schreiben</string>
+      
+  <string name="setting_write_info_summary">Geben Sie Datum und Ort in das Feld „Notizen“ des Kontakts ein, damit Sie ihn beim Import/Export wiederverwenden können</string>
+      
+  <string name="setting_read_info">Lesen Sie die Importdaten</string>
+      
+  <string name="setting_read_info_summary">Lesen Sie beim Importieren von Kontakten die darin gespeicherten Daten aus</string>
+      
+  <string name="setting_ui_theme">Dunkler Modus</string>
+      
+  <string name="setting_ui_theme_summary"/>
+      
+  <string name="setting_ui_type">Kompakte Schnittstelle</string>
+      
+  <string name="setting_ui_type_summary">Die Registerkarten „Heute“, „Woche“ und „Monat“ werden auf dem Hauptbildschirm nicht angezeigt</string>
+      
+  <string name="setting_displaydate">Das Datumsformat</string>
+      
+  <string name="setting_displaydate_summary">Legen Sie fest, wie das Datum angezeigt wird.</string>
+      
+  <string name="setting_displaytime">Zeitformat</string>
+      
+  <string name="setting_displaytime_summary">Legen Sie fest, wie die Uhrzeit angezeigt wird</string>
+      
+  <string name="setting_recentnumber">Letzte Kontakte</string>
+      
+  <string name="setting_recentnumber_summary">Wählen Sie die Anzahl der Kontakte aus, die auf der Registerkarte „Zuletzt verwendet“ angezeigt werden sollen</string>
+      
+  <string name="setting_defaultsort">Standardsortierung</string>
+      
+  <string name="setting_defaultsort_summary">Wählen Sie aus, wie die Liste sortiert werden soll</string>
+      
+  <string name="setting_icon">Benachrichtigung anzeigen</string>
+      
+  <string name="setting_icon_summary">Zeigt eine Benachrichtigung an, wenn der Kontaktverlaufsdienst ausgeführt wird.</string>
+      
+  <string name="setting_icon_contact">Kontakt hinzufügen</string>
+      
+  <string name="setting_icon_contact_summary">Zeigt ein Symbol in der Benachrichtigungsleiste an, wenn ein neuer Kontakt hinzugefügt wird</string>
+      
+  <!-- Tutorial text -->
+      
+  <string name="tutorial_welcome">Willkommen bei\nKontaktverlauf</string>
+      
+  <string name="tutorial_accept">Damit diese Anwendung ordnungsgemäß funktioniert, ist Folgendes erforderlich:\n\n- Erteilen Sie alle erforderlichen Berechtigungen\n- Stellen Sie sicher, dass der Dienst, auf dem diese Anwendung basiert, nicht durch eine Task-Manager-Anwendung oder einen Energiesparmodus blockiert wird.</string>
+      
+  <string name="tutorial_main">Mit dem Kontaktverlauf können Sie im Adressbuch nach Personen anhand des Datums und Ortes suchen, an dem Sie sie getroffen haben.\n\nBitte beachten Sie, dass diese Anwendung experimentell ist und einige Fehler enthalten kann :)\n\nDiese Anwendung funktioniert nur noch mit den von nun an erstellten Kontakten, da sich Android nicht zusammen mit den Kontakten das Datum und den Ort ihrer Erstellung merkt.</string>
+      
+  <string name="tutorial_header1">Wie funktioniert es?</string>
+      
+  <string name="tutorial_header2">Den Standort ermitteln</string>
+      
+  <string name="tutorial_header3">Suche nach Datum</string>
+      
+  <string name="tutorial_header4">Suche nach Standort</string>
+      
+  <string name="tutorial_content1">Fügen Sie die Kontakte zum Adressbuch hinzu und die Kontakte werden dann im Kontaktverlauf angezeigt. Diese Anwendung basiert auf einem Dienst, der im Hintergrund ausgeführt werden muss, um neue Kontakte zu erkennen. Wenn dieser Dienst geschlossen ist, werden die neu erstellten Kontakte nicht erkannt. Wenn Sie also eine Anwendung zur Prozessverwaltung (Task Manager) verwenden, fügen Sie diese Anwendung bitte zur Liste der Anwendungen hinzu, die im Hintergrund ausgeführt werden dürfen.\n\nDamit die Anwendung ordnungsgemäß funktioniert, muss sie außerdem im Systemspeicher installiert sein.</string>
+      
+  <string name="tutorial_content2">Der Standort wird über die Informationen aus dem WLAN-Netzwerk oder vom Telefonisten ermittelt. Der GPS-Standort ist derzeit nicht verfügbar.</string>
+      
+  <string name="tutorial_content3">Die Suche nach Kontakten nach Datum ist möglich, indem Sie zwei Daten auswählen, zwischen denen die gespeicherten Kontakte angezeigt werden.</string>
+      
+  <string name="tutorial_content4">Die Suche nach Standort erfolgt durch Eingabe eines Teils der gesuchten Adresse auf der Standortseite. Es werden alle Kontakte angezeigt, die dem gewünschten Standort entsprechen, unabhängig vom Datum ihrer Speicherung.</string>
+      
+  <string name="tutorial_ok_button">OK ICH HABE ES</string>
+      
+  <string name="snack_permissions_nok">Sie müssen alle Berechtigungen erteilen.</string>
+      
+  <string name="do_not_show">Zeige es nicht mehr</string>
+  
+</resources>

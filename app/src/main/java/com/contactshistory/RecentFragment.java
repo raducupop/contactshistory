@@ -1,6 +1,6 @@
 package com.contactshistory;
- 
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,8 +10,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
-import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -20,13 +18,15 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.ImageView;
-import android.widget.AdapterView;
 import android.widget.Toast;
+import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 public class RecentFragment extends Fragment {
 	
@@ -125,8 +125,8 @@ public class RecentFragment extends Fragment {
                     {
                         contacts_cursor.moveToFirst();
                         do {
-                            String idraw = contacts_cursor.getString(contacts_cursor.getColumnIndex(ContactsContract.Data.RAW_CONTACT_ID));
-                            String idlookup = contacts_cursor.getString(contacts_cursor.getColumnIndex(ContactsContract.Data.LOOKUP_KEY));
+                            @SuppressLint("Range") String idraw = contacts_cursor.getString(contacts_cursor.getColumnIndex(ContactsContract.Data.RAW_CONTACT_ID));
+                            @SuppressLint("Range") String idlookup = contacts_cursor.getString(contacts_cursor.getColumnIndex(ContactsContract.Data.LOOKUP_KEY));
 
 
                             if (idraw.contentEquals(rawid_from_list))
@@ -169,8 +169,7 @@ public class RecentFragment extends Fragment {
         }
 
 
-        if (contacts_adapter.getCount()==0)
-        {
+        if (contacts_adapter.getCount()==0) {
             image.setVisibility(View.VISIBLE);
         }
         else
@@ -216,84 +215,52 @@ public class RecentFragment extends Fragment {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		
 		  ListView contacte = rootView.findViewById(R.id.listView1);
-		  
-		  switch (item.getItemId()) {
-		  
-		  
-	    			case R.id.sort_name:
-	    				CustomList n_s = new CustomList(getActivity(), lst.sortByName(lst.list));
-				        contacte.setAdapter(n_s);
-				        break;
-				        
-	    			case R.id.sort_date:
-	    				
-	    				CustomList d_s = new CustomList(getActivity(), lst.sortByDate(lst.list));
-				        contacte.setAdapter(d_s);
-				        break;
-					
-	    			case R.id.sort_location: 
-	    			
-	    				CustomList l_s = new CustomList(getActivity(), lst.sortByLocation(lst.list));
-				        contacte.setAdapter(l_s);
-				        break;
-					    
-	    			case R.id.view_location: 
-		    			
-	    				CustomList f_l = new CustomList(getActivity(), lst.filterWithLocation(lst.list));
-				        contacte.setAdapter(f_l);
-				        break;    
-					    
-					
-	    			case R.id.view_all:    
-					    
-	    				CustomList f_a = new CustomList(getActivity(), lst.filterAll(lst.list));
-				        contacte.setAdapter(f_a);
-				        break;    
-	    			
-	    			case R.id.search:	 
-	  					 
-	    				showSearch();
-	    				break;
-	    				
-	    			case R.id.delete:
-	    				
-	        			Intent myIntent = new 
-                        Intent(getActivity(), RemoveActivity.class);
-	        			Bundle b = new Bundle();
-	        			b.putSerializable("lista", lst.list);
-                        b.putInt("tab", 0);
-                        myIntent.putExtras(b);
-	            	    myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-	        			RecentFragment.this.startActivity(myIntent);
-	    				break;
 
-                    case R.id.pref:
-                        Intent prefsIntent = new Intent(getActivity(), SettingsActivityWrapper.class);
-                        Bundle bundle = new Bundle();
-                        bundle.putInt("tab", 0);
-                        prefsIntent.putExtras(bundle);
-                        prefsIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        RecentFragment.this.startActivity(prefsIntent);
-
-                        break;
-
-                    case R.id.help_about:
-                        Intent intent_about = new Intent(getActivity(), AboutActivity.class);
-                        intent_about.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent_about);
-                        break;
-
-                    case R.id.help_tutorial:
-                        Intent intent_tutorial = new Intent(getActivity(), TutorialActivity.class);
-                        intent_tutorial.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent_tutorial);
-                        break;
-
-
-              default:
-	    				return super.onOptionsItemSelected(item);
-	    	
-	    	}
+        int itemId = item.getItemId();
+        if (itemId == R.id.sort_name) {
+            CustomList n_s = new CustomList(getActivity(), lst.sortByName(lst.list));
+            contacte.setAdapter(n_s);
+        } else if (itemId == R.id.sort_date) {
+            CustomList d_s = new CustomList(getActivity(), lst.sortByDate(lst.list));
+            contacte.setAdapter(d_s);
+        } else if (itemId == R.id.sort_location) {
+            CustomList l_s = new CustomList(getActivity(), lst.sortByLocation(lst.list));
+            contacte.setAdapter(l_s);
+        } else if (itemId == R.id.view_location) {
+            CustomList f_l = new CustomList(getActivity(), lst.filterWithLocation(lst.list));
+            contacte.setAdapter(f_l);
+        } else if (itemId == R.id.view_all) {
+            CustomList f_a = new CustomList(getActivity(), lst.filterAll(lst.list));
+            contacte.setAdapter(f_a);
+        } else if (itemId == R.id.search) {
+            showSearch();
+        } else if (itemId == R.id.delete) {
+            Intent myIntent = new
+                    Intent(getActivity(), RemoveActivity.class);
+            Bundle b = new Bundle();
+            b.putSerializable("lista", lst.list);
+            b.putInt("tab", 0);
+            myIntent.putExtras(b);
+            myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            RecentFragment.this.startActivity(myIntent);
+        } else if (itemId == R.id.pref) {
+            Intent prefsIntent = new Intent(getActivity(), SettingsActivityWrapper.class);
+            Bundle bundle = new Bundle();
+            bundle.putInt("tab", 0);
+            prefsIntent.putExtras(bundle);
+            prefsIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            RecentFragment.this.startActivity(prefsIntent);
+        } else if (itemId == R.id.help_about) {
+            Intent intent_about = new Intent(getActivity(), AboutActivity.class);
+            intent_about.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent_about);
+        } else if (itemId == R.id.help_tutorial) {
+            Intent intent_tutorial = new Intent(getActivity(), TutorialActivity.class);
+            intent_tutorial.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent_tutorial);
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
 		return false;
 	    }
 

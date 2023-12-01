@@ -6,7 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import android.app.Notification;
+import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.Service;
@@ -34,18 +34,14 @@ import android.provider.ContactsContract;
 import android.content.ContentResolver;
 import android.content.ContentProviderOperation;
 import android.provider.Settings;
-import android.support.v4.app.NotificationCompat;
-import android.telephony.PhoneStateListener;
+import androidx.core.app.NotificationCompat;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.provider.ContactsContract.CommonDataKinds;
 import android.widget.Toast;
-
 import static android.location.LocationManager.*;
 
 public class HistoryService extends Service {
-
-
     Cursor c, observer;
     public ContentObserver obs;
     int n = 0, na = 0;
@@ -60,6 +56,7 @@ public class HistoryService extends Service {
     int exit = 0;
     int edit = 1;
 
+    @SuppressLint("Range")
     @Override
     public void onCreate() {
 

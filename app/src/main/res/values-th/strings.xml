@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+      
+  <string name="notification_main">บริการกำลังทำงานอยู่</string>
+      
+  <string name="notification_new">สร้างผู้ติดต่อใหม่แล้ว</string>
+      
+  <string name="action_settings">การตั้งค่า</string>
+      
+  <string name="label_activity_settings">การตั้งค่า</string>
+      
+  <string name="label_activity_delete">ลบ</string>
+      
+  <string name="label_activity_tutorial">บทช่วยสอน</string>
+      
+  <string name="label_activity_about">เกี่ยวกับ</string>
+      
+  <!-- Strings used in UI - Tab names, Dialogues, ... -->
+      
+  <string name="tab_all">ทั้งหมด</string>
+      
+  <string name="tab_recent">ล่าสุด</string>
+      
+  <string name="tab_today">วันนี้</string>
+      
+  <string name="tab_week">ในสัปดาห์นี้</string>
+      
+  <string name="tab_month">เดือนนี้</string>
+      
+  <string name="tab_date">วันที่</string>
+      
+  <string name="tab_twodates">สองวัน</string>
+      
+  <string name="tab_location">ที่ตั้ง</string>
+      
+  <string name="warning_install_title">ต้องติดตั้งแอปพลิเคชันในหน่วยความจำระบบ</string>
+      
+  <string name="warning_install_text">เปลี่ยนตำแหน่งในการตั้งค่าระบบของแอปพลิเคชัน จากนั้นเปิดแอปพลิเคชันอีกครั้ง</string>
+      
+  <string name="warning_install_positive_btn">ปรับเปลี่ยนตอนนี้</string>
+      
+  <string name="warning_install_neutral_btn">ภายหลัง</string>
+      
+  <string name="warning_location_title">ไม่อนุญาตให้เข้าถึงสถานที่</string>
+      
+  <string name="warning_location_text">เปลี่ยนการตั้งค่าเพื่ออนุญาตให้แอประบุตำแหน่งของคุณ</string>
+      
+  <string name="warning_location_positive_btn">ปรับเปลี่ยนตอนนี้</string>
+      
+  <string name="warning_location_neutral_btn">ภายหลัง</string>
+      
+  <string name="warning_conn_title">ไม่มีการเชื่อมต่ออินเทอร์เน็ต</string>
+      
+  <string name="warning_conn_text">ไม่สามารถระบุตำแหน่งได้ เชื่อมต่ออินเทอร์เน็ตผ่าน WiFi หรือข้อมูลมือถือ</string>
+      
+  <string name="warning_conn_positive_btn">อินเตอร์เน็ตไร้สาย</string>
+      
+  <string name="warning_conn_negative_btn">ข้อมูลมือถือ</string>
+      
+  <string name="warning_conn_neutral_btn">ภายหลัง</string>
+      
+  <string name="info_date_firstline">เลือกวันที่คุณต้องการ</string>
+      
+  <string name="info_date_secondline">เพื่อดูรายชื่อผู้ติดต่อ</string>
+      
+  <string name="info_two_dates_firstline">เลือกสองวันระหว่างที่คุณต้องการ</string>
+      
+  <string name="info_two_dates_secondline">เพื่อดูรายชื่อผู้ติดต่อ</string>
+      
+  <string name="info_location_firstline">พิมพ์สถานที่ที่ต้องการ</string>
+      
+  <string name="info_location_secondline">คุณต้องการดูผู้ติดต่อ</string>
+      
+  <string name="button_pick_date">เลือกวันที่...</string>
+      
+  <string name="button_pick_first_date">วันที่เริ่มต้น</string>
+      
+  <string name="button_pick_second_date">วันที่สิ้นสุด</string>
+      
+  <string name="button_done">แสดง</string>
+      
+  <string name="title_pick_date">เลือกวันที่</string>
+      
+  <string name="button_close_search">ปิด</string>
+      
+  <string name="rem_close">ปิด</string>
+      
+  <string name="rem_delete">ลบ</string>
+      
+  <string name="rem_select_all">เลือกทั้งหมด</string>
+      
+  <string name="rem_info">ผู้ติดต่อถูกลบออกจากประวัติผู้ติดต่อแล้ว พวกเขาไม่ได้ถูกลบออกจากสมุดโทรศัพท์</string>
+      
+  <string name="err_no_info">ไม่มีที่อยู่ติดต่อนี้</string>
+      
+  <string name="location_hint">ค้นหาสถานที่</string>
+      
+  <string name="search_hint">ค้นหาชื่อ วันที่ หรือสถานที่</string>
+      
+  <!-- Strings used in Menus-->
+      
+  <string name="menu_sort">เรียงลำดับ</string>
+              
+  <string name="menu_sort_by_name">โดยชื่อ</string>
+              
+  <string name="menu_sort_by_date">ตามวันที่</string>
+              
+  <string name="menu_sort_by_location">ตามสถานที่</string>
+      
+  <string name="menu_display">แสดง</string>
+              
+  <string name="menu_display_withlocation">ติดต่อกับสถานที่เท่านั้น</string>
+              
+  <string name="menu_display_all">ผู้ติดต่อทั้งหมด</string>
+      
+  <string name="menu_search">ค้นหา</string>
+      
+  <string name="menu_delete">ลบ</string>
+      
+  <string name="menu_settings">การตั้งค่า</string>
+      
+  <string name="menu_help">ช่วย</string>
+      
+  <string name="menu_help_tutorial">บทช่วยสอน</string>
+      
+  <string name="menu_help_about">เกี่ยวกับ</string>
+      
+  <!-- Strings used in ContactHelper and GetListHelper Classes-->
+      
+  <string name="str_info_getbothdates">เลือกทั้งสองวัน!</string>
+      
+  <string name="helper_nolocation">ไม่มีสถานที่</string>
+      
+  <!-- Strings used in Service Class-->
+      
+  <string name="service_icon_firstline">ประวัติผู้ติดต่อใช้งานได้</string>
+      
+  <string name="service_icon_secondline">แตะเพื่อเปิด</string>
+      
+  <string name="service_icon_contact">เพิ่มผู้ติดต่อแล้ว</string>
+      
+  <string name="service_no_location">ไม่สามารถระบุตำแหน่งได้</string>
+      
+  <string name="service_no_connexion">ไม่มีการเชื่อมต่ออินเทอร์เน็ต</string>
+  
+<!-- Strings used in Setting Activityes -->
+      
+  <string name="setting_category_display">การตั้งค่าการแสดงผล</string>
+      
+  <string name="setting_category_contacts">รายชื่อผู้ติดต่อ</string>
+      
+  <string name="setting_category_notifications">การแจ้งเตือน</string>
+              
+  <string name="setting_source_internal">หน่วยความจำภายใน</string>
+              
+  <string name="setting_source_internal_summary">รายชื่อที่จัดเก็บไว้ในหน่วยความจำภายในของอุปกรณ์</string>
+              
+  <string name="setting_source_sim">ซิม</string>
+              
+  <string name="setting_source_sim_summary">รายชื่อที่จัดเก็บไว้ในซิมการ์ด</string>
+              
+  <string name="setting_source_other">บัญชีอื่นๆ</string>
+              
+  <string name="setting_source_other_summary">แสดงผู้ติดต่อจากบัญชีอื่น (Google, Facebook, Yahoo, ...)</string>
+      
+  <string name="setting_write_info">เขียนข้อมูลการติดต่อ</string>
+      
+  <string name="setting_write_info_summary">เขียนวันที่และสถานที่ลงในฟิลด์บันทึกย่อของผู้ติดต่อ เพื่อนำมาใช้ใหม่ในระหว่างการนำเข้า/ส่งออก</string>
+      
+  <string name="setting_read_info">อ่านข้อมูลการนำเข้า</string>
+      
+  <string name="setting_read_info_summary">เมื่อนำเข้าผู้ติดต่อ ให้อ่านข้อมูลที่เก็บไว้ในนั้น</string>
+      
+  <string name="setting_ui_theme">โหมดมืด</string>
+      
+  <string name="setting_ui_theme_summary"/>
+      
+  <string name="setting_ui_type">อินเทอร์เฟซขนาดกะทัดรัด</string>
+      
+  <string name="setting_ui_type_summary">แท็บวันนี้ สัปดาห์ และเดือนจะไม่แสดงบนหน้าจอหลัก</string>
+      
+  <string name="setting_displaydate">รูปแบบวันที่</string>
+      
+  <string name="setting_displaydate_summary">กำหนดวิธีการแสดงวันที่</string>
+      
+  <string name="setting_displaytime">รูปแบบเวลา</string>
+      
+  <string name="setting_displaytime_summary">กำหนดวิธีการแสดงเวลา</string>
+      
+  <string name="setting_recentnumber">ติดต่อล่าสุด</string>
+      
+  <string name="setting_recentnumber_summary">เลือกจำนวนผู้ติดต่อที่จะแสดงในแท็บล่าสุด</string>
+      
+  <string name="setting_defaultsort">การเรียงลำดับเริ่มต้น</string>
+      
+  <string name="setting_defaultsort_summary">เลือกวิธีการจัดเรียงรายการ</string>
+      
+  <string name="setting_icon">แสดงการแจ้งเตือน</string>
+      
+  <string name="setting_icon_summary">แสดงการแจ้งเตือนเมื่อบริการประวัติผู้ติดต่อทำงานอยู่</string>
+      
+  <string name="setting_icon_contact">เพิ่มผู้ติดต่อ</string>
+      
+  <string name="setting_icon_contact_summary">แสดงไอคอนในแถบการแจ้งเตือนเมื่อมีการเพิ่มผู้ติดต่อใหม่</string>
+      
+  <!-- Tutorial text -->
+      
+  <string name="tutorial_welcome">ยินดีต้อนรับสู่\nประวัติผู้ติดต่อ</string>
+      
+  <string name="tutorial_accept">เพื่อให้แอปพลิเคชันนี้ทำงานได้อย่างถูกต้อง จำเป็น:\n\n- ให้สิทธิ์ที่จำเป็นทั้งหมด\n- ตรวจสอบให้แน่ใจว่าบริการที่ใช้แอปพลิเคชันนี้ไม่ได้ถูกบล็อกโดยแอปพลิเคชันตัวจัดการงานหรือโหมดประหยัดพลังงาน</string>
+      
+  <string name="tutorial_main">ประวัติรายชื่อช่วยให้คุณค้นหาบุคคลในสมุดที่อยู่ตามวันที่และสถานที่ที่คุณพบพวกเขา\n\nโปรดทราบว่าแอปพลิเคชันนี้อยู่ในช่วงทดลอง อาจมีข้อบกพร่องบางประการ :)\n\nแอปพลิเคชันนี้ใช้งานได้กับผู้ติดต่อที่สร้างขึ้นต่อจากนี้เท่านั้น เนื่องจาก Android ไม่สามารถจดจำวันที่และสถานที่สร้างร่วมกับผู้ติดต่อได้</string>
+      
+  <string name="tutorial_header1">มันทำงานอย่างไร?</string>
+      
+  <string name="tutorial_header2">การได้รับสถานที่</string>
+      
+  <string name="tutorial_header3">ค้นหาตามวันที่</string>
+      
+  <string name="tutorial_header4">ค้นหาตามสถานที่</string>
+      
+  <string name="tutorial_content1">เพิ่มผู้ติดต่อลงในสมุดที่อยู่ จากนั้นผู้ติดต่อจะปรากฏในประวัติผู้ติดต่อ แอปพลิเคชันนี้ขึ้นอยู่กับบริการที่ต้องทำงานในพื้นหลังเพื่อตรวจหาผู้ติดต่อใหม่ และหากปิดบริการนี้ ผู้ติดต่อใหม่ที่สร้างขึ้นจะไม่ถูกตรวจพบ ดังนั้น หากคุณใช้แอปพลิเคชันสำหรับการจัดการกระบวนการ (ตัวจัดการงาน) โปรดเพิ่มแอปพลิเคชันนี้ลงในรายการแอปพลิเคชันที่ได้รับอนุญาตให้ทำงานในเบื้องหลัง\n\nนอกจากนี้ เพื่อให้ทำงานได้อย่างถูกต้อง จะต้องติดตั้งแอปพลิเคชันในหน่วยความจำระบบด้วย</string>
+      
+  <string name="tutorial_content2">ได้รับตำแหน่งผ่านข้อมูลจากเครือข่าย WiFi หรือจากผู้ให้บริการโทรศัพท์ ตำแหน่ง GPS ไม่สามารถใช้งานได้ในขณะนี้</string>
+      
+  <string name="tutorial_content3">การค้นหาผู้ติดต่อตามวันที่สามารถทำได้โดยเลือกวันที่สองวันที่จะแสดงผู้ติดต่อที่บันทึกไว้</string>
+      
+  <string name="tutorial_content4">การค้นหาตามสถานที่ทำได้โดยการพิมพ์ส่วนหนึ่งของที่อยู่ที่ค้นหาในหน้าสถานที่ รายชื่อติดต่อทั้งหมดที่ตรงกับตำแหน่งที่ต้องการจะปรากฏขึ้น โดยไม่คำนึงถึงวันที่บันทึก</string>
+      
+  <string name="tutorial_ok_button">โอเคเข้าใจแล้ว</string>
+      
+  <string name="snack_permissions_nok">คุณต้องให้สิทธิ์ทั้งหมด</string>
+      
+  <string name="do_not_show">อย่าแสดงมันอีกต่อไป</string>
+
+</resources>

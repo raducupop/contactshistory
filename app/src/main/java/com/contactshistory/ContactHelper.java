@@ -1,16 +1,15 @@
 package com.contactshistory;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.preference.PreferenceManager;
 
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 public class ContactHelper implements Parcelable {
 
 	String id;
@@ -25,7 +24,6 @@ public class ContactHelper implements Parcelable {
 		date = null;
 		location = null;
 		address = null;
-			
 	}
 	
 	public ContactHelper(String i, String n, String d, String l, String a){
@@ -34,7 +32,6 @@ public class ContactHelper implements Parcelable {
 		date = d;
 		location = l;
 		address = a;
-			
 	}
 
    String toText(){
@@ -43,9 +40,9 @@ public class ContactHelper implements Parcelable {
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(applicationContext);
 
-        SimpleDateFormat display_format = new SimpleDateFormat(prefs.getString("prefDateFormat","dd MMMM yyyy")+" "+prefs.getString("prefTimeFormat","HH:mm"));
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat display_format = new SimpleDateFormat(prefs.getString("prefDateFormat","dd MMMM yyyy")+" "+prefs.getString("prefTimeFormat","HH:mm"));
 
-        SimpleDateFormat stored_format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat stored_format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 
 		Date d = null;
 		try {
@@ -69,7 +66,6 @@ public class ContactHelper implements Parcelable {
 
 		return output;
 	}
-	
 
     public int describeContents() {
         return 0;
@@ -101,5 +97,4 @@ public class ContactHelper implements Parcelable {
         location = in.readString();
         address = in.readString();
     }
-
 }

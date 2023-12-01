@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+        
+  <string name="notification_main">服务正在运行</string>
+      
+  <string name="notification_new">已创建新联系人</string>
+      
+  <string name="action_settings">设置</string>
+      
+  <string name="label_activity_settings">设置</string>
+      
+  <string name="label_activity_delete">删除</string>
+      
+  <string name="label_activity_tutorial">教程</string>
+      
+  <string name="label_activity_about">关于</string>
+      
+  <!-- Strings used in UI - Tab names, Dialogues, ... -->
+      
+  <string name="tab_all">全部</string>
+      
+  <string name="tab_recent">最近的</string>
+      
+  <string name="tab_today">今天</string>
+      
+  <string name="tab_week">本星期</string>
+      
+  <string name="tab_month">这个月</string>
+      
+  <string name="tab_date">日期</string>
+      
+  <string name="tab_twodates">两个日期</string>
+      
+  <string name="tab_location">地点</string>
+      
+  <string name="warning_install_title">该应用程序必须安装在系统内存中</string>
+      
+  <string name="warning_install_text">更改应用程序系统设置中的位置，然后重新打开应用程序。</string>
+      
+  <string name="warning_install_positive_btn">立即修改</string>
+      
+  <string name="warning_install_neutral_btn">之后</string>
+      
+  <string name="warning_location_title">不允许访问该位置</string>
+      
+  <string name="warning_location_text">更改设置以允许应用程序确定您的位置。</string>
+      
+  <string name="warning_location_positive_btn">立即修改</string>
+      
+  <string name="warning_location_neutral_btn">之后</string>
+      
+  <string name="warning_conn_title">没有网络连接</string>
+      
+  <string name="warning_conn_text">位置无法确定。通过 WiFi 或移动数据连接到互联网。</string>
+      
+  <string name="warning_conn_positive_btn">无线上网</string>
+      
+  <string name="warning_conn_negative_btn">移动数据</string>
+      
+  <string name="warning_conn_neutral_btn">之后</string>
+      
+  <string name="info_date_firstline">选择您想要的日期</string>
+      
+  <string name="info_date_secondline">查看联系人列表</string>
+      
+  <string name="info_two_dates_firstline">选择您想要的两个日期</string>
+      
+  <string name="info_two_dates_secondline">查看联系人列表</string>
+      
+  <string name="info_location_firstline">键入其位置</string>
+      
+  <string name="info_location_secondline">您想查看联系人。</string>
+      
+  <string name="button_pick_date">选择日期...</string>
+      
+  <string name="button_pick_first_date">开始日期</string>
+      
+  <string name="button_pick_second_date">结束日期</string>
+      
+  <string name="button_done">展示</string>
+      
+  <string name="title_pick_date">选择日期</string>
+      
+  <string name="button_close_search">关闭</string>
+      
+  <string name="rem_close">关闭</string>
+      
+  <string name="rem_delete">删除</string>
+      
+  <string name="rem_select_all">全选</string>
+      
+  <string name="rem_info">联系人已从联系人历史记录中删除。他们没有从电话簿中删除。</string>
+      
+  <string name="err_no_info">该联系人不存在</string>
+      
+  <string name="location_hint">搜索地点</string>
+      
+  <string name="search_hint">搜索姓名、日期或地点</string>
+      
+  <!-- Strings used in Menus-->
+      
+  <string name="menu_sort">种类</string>
+              
+  <string name="menu_sort_by_name">按名字</string>
+              
+  <string name="menu_sort_by_date">按日期</string>
+              
+  <string name="menu_sort_by_location">按地点</string>
+      
+  <string name="menu_display">展示</string>
+              
+  <string name="menu_display_withlocation">仅具有位置信息的联系人</string>
+              
+  <string name="menu_display_all">所有联系人</string>
+      
+  <string name="menu_search">搜索</string>
+      
+  <string name="menu_delete">删除</string>
+      
+  <string name="menu_settings">设置</string>
+      
+  <string name="menu_help">帮助</string>
+      
+  <string name="menu_help_tutorial">教程</string>
+      
+  <string name="menu_help_about">关于</string>
+      
+  <!-- Strings used in ContactHelper and GetListHelper Classes-->
+      
+  <string name="str_info_getbothdates">选择两个日期！</string>
+      
+  <string name="helper_nolocation">没有位置</string>
+      
+  <!-- Strings used in Service Class-->
+      
+  <string name="service_icon_firstline">联系人历史记录正在运行</string>
+      
+  <string name="service_icon_secondline">触摸打开</string>
+      
+  <string name="service_icon_contact">已添加联系人</string>
+      
+  <string name="service_no_location">无法确定位置</string>
+      
+  <string name="service_no_connexion">没有网络连接</string>
+
+      
+  <!-- Strings used in Setting Activityes -->
+      
+  <string name="setting_category_display">显示设置</string>
+      
+  <string name="setting_category_contacts">联系方式</string>
+      
+  <string name="setting_category_notifications">通知</string>
+              
+  <string name="setting_source_internal">内部存储器</string>
+              
+  <string name="setting_source_internal_summary">联系人存储在设备的内存中。</string>
+              
+  <string name="setting_source_sim">SIM 卡</string>
+              
+  <string name="setting_source_sim_summary">联系人存储在 SIM 卡上。</string>
+              
+  <string name="setting_source_other">其他账户</string>
+              
+  <string name="setting_source_other_summary">显示其他帐号的联系人（Google、Facebook、Yahoo...）</string>
+      
+  <string name="setting_write_info">写下联系方式</string>
+      
+  <string name="setting_write_info_summary">在联系人的备注字段中写入日期和位置，以便在导入/导出期间重复使用</string>
+      
+  <string name="setting_read_info">读取导入数据</string>
+      
+  <string name="setting_read_info_summary">导入联系人时，读取其中存储的数据</string>
+      
+  <string name="setting_ui_theme">深色模式</string>
+      
+  <string name="setting_ui_theme_summary"/>
+      
+  <string name="setting_ui_type">紧凑的接口</string>
+      
+  <string name="setting_ui_type_summary">主屏幕上不显示“今天”、“周”和“月”选项卡</string>
+      
+  <string name="setting_displaydate">日期格式</string>
+      
+  <string name="setting_displaydate_summary">设置日期的显示方式。</string>
+      
+  <string name="setting_displaytime">时间格式</string>
+      
+  <string name="setting_displaytime_summary">设置时间的显示方式</string>
+      
+  <string name="setting_recentnumber">最近联系人</string>
+      
+  <string name="setting_recentnumber_summary">选择要在“最近”选项卡中显示的联系人数量</string>
+      
+  <string name="setting_defaultsort">默认排序</string>
+      
+  <string name="setting_defaultsort_summary">选择列表的排序方式</string>
+      
+  <string name="setting_icon">显示通知</string>
+      
+  <string name="setting_icon_summary">当联系人历史记录服务运行时显示通知。</string>
+      
+  <string name="setting_icon_contact">增加联系人</string>
+      
+  <string name="setting_icon_contact_summary">添加新联系人时在通知栏中显示图标</string>
+      
+  <!-- Tutorial text -->
+      
+  <string name="tutorial_welcome">欢迎来到\n联系历史</string>
+      
+  <string name="tutorial_accept">为了使该应用程序正常工作，有必要：\n\n- 授予所有必要的权限\n- 确保该应用程序所基于的服务未被任务管理器应用程序或节能模式阻止。</string>
+      
+  <string name="tutorial_main">联系人历史记录可让您按照见面的日期和地点在地址簿中搜索人员。\n\n请注意，此应用程序是实验性的，可能有一些错误 :)\n\n此应用程序仅适用于从现在开始创建的联系人，因为 Android 不会连同联系人一起记住其创建日期和地点。</string>
+      
+  <string name="tutorial_header1">它是如何工作的？</string>
+      
+  <string name="tutorial_header2">获取位置</string>
+      
+  <string name="tutorial_header3">按日期搜索</string>
+      
+  <string name="tutorial_header4">按地点搜索</string>
+      
+  <string name="tutorial_content1">将联系人添加到地址簿中，然后联系人将出现在联系人历史记录中。此应用程序基于必须在后台运行才能检测新联系人的服务，如果关闭此服务，则将不会检测到创建的新联系人。因此，如果您使用进程管理应用程序（任务管理器），请将此应用程序添加到允许在后台运行的应用程序列表中。\n\n此外，为了正常运行，应用程序必须安装在系统内存中。</string>
+      
+  <string name="tutorial_content2">该位置是通过 WiFi 网络或电话运营商的信息获取的。GPS 位置目前不可用。</string>
+      
+  <string name="tutorial_content3">通过选择将显示已保存联系人的两个日期，可以按日期搜索联系人。</string>
+      
+  <string name="tutorial_content4">通过在“位置”页面中键入搜索地址的一部分来完成按位置搜索。将显示与所需位置相对应的所有联系人，无论其保存日期如何。</string>
+      
+  <string name="tutorial_ok_button">好，我知道了</string>
+      
+  <string name="snack_permissions_nok">您必须授予所有权限。</string>
+      
+  <string name="do_not_show">不再显示</string>
+  
+</resources>

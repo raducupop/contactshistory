@@ -11,7 +11,6 @@ public class ContactHelperSimple implements Parcelable {
     public ContactHelperSimple(){
         id = null;
         name = null;
-
     }
 
     public ContactHelperSimple(String i, String n){

@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+       
+  <string name="notification_main">サービスは実行中です</string>
+      
+  <string name="notification_new">新しい連絡先が作成されました</string>
+      
+  <string name="action_settings">設定</string>
+      
+  <string name="label_activity_settings">設定</string>
+      
+  <string name="label_activity_delete">消去</string>
+      
+  <string name="label_activity_tutorial">チュートリアル</string>
+      
+  <string name="label_activity_about">について</string>
+      
+  <!-- Strings used in UI - Tab names, Dialogues, ... -->
+      
+  <string name="tab_all">全て</string>
+      
+  <string name="tab_recent">最近の</string>
+      
+  <string name="tab_today">今日</string>
+      
+  <string name="tab_week">今週</string>
+      
+  <string name="tab_month">今月</string>
+      
+  <string name="tab_date">日付</string>
+      
+  <string name="tab_twodates">2 つの日付</string>
+      
+  <string name="tab_location">位置</string>
+      
+  <string name="warning_install_title">アプリケーションはシステムメモリにインストールする必要があります</string>
+      
+  <string name="warning_install_text">アプリケーションのシステム設定で場所を変更してから、アプリケーションを再度開きます。</string>
+      
+  <string name="warning_install_positive_btn">今すぐ変更してください</string>
+      
+  <string name="warning_install_neutral_btn">後で</string>
+      
+  <string name="warning_location_title">場所へのアクセスは許可されていません</string>
+      
+  <string name="warning_location_text">アプリがあなたの位置を特定できるように設定を変更します。</string>
+      
+  <string name="warning_location_positive_btn">今すぐ変更してください</string>
+      
+  <string name="warning_location_neutral_btn">後で</string>
+      
+  <string name="warning_conn_title">インターネット接続なし</string>
+      
+  <string name="warning_conn_text">場所は特定できません。WiFi またはモバイル データ経由でインターネットに接続します。</string>
+      
+  <string name="warning_conn_positive_btn">Wi-Fi</string>
+      
+  <string name="warning_conn_negative_btn">モバイルデータ</string>
+      
+  <string name="warning_conn_neutral_btn">後で</string>
+      
+  <string name="info_date_firstline">ご希望の日付を選択してください</string>
+      
+  <string name="info_date_secondline">連絡先のリストを表示するには</string>
+      
+  <string name="info_two_dates_firstline">その間の日付を 2 つ選択してください</string>
+      
+  <string name="info_two_dates_secondline">連絡先のリストを表示するには</string>
+      
+  <string name="info_location_firstline">場所を入力してください</string>
+      
+  <string name="info_location_secondline">連絡先を表示したいとします。</string>
+      
+  <string name="button_pick_date">日付を選択してください...</string>
+      
+  <string name="button_pick_first_date">開始日</string>
+      
+  <string name="button_pick_second_date">終了日</string>
+      
+  <string name="button_done">見せる</string>
+      
+  <string name="title_pick_date">日付の選択</string>
+      
+  <string name="button_close_search">近い</string>
+      
+  <string name="rem_close">近い</string>
+      
+  <string name="rem_delete">消去</string>
+      
+  <string name="rem_select_all">すべて選択</string>
+      
+  <string name="rem_info">連絡先が連絡先履歴から削除されました。電話帳からは削除されていませんでした。</string>
+      
+  <string name="err_no_info">この連絡先は存在しません</string>
+      
+  <string name="location_hint">場所を検索する</string>
+      
+  <string name="search_hint">名前、日付、場所を検索する</string>
+      
+  <!-- Strings used in Menus-->
+      
+  <string name="menu_sort">選別</string>
+              
+  <string name="menu_sort_by_name">名前で</string>
+              
+  <string name="menu_sort_by_date">日付順</string>
+              
+  <string name="menu_sort_by_location">場所別</string>
+      
+  <string name="menu_display">見せる</string>
+              
+  <string name="menu_display_withlocation">位置情報のある連絡先のみ</string>
+              
+  <string name="menu_display_all">すべての連絡先</string>
+      
+  <string name="menu_search">検索</string>
+      
+  <string name="menu_delete">消去</string>
+      
+  <string name="menu_settings">設定</string>
+      
+  <string name="menu_help">ヘルプ</string>
+      
+  <string name="menu_help_tutorial">チュートリアル</string>
+      
+  <string name="menu_help_about">について</string>
+      
+  <!-- Strings used in ContactHelper and GetListHelper Classes-->
+      
+  <string name="str_info_getbothdates">両方の日付を選択してください。</string>
+      
+  <string name="helper_nolocation">場所がありません</string>
+      
+  <!-- Strings used in Service Class-->
+      
+  <string name="service_icon_firstline">連絡先履歴は機能しています</string>
+      
+  <string name="service_icon_secondline">タッチして開きます</string>
+      
+  <string name="service_icon_contact">連絡先が追加されました</string>
+      
+  <string name="service_no_location">場所が特定できませんでした</string>
+      
+  <string name="service_no_connexion">インターネット接続がありません</string>
+
+  <!-- Strings used in Setting Activityes -->
+      
+  <string name="setting_category_display">ディスプレイの設定</string>
+      
+  <string name="setting_category_contacts">連絡先</string>
+      
+  <string name="setting_category_notifications">通知</string>
+              
+  <string name="setting_source_internal">内部メモリ</string>
+              
+  <string name="setting_source_internal_summary">デバイスの内部メモリに保存されている連絡先。</string>
+              
+  <string name="setting_source_sim">SIM</string>
+              
+  <string name="setting_source_sim_summary">SIM カードに保存されている連絡先。</string>
+              
+  <string name="setting_source_other">その他のアカウント</string>
+              
+  <string name="setting_source_other_summary">他のアカウント (Google、Facebook、Yahoo など) の連絡先を表示します。</string>
+      
+  <string name="setting_write_info">連絡先情報を書く</string>
+      
+  <string name="setting_write_info_summary">インポート/エクスポート時に再利用できるように、連絡先のメモ フィールドに日付と場所を書き込みます。</string>
+      
+  <string name="setting_read_info">インポートデータを読む</string>
+      
+  <string name="setting_read_info_summary">連絡先をインポートするときに、連絡先に保存されているデータを読み取ります</string>
+      
+  <string name="setting_ui_theme">ダークモード</string>
+      
+  <string name="setting_ui_theme_summary"/>
+      
+  <string name="setting_ui_type">コンパクトなインターフェース</string>
+      
+  <string name="setting_ui_type_summary">今日、週、月のタブがメイン画面に表示されない</string>
+      
+  <string name="setting_displaydate">日付形式</string>
+      
+  <string name="setting_displaydate_summary">日付の表示方法を設定します。</string>
+      
+  <string name="setting_displaytime">時刻形式</string>
+      
+  <string name="setting_displaytime_summary">時刻の表示方法を設定します</string>
+      
+  <string name="setting_recentnumber">最近の連絡先</string>
+      
+  <string name="setting_recentnumber_summary">[最近] タブに表示する連絡先の数を選択します</string>
+      
+  <string name="setting_defaultsort">デフォルトの並べ替え</string>
+      
+  <string name="setting_defaultsort_summary">リストの並べ替え方法を選択します</string>
+      
+  <string name="setting_icon">通知を表示する</string>
+      
+  <string name="setting_icon_summary">連絡先履歴サービスの実行中に通知を表示します。</string>
+      
+  <string name="setting_icon_contact">連絡先を追加</string>
+      
+  <string name="setting_icon_contact_summary">新しい連絡先が追加されると通知バーにアイコンが表示されます</string>
+      
+  <!-- Tutorial text -->
+      
+  <string name="tutorial_welcome">ようこそ\n連絡先履歴</string>
+      
+  <string name="tutorial_accept">このアプリケーションが正しく動作するには、次のことが必要です。\n\n- 必要な権限をすべて付与します\n- このアプリケーションの基になっているサービスがタスク マネージャー アプリケーションや省電力モードによってブロックされていないことを確認してください。</string>
+      
+  <string name="tutorial_main">連絡先履歴を使用すると、アドレス帳内のユーザーを、会った日付と場所で検索できます。\n\nこのアプリケーションは実験的なものであるため、いくつかのバグがある可能性があることに注意してください :)\n\nAndroid は連絡先とともに作成日と場所を記憶しないため、このアプリケーションはこれから作成される連絡先でのみ機能します。</string>
+      
+  <string name="tutorial_header1">どのように機能するのでしょうか?</string>
+      
+  <string name="tutorial_header2">場所の取得</string>
+      
+  <string name="tutorial_header3">日付で検索する</string>
+      
+  <string name="tutorial_header4">場所から探す</string>
+      
+  <string name="tutorial_content1">連絡先をアドレス帳に追加すると、連絡先が連絡先履歴に表示されます。このアプリケーションは、新しい連絡先を検出するためにバックグラウンドで実行する必要があるサービスに基づいており、このサービスが閉じている場合、作成された新しい連絡先は検出されません。したがって、プロセス管理用のアプリケーション (タスク マネージャー) を使用している場合は、このアプリケーションをバックグラウンドでの実行を許可するアプリケーションのリストに追加してください。\n\nまた、正しく機能するには、アプリケーションがシステム メモリにインストールされている必要があります。</string>
+      
+  <string name="tutorial_content2">位置は、WiFi ネットワークまたは電話オペレーターからの情報を通じて取得されます。現時点では GPS 位置情報は利用できません。</string>
+      
+  <string name="tutorial_content3">保存された連絡先が表示される 2 つの日付を選択すると、日付による連絡先の検索が可能になります。</string>
+      
+  <string name="tutorial_content4">場所による検索は、「場所」ページに検索された住所の一部を入力することによって実行されます。保存された日付に関係なく、目的の場所に対応するすべての連絡先が表示されます。</string>
+      
+  <string name="tutorial_ok_button">はい、分かりました</string>
+      
+  <string name="snack_permissions_nok">すべての権限を付与する必要があります。</string>
+      
+  <string name="do_not_show">もう表示しないでください</string>
+  
+</resources>

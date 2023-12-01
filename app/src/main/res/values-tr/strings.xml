@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+  <string name="notification_main">Hizmet çalışıyor</string>
+      
+  <string name="notification_new">Yeni bir kişi oluşturuldu</string>
+      
+  <string name="action_settings">Ayarlar</string>
+      
+  <string name="label_activity_settings">Ayarlar</string>
+      
+  <string name="label_activity_delete">Silmek</string>
+      
+  <string name="label_activity_tutorial">öğretici</string>
+      
+  <string name="label_activity_about">Hakkında</string>
+      
+  <!-- Strings used in UI - Tab names, Dialogues, ... -->
+      
+  <string name="tab_all">Tüm</string>
+      
+  <string name="tab_recent">Son</string>
+      
+  <string name="tab_today">Bugün</string>
+      
+  <string name="tab_week">Bu hafta</string>
+      
+  <string name="tab_month">Bu ay</string>
+      
+  <string name="tab_date">Tarih</string>
+      
+  <string name="tab_twodates">İki tarih</string>
+      
+  <string name="tab_location">Konum</string>
+      
+  <string name="warning_install_title">Uygulamanın sistem belleğine yüklenmesi gerekir</string>
+      
+  <string name="warning_install_text">Uygulamanın sistem ayarlarında konumu değiştirin, ardından uygulamayı yeniden açın.</string>
+      
+  <string name="warning_install_positive_btn">Şimdi değiştir</string>
+      
+  <string name="warning_install_neutral_btn">Daha sonra</string>
+      
+  <string name="warning_location_title">Konuma erişime izin verilmiyor</string>
+      
+  <string name="warning_location_text">Uygulamanın konumunuzu belirlemesine izin vermek için ayarı değiştirin.</string>
+      
+  <string name="warning_location_positive_btn">Şimdi değiştir</string>
+      
+  <string name="warning_location_neutral_btn">Daha sonra</string>
+      
+  <string name="warning_conn_title">İnternet bağlantısı yok</string>
+      
+  <string name="warning_conn_text">Konum belirlenemiyor. WiFi veya mobil veri aracılığıyla internete bağlanın.</string>
+      
+  <string name="warning_conn_positive_btn">Wifi</string>
+      
+  <string name="warning_conn_negative_btn">Mobil veri</string>
+      
+  <string name="warning_conn_neutral_btn">Daha sonra</string>
+      
+  <string name="info_date_firstline">İstediğiniz tarihi seçin</string>
+      
+  <string name="info_date_secondline">kişi listesini görüntülemek için</string>
+      
+  <string name="info_two_dates_firstline">Arasında istediğiniz iki tarihi seçin</string>
+      
+  <string name="info_two_dates_secondline">kişi listesini görüntülemek için</string>
+      
+  <string name="info_location_firstline">Hangi konumu yazın</string>
+      
+  <string name="info_location_secondline">kişileri görüntülemek istiyorsunuz.</string>
+      
+  <string name="button_pick_date">Tarihi seç...</string>
+      
+  <string name="button_pick_first_date">Başlangıç ​​tarihi</string>
+      
+  <string name="button_pick_second_date">Bitiş tarihi</string>
+      
+  <string name="button_done">Göstermek</string>
+      
+  <string name="title_pick_date">Tarih seç</string>
+      
+  <string name="button_close_search">Kapalı</string>
+      
+  <string name="rem_close">Kapalı</string>
+      
+  <string name="rem_delete">Silmek</string>
+      
+  <string name="rem_select_all">Hepsini seç</string>
+      
+  <string name="rem_info">Kişiler, Kişi Geçmişi\'nden silindi. Telefon rehberinden silinmediler.</string>
+      
+  <string name="err_no_info">Bu kişi mevcut değil</string>
+      
+  <string name="location_hint">Bir konum arayın</string>
+      
+  <string name="search_hint">Ad, tarih veya konum arayın</string>
+      
+  <!-- Strings used in Menus-->
+      
+  <string name="menu_sort">Düzenlemek</string>
+              
+  <string name="menu_sort_by_name">İsimle</string>
+              
+  <string name="menu_sort_by_date">Tarihe göre</string>
+              
+  <string name="menu_sort_by_location">Konuma göre</string>
+      
+  <string name="menu_display">Göstermek</string>
+              
+  <string name="menu_display_withlocation">Yalnızca konumu olan kişiler</string>
+              
+  <string name="menu_display_all">Tüm kişiler</string>
+      
+  <string name="menu_search">Aramak</string>
+      
+  <string name="menu_delete">Silmek</string>
+      
+  <string name="menu_settings">Ayarlar</string>
+      
+  <string name="menu_help">Yardım</string>
+      
+  <string name="menu_help_tutorial">öğretici</string>
+      
+  <string name="menu_help_about">Hakkında</string>
+      
+  <!-- Strings used in ContactHelper and GetListHelper Classes-->
+      
+  <string name="str_info_getbothdates">Her iki tarihi de seçin!</string>
+      
+  <string name="helper_nolocation">Konum yok</string>
+      
+  <!-- Strings used in Service Class-->
+      
+  <string name="service_icon_firstline">Kişi Geçmişi çalışıyor</string>
+      
+  <string name="service_icon_secondline">Açmak için dokunun</string>
+      
+  <string name="service_icon_contact">Kişi eklendi</string>
+      
+  <string name="service_no_location">Konum belirlenemedi</string>
+      
+  <string name="service_no_connexion">İnternet bağlantısı yok</string>
+
+
+  <!-- Strings used in Setting Activityes -->
+      
+  <string name="setting_category_display">Görüntü ayarları</string>
+      
+  <string name="setting_category_contacts">Kişiler</string>
+      
+  <string name="setting_category_notifications">Bildirimler</string>
+              
+  <string name="setting_source_internal">Dahili bellek</string>
+              
+  <string name="setting_source_internal_summary">Cihazın dahili belleğinde saklanan kişiler.</string>
+              
+  <string name="setting_source_sim">SIM</string>
+              
+  <string name="setting_source_sim_summary">SIM kartta saklanan kişiler.</string>
+              
+  <string name="setting_source_other">Diğer hesaplar</string>
+              
+  <string name="setting_source_other_summary">Diğer hesaplardaki kişileri göster (Google, Facebook, Yahoo, ...)</string>
+      
+  <string name="setting_write_info">İletişim bilgilerini yazın</string>
+      
+  <string name="setting_write_info_summary">İçe/dışa aktarma sırasında yeniden kullanmak için kişinin Notlar alanına tarih ve konumu yazın</string>
+      
+  <string name="setting_read_info">İçe aktarma verilerini okuyun</string>
+      
+  <string name="setting_read_info_summary">Kişileri içe aktarırken, içlerinde depolanan verileri okuyun</string>
+      
+  <string name="setting_ui_theme">Karanlık mod</string>
+      
+  <string name="setting_ui_theme_summary"/>
+      
+  <string name="setting_ui_type">Kompakt arayüz</string>
+      
+  <string name="setting_ui_type_summary">Bugün, Hafta ve Ay sekmeleri ana ekranda görüntülenmiyor</string>
+      
+  <string name="setting_displaydate">Tarih formatı</string>
+      
+  <string name="setting_displaydate_summary">Tarihin görüntülenme şeklini ayarlayın.</string>
+      
+  <string name="setting_displaytime">Zaman formatı</string>
+      
+  <string name="setting_displaytime_summary">Saatin görüntülenme şeklini ayarlayın</string>
+      
+  <string name="setting_recentnumber">Son iletişime geçilenler</string>
+      
+  <string name="setting_recentnumber_summary">En Son sekmesinde görüntülenecek kişi sayısını seçin</string>
+      
+  <string name="setting_defaultsort">Varsayılan sıralama</string>
+      
+  <string name="setting_defaultsort_summary">Listenin nasıl sıralanacağını seçin</string>
+      
+  <string name="setting_icon">Bildirimleri göster</string>
+      
+  <string name="setting_icon_summary">Kişi Geçmişi hizmeti çalışırken bir bildirim görüntüler.</string>
+      
+  <string name="setting_icon_contact">Kişi ekle</string>
+      
+  <string name="setting_icon_contact_summary">Yeni bir kişi eklendiğinde bildirim çubuğunda bir simge görüntüler</string>
+      
+  <!-- Tutorial text -->
+      
+  <string name="tutorial_welcome">Hoşgeldiniz\nKişi Geçmişi</string>
+      
+  <string name="tutorial_accept">Bu uygulamanın doğru çalışması için gereklidir:\n\n- Gerekli tüm izinleri verin\n- Bu uygulamanın temel aldığı hizmetin bir görev yöneticisi uygulaması veya enerji tasarrufu modu tarafından engellenmediğinden emin olun.</string>
+      
+  <string name="tutorial_main">Kişi Geçmişi, adres defterindeki kişileri, onlarla tanıştığınız tarihe ve yere göre aramanıza olanak tanır.\n\nLütfen bu uygulamanın deneysel olduğunu, bazı hatalar olabileceğini unutmayın :)\n\nBu uygulama yalnızca bundan sonra oluşturulan kişilerle çalışır çünkü Android, kişilerle birlikte oluşturuldukları tarihi ve yeri hatırlamaz.</string>
+      
+  <string name="tutorial_header1">O nasıl çalışır?</string>
+      
+  <string name="tutorial_header2">Konumu alma</string>
+      
+  <string name="tutorial_header3">Tarihe göre ara</string>
+      
+  <string name="tutorial_header4">Konuma göre ara</string>
+      
+  <string name="tutorial_content1">Kişileri adres defterine eklediğinizde kişiler Kişi Geçmişi\'nde görünecektir. Bu uygulama, yeni kişileri tespit etmek için arka planda çalışması gereken bir hizmete dayanmaktadır ve bu hizmet kapatılırsa oluşturulan yeni kişiler algılanmayacaktır. Dolayısıyla, süreç yönetimi için bir uygulama (Görev Yöneticisi) kullanıyorsanız, lütfen bu uygulamayı arka planda çalışmasına izin verilenler listesine ekleyin.\n\nAyrıca düzgün çalışması için uygulamanın sistem belleğine yüklenmesi gerekir.</string>
+      
+  <string name="tutorial_content2">Konum, WiFi ağından veya telefon operatöründen alınan bilgiler aracılığıyla elde edilir. GPS konumu şu anda kullanılamıyor.</string>
+      
+  <string name="tutorial_content3">Kişileri tarihe göre aramak, kayıtlı kişilerin görüntüleneceği iki tarih seçilerek mümkündür.</string>
+      
+  <string name="tutorial_content4">Konuma göre arama, aranan adresin bir kısmının Konum sayfasına yazılmasıyla yapılır. İstenilen konuma karşılık gelen tüm kişiler, kaydedildikleri tarihe bakılmaksızın görüntülenecektir.</string>
+      
+  <string name="tutorial_ok_button">TAMAM ANLADIM</string>
+      
+  <string name="snack_permissions_nok">Tüm izinleri vermeniz gerekir.</string>
+      
+  <string name="do_not_show">Artık gösterme</string>
+  
+</resources>

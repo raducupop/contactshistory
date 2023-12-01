@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+      
+  <string name="notification_main">Layanan sedang berjalan</string>
+      
+  <string name="notification_new">Kontak baru telah dibuat</string>
+      
+  <string name="action_settings">Pengaturan</string>
+      
+  <string name="label_activity_settings">Pengaturan</string>
+      
+  <string name="label_activity_delete">Menghapus</string>
+      
+  <string name="label_activity_tutorial">tutorial</string>
+      
+  <string name="label_activity_about">Tentang</string>
+      
+  <!-- Strings used in UI - Tab names, Dialogues, ... -->
+      
+  <string name="tab_all">Semua</string>
+      
+  <string name="tab_recent">Terkini</string>
+      
+  <string name="tab_today">Hari ini</string>
+      
+  <string name="tab_week">Minggu ini</string>
+      
+  <string name="tab_month">Bulan ini</string>
+      
+  <string name="tab_date">Tanggal</string>
+      
+  <string name="tab_twodates">Dua kencan</string>
+      
+  <string name="tab_location">Lokasi</string>
+      
+  <string name="warning_install_title">Aplikasi harus diinstal di memori sistem</string>
+      
+  <string name="warning_install_text">Ubah lokasi pada pengaturan sistem aplikasi, lalu buka kembali aplikasi.</string>
+      
+  <string name="warning_install_positive_btn">Ubah sekarang</string>
+      
+  <string name="warning_install_neutral_btn">Nanti</string>
+      
+  <string name="warning_location_title">Akses ke lokasi tidak diperbolehkan</string>
+      
+  <string name="warning_location_text">Ubah pengaturan untuk mengizinkan aplikasi menentukan lokasi Anda.</string>
+      
+  <string name="warning_location_positive_btn">Ubah sekarang</string>
+      
+  <string name="warning_location_neutral_btn">Nanti</string>
+      
+  <string name="warning_conn_title">Tidak ada koneksi internet</string>
+      
+  <string name="warning_conn_text">Lokasinya tidak dapat ditentukan. Terhubung ke Internet, melalui WiFi atau data seluler.</string>
+      
+  <string name="warning_conn_positive_btn">Wifi</string>
+      
+  <string name="warning_conn_negative_btn">Data Seluler</string>
+      
+  <string name="warning_conn_neutral_btn">Nanti</string>
+      
+  <string name="info_date_firstline">Pilih tanggal yang Anda inginkan</string>
+      
+  <string name="info_date_secondline">untuk melihat daftar kontak</string>
+      
+  <string name="info_two_dates_firstline">Pilih dua tanggal yang Anda inginkan</string>
+      
+  <string name="info_two_dates_secondline">untuk melihat daftar kontak</string>
+      
+  <string name="info_location_firstline">Ketik lokasi yang mana</string>
+      
+  <string name="info_location_secondline">Anda ingin melihat kontak.</string>
+      
+  <string name="button_pick_date">Pilih tanggal...</string>
+      
+  <string name="button_pick_first_date">Mulai tanggal</string>
+      
+  <string name="button_pick_second_date">Tanggal akhir</string>
+      
+  <string name="button_done">Menunjukkan</string>
+      
+  <string name="title_pick_date">Pilih tanggal</string>
+      
+  <string name="button_close_search">Menutup</string>
+      
+  <string name="rem_close">Menutup</string>
+      
+  <string name="rem_delete">Menghapus</string>
+      
+  <string name="rem_select_all">Pilih Semua</string>
+      
+  <string name="rem_info">Kontak telah dihapus dari Riwayat Kontak. Mereka tidak dihapus dari buku telepon.</string>
+      
+  <string name="err_no_info">Kontak ini tidak ada</string>
+      
+  <string name="location_hint">Cari lokasi</string>
+      
+  <string name="search_hint">Cari nama, tanggal atau lokasi</string>
+      
+  <!-- Strings used in Menus-->
+      
+  <string name="menu_sort">Menyortir</string>
+              
+  <string name="menu_sort_by_name">Dengan nama</string>
+              
+  <string name="menu_sort_by_date">Tanggal</string>
+              
+  <string name="menu_sort_by_location">Berdasarkan lokasi</string>
+      
+  <string name="menu_display">Menunjukkan</string>
+              
+  <string name="menu_display_withlocation">Hanya kontak dengan lokasi</string>
+              
+  <string name="menu_display_all">Semua kontak</string>
+      
+  <string name="menu_search">Mencari</string>
+      
+  <string name="menu_delete">Menghapus</string>
+      
+  <string name="menu_settings">Pengaturan</string>
+      
+  <string name="menu_help">Membantu</string>
+      
+  <string name="menu_help_tutorial">tutorial</string>
+      
+  <string name="menu_help_about">Tentang</string>
+      
+  <!-- Strings used in ContactHelper and GetListHelper Classes-->
+      
+  <string name="str_info_getbothdates">Pilih kedua tanggal tersebut!</string>
+      
+  <string name="helper_nolocation">Tidak ada lokasi</string>
+      
+  <!-- Strings used in Service Class-->
+      
+  <string name="service_icon_firstline">Riwayat Kontak berfungsi</string>
+      
+  <string name="service_icon_secondline">Sentuh untuk membuka</string>
+      
+  <string name="service_icon_contact">Kontak ditambahkan</string>
+      
+  <string name="service_no_location">Lokasinya tidak dapat ditentukan</string>
+      
+  <string name="service_no_connexion">Tidak ada koneksi internet</string>
+
+   <!-- Strings used in Setting Activityes -->
+      
+  <string name="setting_category_display">Pengaturan tampilan</string>
+      
+  <string name="setting_category_contacts">Kontak</string>
+      
+  <string name="setting_category_notifications">Pemberitahuan</string>
+              
+  <string name="setting_source_internal">Memori internal</string>
+              
+  <string name="setting_source_internal_summary">Kontak disimpan di memori internal perangkat.</string>
+              
+  <string name="setting_source_sim">SIM</string>
+              
+  <string name="setting_source_sim_summary">Kontak disimpan di kartu SIM.</string>
+              
+  <string name="setting_source_other">Akun lainnya</string>
+              
+  <string name="setting_source_other_summary">Tampilkan kontak dari akun lain (Google, Facebook, Yahoo, ...)</string>
+      
+  <string name="setting_write_info">Tulis informasi kontak</string>
+      
+  <string name="setting_write_info_summary">Tulis tanggal dan lokasi pada kolom Catatan kontak, untuk digunakan kembali pada saat impor/ekspor</string>
+      
+  <string name="setting_read_info">Baca data impor</string>
+      
+  <string name="setting_read_info_summary">Saat mengimpor kontak, baca data yang tersimpan di dalamnya</string>
+      
+  <string name="setting_ui_theme">Mode gelap</string>
+      
+  <string name="setting_ui_theme_summary"/>
+      
+  <string name="setting_ui_type">Antarmuka yang ringkas</string>
+      
+  <string name="setting_ui_type_summary">Tab Hari Ini, Minggu dan Bulan tidak ditampilkan di layar utama</string>
+      
+  <string name="setting_displaydate">Format tanggal</string>
+      
+  <string name="setting_displaydate_summary">Atur cara tanggal ditampilkan.</string>
+      
+  <string name="setting_displaytime">Format waktu</string>
+      
+  <string name="setting_displaytime_summary">Atur cara waktu ditampilkan</string>
+      
+  <string name="setting_recentnumber">Kontak terkini</string>
+      
+  <string name="setting_recentnumber_summary">Pilih jumlah kontak yang akan ditampilkan di tab Terbaru</string>
+      
+  <string name="setting_defaultsort">Pengurutan default</string>
+      
+  <string name="setting_defaultsort_summary">Pilih cara daftar akan diurutkan</string>
+      
+  <string name="setting_icon">Tunjukkan notifikasi</string>
+      
+  <string name="setting_icon_summary">Menampilkan pemberitahuan ketika layanan Riwayat Kontak sedang berjalan.</string>
+      
+  <string name="setting_icon_contact">Tambah kontak</string>
+      
+  <string name="setting_icon_contact_summary">Menampilkan ikon di bilah notifikasi ketika kontak baru ditambahkan</string>
+      
+  <!-- Tutorial text -->
+      
+  <string name="tutorial_welcome">Selamat Datang di\nRiwayat Kontak</string>
+      
+  <string name="tutorial_accept">Agar aplikasi ini berfungsi dengan benar, perlu:\n\n- Berikan semua izin yang diperlukan\n- Pastikan layanan yang mendasari aplikasi ini tidak diblokir oleh aplikasi pengelola tugas atau mode hemat energi.</string>
+      
+  <string name="tutorial_main">Riwayat Kontak memungkinkan Anda mencari orang-orang di buku alamat berdasarkan tanggal dan tempat Anda bertemu mereka.\n\nHarap dicatat bahwa aplikasi ini bersifat eksperimental, mungkin ada beberapa bug :)\n\nAplikasi ini hanya berfungsi dengan kontak yang dibuat mulai sekarang, karena Android tidak mengingat tanggal dan tempat pembuatannya bersama kontak tersebut.</string>
+      
+  <string name="tutorial_header1">Bagaimana cara kerjanya?</string>
+      
+  <string name="tutorial_header2">Mendapatkan lokasinya</string>
+      
+  <string name="tutorial_header3">Cari berdasarkan tanggal</string>
+      
+  <string name="tutorial_header4">Cari berdasarkan lokasi</string>
+      
+  <string name="tutorial_content1">Tambahkan kontak ke buku alamat dan kemudian kontak tersebut akan muncul di Riwayat Kontak. Aplikasi ini didasarkan pada layanan yang harus berjalan di latar belakang untuk mendeteksi kontak baru, dan jika layanan ini ditutup maka kontak baru yang dibuat tidak akan terdeteksi. Jadi, jika Anda menggunakan aplikasi untuk manajemen proses (Task Manager), silakan tambahkan aplikasi ini ke daftar yang diperbolehkan berjalan di latar belakang.\n\nSelain itu, agar berfungsi dengan baik, aplikasi harus diinstal di memori sistem.</string>
+      
+  <string name="tutorial_content2">Lokasinya didapat melalui informasi dari jaringan WiFi atau dari operator telepon. Lokasi GPS tidak tersedia saat ini.</string>
+      
+  <string name="tutorial_content3">Pencarian kontak berdasarkan tanggal dapat dilakukan dengan memilih dua tanggal di mana kontak yang disimpan akan ditampilkan.</string>
+      
+  <string name="tutorial_content4">Pencarian berdasarkan lokasi dilakukan dengan mengetikkan sebagian alamat yang dicari pada halaman Lokasi. Semua kontak yang sesuai dengan lokasi yang diinginkan akan ditampilkan, terlepas dari tanggal penyimpanannya.</string>
+      
+  <string name="tutorial_ok_button">OK AKU MENGERTI</string>
+      
+  <string name="snack_permissions_nok">Anda harus memberikan semua izin.</string>
+      
+  <string name="do_not_show">Jangan tampilkan lagi</string>
+  
+</resources>

@@ -3,10 +3,10 @@ package com.contactshistory;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.method.LinkMovementMethod;
 import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class AboutActivity extends AppCompatActivity {
 
@@ -43,7 +43,7 @@ public class AboutActivity extends AppCompatActivity {
         }
 
         catch (Exception e){
-           //
+            //
         }
 
         TextView link_lib1 = findViewById(R.id.lib1);

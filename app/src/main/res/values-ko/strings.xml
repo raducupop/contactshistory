@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+          
+  <string name="notification_main">서비스가 실행 중입니다.</string>
+      
+  <string name="notification_new">새 연락처가 생성되었습니다.</string>
+      
+  <string name="action_settings">설정</string>
+      
+  <string name="label_activity_settings">설정</string>
+      
+  <string name="label_activity_delete">삭제</string>
+      
+  <string name="label_activity_tutorial">지도 시간</string>
+      
+  <string name="label_activity_about">에 대한</string>
+      
+  <!-- Strings used in UI - Tab names, Dialogues, ... -->
+      
+  <string name="tab_all">모두</string>
+      
+  <string name="tab_recent">최근의</string>
+      
+  <string name="tab_today">오늘</string>
+      
+  <string name="tab_week">이번 주</string>
+      
+  <string name="tab_month">이번 달</string>
+      
+  <string name="tab_date">날짜</string>
+      
+  <string name="tab_twodates">두 개의 날짜</string>
+      
+  <string name="tab_location">위치</string>
+      
+  <string name="warning_install_title">애플리케이션이 시스템 메모리에 설치되어 있어야 합니다.</string>
+      
+  <string name="warning_install_text">애플리케이션의 시스템 설정에서 위치를 변경한 다음 애플리케이션을 다시 엽니다.</string>
+      
+  <string name="warning_install_positive_btn">지금 수정</string>
+      
+  <string name="warning_install_neutral_btn">나중에</string>
+      
+  <string name="warning_location_title">위치에 대한 접근이 허용되지 않습니다</string>
+      
+  <string name="warning_location_text">앱이 사용자의 위치를 ​​확인할 수 있도록 설정을 변경하세요.</string>
+      
+  <string name="warning_location_positive_btn">지금 수정</string>
+      
+  <string name="warning_location_neutral_btn">나중에</string>
+      
+  <string name="warning_conn_title">인터넷에 연결되지 않음</string>
+      
+  <string name="warning_conn_text">위치는 확인할 수 없습니다. Wi-Fi 또는 모바일 데이터를 통해 인터넷에 연결하세요.</string>
+      
+  <string name="warning_conn_positive_btn">와이파이</string>
+      
+  <string name="warning_conn_negative_btn">모바일 데이터</string>
+      
+  <string name="warning_conn_neutral_btn">나중에</string>
+      
+  <string name="info_date_firstline">원하는 날짜를 선택하세요</string>
+      
+  <string name="info_date_secondline">연락처 목록을 보려면</string>
+      
+  <string name="info_two_dates_firstline">원하는 날짜 두 개를 선택하세요.</string>
+      
+  <string name="info_two_dates_secondline">연락처 목록을 보려면</string>
+      
+  <string name="info_location_firstline">해당 위치를 입력하세요.</string>
+      
+  <string name="info_location_secondline">연락처를 보려고 합니다.</string>
+      
+  <string name="button_pick_date">날짜를 선택하세요...</string>
+      
+  <string name="button_pick_first_date">시작일</string>
+      
+  <string name="button_pick_second_date">종료일</string>
+      
+  <string name="button_done">보여주다</string>
+      
+  <string name="title_pick_date">날짜 선택</string>
+      
+  <string name="button_close_search">닫다</string>
+      
+  <string name="rem_close">닫다</string>
+      
+  <string name="rem_delete">삭제</string>
+      
+  <string name="rem_select_all">모두 선택</string>
+      
+  <string name="rem_info">연락처 기록에서 연락처가 삭제되었습니다. 전화번호부에서는 삭제되지 않았습니다.</string>
+      
+  <string name="err_no_info">이 연락처는 존재하지 않습니다.</string>
+      
+  <string name="location_hint">위치 검색</string>
+      
+  <string name="search_hint">이름, 날짜 또는 위치 검색</string>
+      
+  <!-- Strings used in Menus-->
+      
+  <string name="menu_sort">종류</string>
+              
+  <string name="menu_sort_by_name">이름으로</string>
+              
+  <string name="menu_sort_by_date">날짜별</string>
+              
+  <string name="menu_sort_by_location">위치별</string>
+      
+  <string name="menu_display">보여주다</string>
+              
+  <string name="menu_display_withlocation">위치가 있는 연락처만</string>
+              
+  <string name="menu_display_all">모든 연락처</string>
+      
+  <string name="menu_search">찾다</string>
+      
+  <string name="menu_delete">삭제</string>
+      
+  <string name="menu_settings">설정</string>
+      
+  <string name="menu_help">돕다</string>
+      
+  <string name="menu_help_tutorial">지도 시간</string>
+      
+  <string name="menu_help_about">에 대한</string>
+      
+  <!-- Strings used in ContactHelper and GetListHelper Classes-->
+      
+  <string name="str_info_getbothdates">두 날짜를 모두 선택하세요!</string>
+      
+  <string name="helper_nolocation">위치 없음</string>
+      
+  <!-- Strings used in Service Class-->
+      
+  <string name="service_icon_firstline">연락처 기록이 작동 중입니다.</string>
+      
+  <string name="service_icon_secondline">열려면 터치하세요.</string>
+      
+  <string name="service_icon_contact">연락처가 추가되었습니다.</string>
+      
+  <string name="service_no_location">위치를 확인할 수 없습니다.</string>
+      
+  <string name="service_no_connexion">인터넷에 연결되지 않음</string>
+
+   <!-- Strings used in Setting Activityes -->
+      
+  <string name="setting_category_display">화면 설정</string>
+      
+  <string name="setting_category_contacts">콘택트 렌즈</string>
+      
+  <string name="setting_category_notifications">알림</string>
+              
+  <string name="setting_source_internal">내부 저장소</string>
+              
+  <string name="setting_source_internal_summary">장치의 내부 메모리에 저장된 연락처입니다.</string>
+              
+  <string name="setting_source_sim">SIM</string>
+              
+  <string name="setting_source_sim_summary">SIM 카드에 저장된 연락처.</string>
+              
+  <string name="setting_source_other">기타 계정</string>
+              
+  <string name="setting_source_other_summary">다른 계정의 연락처 표시 (Google, Facebook, Yahoo, ...)</string>
+      
+  <string name="setting_write_info">연락처 정보 작성</string>
+      
+  <string name="setting_write_info_summary">가져오기/내보내기 중에 재사용할 수 있도록 연락처 메모 필드에 날짜와 위치를 기록하세요.</string>
+      
+  <string name="setting_read_info">가져오기 데이터 읽기</string>
+      
+  <string name="setting_read_info_summary">연락처를 가져올 때 연락처에 저장된 데이터를 읽습니다.</string>
+      
+  <string name="setting_ui_theme">다크 모드</string>
+      
+  <string name="setting_ui_theme_summary"/>
+      
+  <string name="setting_ui_type">컴팩트한 인터페이스</string>
+      
+  <string name="setting_ui_type_summary">오늘, 주, 월 탭이 메인 화면에 표시되지 않습니다.</string>
+      
+  <string name="setting_displaydate">날짜 형식</string>
+      
+  <string name="setting_displaydate_summary">날짜가 표시되는 방식을 설정합니다.</string>
+      
+  <string name="setting_displaytime">시간 형식</string>
+      
+  <string name="setting_displaytime_summary">시간이 표시되는 방식을 설정합니다.</string>
+      
+  <string name="setting_recentnumber">최근 계약들</string>
+      
+  <string name="setting_recentnumber_summary">최근 탭에 표시할 연락처 수를 선택하세요.</string>
+      
+  <string name="setting_defaultsort">기본 정렬</string>
+      
+  <string name="setting_defaultsort_summary">목록 정렬 방법을 선택하세요.</string>
+      
+  <string name="setting_icon">알림 표시</string>
+      
+  <string name="setting_icon_summary">연락처 기록 서비스가 실행 중일 때 알림을 표시합니다.</string>
+      
+  <string name="setting_icon_contact">주소록에 추가</string>
+      
+  <string name="setting_icon_contact_summary">새 연락처가 추가되면 알림 표시줄에 아이콘을 표시합니다.</string>
+      
+  <!-- Tutorial text -->
+      
+  <string name="tutorial_welcome">환영합니다\n연락처 기록</string>
+      
+  <string name="tutorial_accept">이 애플리케이션이 올바르게 작동하려면 다음이 필요합니다.\n\n- 필요한 모든 권한을 부여하세요\n- 이 애플리케이션의 기반이 되는 서비스가 작업 관리자 애플리케이션이나 에너지 절약 모드에 의해 차단되지 않았는지 확인하세요.</string>
+      
+  <string name="tutorial_main">연락처 기록을 사용하면 주소록에 있는 사람을 만난 날짜와 장소별로 검색할 수 있습니다.\n\n이 애플리케이션은 실험적이므로 일부 버그가 있을 수 있습니다. :)\n\nAndroid는 연락처와 함께 연락처가 생성된 날짜와 장소를 기억하지 않기 때문에 이 애플리케이션은 지금부터 생성된 연락처에서만 작동합니다.</string>
+      
+  <string name="tutorial_header1">어떻게 작동하나요?</string>
+      
+  <string name="tutorial_header2">위치 가져오기</string>
+      
+  <string name="tutorial_header3">날짜로 검색</string>
+      
+  <string name="tutorial_header4">위치로 검색</string>
+      
+  <string name="tutorial_content1">주소록에 연락처를 추가하면 해당 연락처가 연락처 기록에 나타납니다. 이 애플리케이션은 새 연락처를 감지하기 위해 백그라운드에서 실행되어야 하는 서비스를 기반으로 하며, 이 서비스가 닫히면 생성된 새 연락처가 감지되지 않습니다. 따라서 프로세스 관리용 애플리케이션 (작업 관리자)을 사용하는 경우 이 애플리케이션을 백그라운드 실행 허용 목록에 추가하세요.\n\n또한 제대로 작동하려면 애플리케이션이 시스템 메모리에 설치되어 있어야 합니다.</string>
+      
+  <string name="tutorial_content2">위치는 WiFi 네트워크 또는 전화 교환원의 정보를 통해 획득됩니다. 현재 GPS 위치를 사용할 수 없습니다.</string>
+      
+  <string name="tutorial_content3">저장된 연락처가 표시될 두 날짜 사이를 선택하면 날짜별로 연락처를 검색할 수 있습니다.</string>
+      
+  <string name="tutorial_content4">위치별 검색은 위치 페이지에서 검색된 주소의 일부를 입력하면 됩니다. 저장된 날짜에 관계없이 원하는 위치에 해당하는 모든 연락처가 표시됩니다.</string>
+      
+  <string name="tutorial_ok_button">알았어, 알았어</string>
+      
+  <string name="snack_permissions_nok">모든 권한을 부여해야 합니다.</string>
+      
+  <string name="do_not_show">더 이상 표시하지 마세요.</string>
+  
+</resources>

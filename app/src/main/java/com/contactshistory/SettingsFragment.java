@@ -19,12 +19,9 @@ public class SettingsFragment extends PreferenceFragment {
         boolean dark_theme = sharedPrefs.getBoolean("prefDarkUI", false);
         if (dark_theme) {
             getActivity().setTheme(R.style.AppThemeDark);
-        }
-        else {
+        } else {
             getActivity().setTheme(R.style.AppTheme);
         }
-
-        super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.settings_screen);
 
@@ -45,37 +42,25 @@ public class SettingsFragment extends PreferenceFragment {
             }
         });
 
-
         final SwitchPreference theme_pref = (SwitchPreference) getPreferenceManager().findPreference("prefDarkUI");
         assert theme_pref != null;
         theme_pref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             public boolean onPreferenceChange(Preference preference, Object prefDarkUI) {
                 if (prefDarkUI.toString().equals("true")) {
-                   // Toast.makeText(getActivity().getApplicationContext()," TRUE", Toast.LENGTH_LONG).show();
+                    // Toast.makeText(getActivity().getApplicationContext()," TRUE", Toast.LENGTH_LONG).show();
                     getActivity().setTheme(R.style.AppThemeDark);
                     getActivity().recreate();
 
-
-
                 } else {
-                   // Toast.makeText(getActivity().getApplicationContext(), " FALSE", Toast.LENGTH_LONG).show();
+                    // Toast.makeText(getActivity().getApplicationContext(), " FALSE", Toast.LENGTH_LONG).show();
                     getActivity().setTheme(R.style.AppTheme);
                     getActivity().recreate();
                 }
                 return true;
-
             }
         });
 
-
-
-
-
-
-
     }
-
-
 
 
 }
